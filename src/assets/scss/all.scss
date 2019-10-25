@@ -1,0 +1,27 @@
+@import "~bootstrap/scss/functions";
+@import "./helpers/_variables";
+@import "~bootstrap/scss/bootstrap";
+
+@import "./components/_login";
+@import "./components/_dashboard";
+@import "./components/_vue-toasted";
+
+.material-icons {
+  font-size: 1.3rem;
+  transform: translateY(0.25rem);
+}
+
+input[type="file"] {
+  position: fixed;
+  right: 100%;
+  bottom: 100%;
+}
+
+.background-cover {
+  background-size: cover;
+  width: 100%;
+}
+
+.toasted-container.toasted {
+  font-size: 3rem;
+}
