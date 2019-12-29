@@ -29,8 +29,7 @@ export default {
       tempCoupon: {},
       pagination: {},
       isNew: false,
-      page: 1,
-      isLoading: false
+      page: 1
     };
   },
   methods: {
@@ -58,42 +57,56 @@ export default {
     },
     createCoupon() {
       if (this.isNew) {
-        console.log(this.tempCoupon);
-        createCoupon({ data: this.tempCoupon }).then(res => {
-          this.dataResponse(res.data.success);
-          EventBus.emitHandler(true, res.data.message);
-        });
+        createCoupon({ data: this.tempCoupon })
+          .then(res => {
+            this.dataResponse(res.data.success);
+            EventBus.emitHandler(true, res.data.message);
+          })
+          .catch(error => {
+            EventBus.emitHandler(false, "取得資料錯誤");
+          });
       } else {
-        editCoupon({ data: this.tempCoupon }, this.tempCoupon.id).then(res => {
-          this.dataResponse(res.data.success);
-          EventBus.emitHandler(true, res.data.message);
-        });
+        editCoupon({ data: this.tempCoupon }, this.tempCoupon.id)
+          .then(res => {
+            this.dataResponse(res.data.success);
+            EventBus.emitHandler(true, res.data.message);
+          })
+          .catch(error => {
+            EventBus.emitHandler(false, "取得資料錯誤");
+          });
       }
     },
     getCouponList(page = 1) {
-      this.isLoading = true;
-      getCouponList(page).then(res => {
-        if (res.data.success) {
-          this.coupons = res.data.coupons;
-          console.log("  this.coupons", this.coupons);
-          this.pagination = res.data.pagination;
-          this.$route.params.page = page;
-          this.$router.push({ name: "couponList", params: { page: page } });
-          this.isLoading = false;
-        } else {
-          EventBus.emitHandler(false, "取得優惠券失敗");
-        }
-      });
+      this.$store.dispatch("ASYNC_LOADING", true);
+      getCouponList(page)
+        .then(res => {
+          if (res.data.success) {
+            this.coupons = res.data.coupons;
+            this.pagination = res.data.pagination;
+            this.$route.params.page = page;
+            this.$router.push({ name: "couponList", params: { page: page } });
+            this.$store.dispatch("ASYNC_LOADING", false);
+          } else {
+            EventBus.emitHandler(false, "取得優惠券失敗");
+          }
+        })
+        .catch(error => {
+          EventBus.emitHandler(false, "取得資料錯誤");
+        });
     },
     deleteCoupon(id) {
-      deleteCoupon(id).then(res => {
-        if (res.data.success) {
-          this.tempCoupon = {};
-          this.getCouponList();
-          $("#delCouponModal").modal("hide");
-          EventBus.emitHandler(true, res.data.message);
-        }
-      });
+      deleteCoupon(id)
+        .then(res => {
+          if (res.data.success) {
+            this.tempCoupon = {};
+            this.getCouponList();
+            $("#delCouponModal").modal("hide");
+            EventBus.emitHandler(true, res.data.message);
+          }
+        })
+        .catch(error => {
+          EventBus.emitHandler(false, "取得資料錯誤");
+        });
     }
   },
   created() {

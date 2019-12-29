@@ -1,17 +1,32 @@
-@import "~bootstrap/scss/functions";
-@import "./helpers/_variables";
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/functions';
+@import './helpers/_variables';
+@import '~bootstrap/scss/bootstrap';
 
-@import "./components/_login";
-@import "./components/_dashboard";
-@import "./components/_vue-toasted";
+@import './components/_login';
+@import './components/_dashboard';
+@import './components/_vue-toasted';
+@import './components/_collapse';
+@import './components/_dropdown';
 
-.material-icons {
-  font-size: 1.3rem;
-  transform: translateY(0.25rem);
+html {
+  min-height: 100%;
+  position: relative;
 }
 
-input[type="file"] {
+body {
+  font-family: 'Open Sans', 'Microsoft JhengHei', sans-serif;
+  margin-bottom: 60px;
+}
+
+li {
+  list-style: none;
+}
+
+.material-icons {
+  font-size: 1.25rem;
+}
+
+input[type='file'] {
   position: fixed;
   right: 100%;
   bottom: 100%;
@@ -20,8 +35,34 @@ input[type="file"] {
 .background-cover {
   background-size: cover;
   width: 100%;
+  height: 100px;
+  background-position: center center;
+}
+
+.background-thumbnail {
+  width: 100%;
+  height: 250px;
 }
 
 .toasted-container.toasted {
   font-size: 3rem;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #f5f5f5;
+}
+
+.alert {
+  border-radius: 50px;
+}
+
+.img-thumb {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
 }

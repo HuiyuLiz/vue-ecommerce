@@ -1,0 +1,30 @@
+.navbar-nav li.drop-hover:hover > .dropdown-menu {
+  display: block;
+  animation: showDrop 0.5s ease-in 0s forwards;
+
+  table,
+  .btn {
+    opacity: 0;
+    animation: showTable 0.15s 0.15s forwards;
+  }
+}
+
+@keyframes showDrop {
+  0% {
+    transform: translateX(-3%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes showTable {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

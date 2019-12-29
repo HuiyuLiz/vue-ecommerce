@@ -1,0 +1,62 @@
+<div>
+  <div class="container my-5">
+    <CartProgress :step="step"></CartProgress>
+    <div class="row justify-content-center" v-if="carts.length===0">
+      <div class="h3 text-secondary mt-5">
+        尚未選購專輯喔!
+      </div>
+    </div>
+    <div class="row" v-else>
+      <!-- 確認商品 -->
+      <div class="col-md-9 m-auto " v-if="step===0">
+        <div class="card text-center mb-4">
+          <div class="card-header bg-white" id="heading" @click="isOpen=!isOpen">
+            <div class="mb-0 collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false"
+              aria-controls="collapse">
+              <div class="d-flex align-items-center text-secondary">購物車明細<i class="material-icons" v-if="isOpen">
+                  arrow_drop_up
+                </i>
+                <i class="material-icons" v-else>
+                  arrow_drop_down
+                </i>
+              </div>
+            </div>
+          </div>
+          <div class="collapse" id="collapse">
+            <div class="card-body">
+              <CartList :carts="carts" :cart="cart" @deleteToCart="deleteFromCart">
+              </CartList>
+              <div class="mb-2 text-left small" :class="{'text-success':isUse,'text-danger':!isUse}">{{message}}
+              </div>
+              <div class="input-group mb-3 input-group-sm">
+                <input type="text" class="form-control" placeholder="請輸入優惠碼" v-model="coupon" />
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" @click="useCoupon">套用優惠碼</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="d-flex justify-content-between  mb-5">
+          <router-link class="btn btn-light w-25" :to="{name:'shopping_List',params: { page: 1 }}">
+            繼續購物
+          </router-link>
+          <div class="btn btn-secondary w-25" @click="step++">下一步</div>
+        </div>
+      </div>
+      <!-- 資料表單驗證 -->
+      <ValidationObserver ref="form" v-slot="{ invalid  }" class="col-md-9 m-auto" v-if="step===1">
+        <form @submit.prevent="submitOrder">
+          <CartValidateItem :postal="postal" :index="index" :userForm="userForm" :countryIndex="countryIndex"
+            :areaIndex="areaIndex" :areas="areas">
+          </CartValidateItem>
+          <div class="d-flex justify-content-between mb-5">
+            <div class="btn btn-light w-25" @click.prevent="step--">上一步</div>
+            <button class="btn btn-secondary w-25">送出訂單</button>
+          </div>
+        </form>
+      </ValidationObserver>
+    </div>
+  </div>
+</div>

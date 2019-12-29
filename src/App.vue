@@ -1,24 +1,34 @@
 <template>
-  <div id="app">
-    <AlertEventBus></AlertEventBus>
+  <div id="app" class="layout">
+    <Loading :active.sync="isLoading"></Loading>
     <router-view name="Header" />
+    <AlertEventBus></AlertEventBus>
     <router-view />
+    <router-view name="Footer" />
   </div>
 </template>
 
 <script>
-import AlertEventBus from "@/components/EventBus/AlertEventBus";
+import AlertEventBus from "@/components/AlertEventBus/AlertEventBus";
+import { mapState } from "vuex";
 export default {
   components: {
     AlertEventBus
-  }
+  },
+  computed: {
+    ...mapState("loading", ["isLoading"])
+  },
+  mounted() {}
 };
 </script>
 <style lang="scss">
 @import "assets/scss/all";
-
-body {
-  font-family: "Open Sans", sans-serif, "微軟正黑體";
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  justify-self: flex-end;
 }
 </style>
 

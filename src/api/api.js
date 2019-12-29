@@ -8,6 +8,11 @@ const apiRequest = axios.create({
   withCredentials: true,
 })
 
+const postalRequest = axios.create({
+  baseURL: '../assets/postal.json',
+  withCredentials: true,
+})
+
 // 登入登出
 export const login = data => apiRequest.post('/admin/signin', data)
 export const logout = data => apiRequest.post('/logout')
@@ -39,7 +44,7 @@ export const getShoppingList = (page) => apiRequest.get(`/api/${path}/products?p
 export const getShoppingListAll = () => apiRequest.get(`/api/${path}/products/all`)
 export const getProduct = (id) => apiRequest.get(`/api/${path}/product/${id}`)
 export const addToCart = data => apiRequest.post(`/api/${path}/cart`, data)
-export const deleteToCart = id => apiRequest.delete(`/api/${path}/cart/${id}`)
+export const deleteFromCart = id => apiRequest.delete(`/api/${path}/cart/${id}`)
 export const getCartList = () => apiRequest.get(`/api/${path}/cart`)
 export const coupon = (data) => apiRequest.post(`/api/${path}/coupon`, data)
 
@@ -48,3 +53,6 @@ export const submitOrder = (data) => apiRequest.post(`/api/${path}/order`, data)
 export const getOrderLists = (page) => apiRequest.get(`/api/${path}/orders?page=${page}`)
 export const getOrderList = (orderId) => apiRequest.get(`/api/${path}/order/${orderId}`)
 export const checkoutOrder = (orderId) => apiRequest.post(`/api/${path}/pay/${orderId}`)
+
+// 郵遞區號
+export const getPostal = () => postalRequest.get()

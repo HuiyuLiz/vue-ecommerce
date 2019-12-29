@@ -22,10 +22,10 @@
 
 <script>
 // @ is an alias to /src
-import Dashboard from "@/components/Layout/Dashboard/Dashboard";
-import { logout } from "@/api/api";
+import Dashboard from '@/components/Layout/Dashboard/Dashboard';
+import { logout } from '@/api/api';
 export default {
-  name: "home",
+  name: 'home',
   components: {
     Dashboard
   },
@@ -33,10 +33,10 @@ export default {
     logout() {
       logout().then(res => {
         if (res.data.success) {
-          this.$router.push("/login");
+          this.$router.push('/login');
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>

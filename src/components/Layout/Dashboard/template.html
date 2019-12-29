@@ -11,19 +11,19 @@
           </h6>
           <ul class="nav flex-column">
             <li class="nav-item">
-              <router-link class="nav-link d-flex align-item-center" :to="{name:'productList'}"><i
-                  class="material-icons mr-2">
+              <router-link class="nav-link d-flex align-item-center" :to="{name:'productList',params: { page: 1 }}">
+                <i class="material-icons mr-2">
                   assignment
                 </i>產品列表</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link d-flex align-item-center" :to="{name:'orderList'}"><i
+              <router-link class="nav-link d-flex align-item-center" :to="{name:'orderList',params: { page: 1 }}"><i
                   class="material-icons mr-2">
                   shopping_cart
                 </i>訂單列表</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link d-flex align-item-center" :to="{name:'couponList'}"><i
+              <router-link class="nav-link d-flex align-item-center" :to="{name:'couponList',params: { page: 1 }}"><i
                   class="material-icons  mr-2">
                   local_activity
                 </i>優惠券</router-link>

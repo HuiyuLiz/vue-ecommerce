@@ -1,6 +1,6 @@
 import { extend, configure } from "vee-validate";
 import { required, email, min, between, numeric } from "vee-validate/dist/rules";
-import { i18n } from "@/i18n.js";
+import { i18n } from "./i18n.js";
 
 configure({
   defaultMessage: (field, values) => {

@@ -22,7 +22,6 @@ export const EventBus = new Vue({
     },
     onHandler(isSuccess, message, type) {
       this.$on("responseStatus", (isSuccess, message, type) => {
-        console.log("EventBus.$on");
         this.toastOpen(isSuccess, message, type);
       });
     },

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>首頁</div>
+    <div >首頁</div>
   </div>
 </template>
 
@@ -8,8 +8,7 @@
 // @ is an alias to /src
 export default {
   name: "home",
-  components: {
-  },
+  components: {},
   created() {
     // console.log("VUE_APP_API", process.env.VUE_APP_API);
     // console.log("VUE_APP_API", process.env.VUE_APP_API_PATH);

@@ -1,13 +1,14 @@
 <template>
   <nav aria-label="Page navigation example">
     <ul class="pagination d-flex justify-content-end">
-      <li
-        class="page-item"
-        v-if="pagination.current_page > 1"
-        @click="getPage(pagination.current_page - 1) "
-        :class="{disabled:!pagination.has_pre}"
-      >
-        <a class="page-link px-3" href="#" aria-label="Previous">
+      <li class="page-item" :class="{'disabled':!pagination.has_pre}">
+        <a
+          class="page-link px-3"
+          href="#"
+          aria-label="Previous"
+          @click="getPage(pagination.current_page - 1) "
+          :class="{'disabled':!pagination.has_pre}"
+        >
           <span aria-hidden="true" :class="{'text-secondary':!pagination.has_next}">&laquo;</span>
           <span class="sr-only">Previous</span>
         </a>
@@ -21,13 +22,14 @@
       >
         <a class="page-link px-3" href="#">{{page}}</a>
       </li>
-      <li
-        class="page-item"
-        @click="getPage(pagination.current_page + 1)"
-        :class="{disabled:!pagination.has_next}"
-        v-if="pagination.current_page !== pagination.total_pages"
-      >
-        <a class="page-link px-3" href="#" aria-label="Next">
+      <li class="page-item" :class="{'disabled':!pagination.has_next}">
+        <a
+          class="page-link px-3"
+          href="#"
+          aria-label="Next"
+          :class="{'disabled':pagination.has_next}"
+          @click="getPage(pagination.current_page + 1)"
+        >
           <span aria-hidden="true">&raquo;</span>
           <span class="sr-only">Next</span>
         </a>
@@ -39,7 +41,12 @@
 <script>
 export default {
   name: "Pagination",
-  props: ["pagination", "getProducts"],
+  props: {
+    pagination: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
     getPage(page) {
       this.$emit("getPage", page);

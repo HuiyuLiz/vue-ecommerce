@@ -1,5 +1,4 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-  <Loading :active.sync="isLoading"></Loading>
   <div class="btn btn-primary mt-5 mb-3 float-right font-weight-bold d-flex align-item-center" @click="openModal(true)">
     新增產品
     <i class="material-icons ml-2">add</i>
@@ -9,9 +8,9 @@
       <thead>
         <tr class="thead-dark">
           <th class="py-3">分類</th>
-          <th class="py-3" style="width:20%">產品名稱</th>
+          <th class="py-3" style="width:20%">歌手/專輯</th>
           <th class="py-3" style="width:8%">商品照片</th>
-          <th class="py-3">數量</th>
+          <!-- <th class="py-3">單位</th> -->
           <th class="py-3">是否啟用</th>
           <th class="py-3" style="width:15%">原價</th>
           <th class="py-3" style="width:15%">售價</th>
@@ -22,9 +21,11 @@
       <tbody>
         <tr v-for="item in products" :key="item.id">
           <td class="align-middle">{{item.category}}</td>
-          <td class="align-middle">{{item.title}}</td>
-          <td class="align-middle p-3"><img :src="item.imageUrl" class="img-fluid" alt /></td>
-          <td class="align-middle">{{item.num}}{{ item.unit}}</td>
+          <td class="align-middle">{{item.title}}</br>{{item.description}}</td>
+          <td class="align-middle p-3">
+            <div class="img-thumb background-cover" :style="{backgroundImage:`url(${item.imageUrl})`}"></div>
+          </td>
+          <!-- <td class="align-middle">{{ item.unit}}</td> -->
           <td class="align-middle">{{item.is_enabled===1?"啟用":"未啟用"}}</td>
           <td class="text-right pr-3 align-middle">{{item.origin_price | currency}}</td>
           <td class="text-right pr-3 align-middle">{{item.price | currency}}</td>

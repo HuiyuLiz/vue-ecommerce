@@ -15,7 +15,9 @@ const i18n = new VueI18n({
         name: "使用者名稱",
         tel: "電話",
         address: "地址",
-        comment: "留言"
+        comment: "留言",
+        country: "縣市",
+        zone: "鄉鎮[市]區"
 
       },
       validation: zh_TW.messages
