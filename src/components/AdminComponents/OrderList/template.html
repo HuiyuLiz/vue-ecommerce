@@ -3,7 +3,7 @@
     <table class="table table-hover table-striped table-bordered table-sm mb-4 text-center">
       <thead>
         <tr class="thead-dark">
-          <th class="py-3">訂單日期</th>
+          <th class="py-3">訂單 | 日期</th>
           <th class="py-3">用戶資料</th>
           <th class="py-3">訂購資訊</th>
           <th class="py-3">應繳金額總計</th>
@@ -16,7 +16,7 @@
       </thead>
       <tbody>
         <tr v-for="(order,index) in orders" :key="order.id">
-          <td class="align-middle">{{order.create_at | date}}</td>
+          <td class="align-middle">{{order.id }}</br>{{order.create_at | dateFormat}}</td>
           <td class="text-left" rowspan="1">
             <ul class="px-2">
               <li>地址 : {{order.user.address}}</li>
@@ -65,7 +65,7 @@
             <div class="col-sm-12">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="h4 font-weight-bold">用戶資料</div>
-                <small class="">更新時間{{tempOrder.create_at|date}}</small>
+                <small class="">{{tempOrder.create_at| dateFormat}}</small>
               </div>
               <div class="form-row">
                 <div class=" form-group col-md-12">

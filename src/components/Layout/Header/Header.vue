@@ -1,36 +1,35 @@
-<template src="./template.html"></template>
+<template src='./template.html'></template>
 <script>
-import { getCartList, deleteFromCart } from "@/api/api";
-import { EventBus } from "@/eventBus/eventBus";
-import Footer from "@/components/Layout/Footer/Footer";
+import { EventBus } from '@/eventBus/eventBus';
+import Footer from '@/components/Layout/Footer/Footer';
 
 export default {
-  name: "Header",
+  name: 'Header',
   components: {
     Footer
   },
-  data() {
+  data () {
     return {
-      isDropDown: false
     };
   },
   computed: {
-    carts() {
-      return this.$store.state.carts;
+    carts () {
+      return this.$store.state.cart.carts;
     },
-    cart() {
-      return this.$store.state.cart;
+    cart () {
+      return this.$store.state.cart.cart;
     },
-    final_total() {
-      return this.cart ? this.$store.state.cart.final_total : "";
+    final_total () {
+      return this.cart ? this.$store.state.cart.final_total : '';
     },
-    total() {
-      return this.cart ? this.$store.state.cart.total : "";
+    total () {
+      return this.cart ? this.$store.state.cart.total : '';
     }
   },
   methods: {
-    getCartList() {
-      this.$store.dispatch("GET_CART_LIST");
+    getCartList () {
+
+      this.$store.dispatch('cart/GET_CART_LIST');
       // this.isLoading = true;
       // getCartList().then(res => {
       //   if (res.data.success) {
@@ -41,12 +40,12 @@ export default {
       //     ];
       //     this.isLoading = false;
       //   } else {
-      //     EventBus.emitHandler(false, "取得訂單失敗");
+      //     EventBus.emitHandler(false, '取得訂單失敗');
       //   }
       // });
     },
     deleteFromCart(id) {
-      this.$store.dispatch("DELETE_FROM_CART", id);
+      this.$store.dispatch('cart/DELETE_FROM_CART', id);
       // this.isLoading = true;
       // deleteFromCart(id).then(res => {
       //   if (res.data.success) {
@@ -61,8 +60,7 @@ export default {
   },
   created() {
     this.getCartList();
-    // this.$store.dispatch("GET_CART_LIST");
+    // this.$store.dispatch('GET_CART_LIST');
   },
-  mounted() {}
 };
 </script>

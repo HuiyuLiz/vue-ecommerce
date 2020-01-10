@@ -12,24 +12,18 @@ const i18n = new VueI18n({
       fields: {
         email: "信箱",
         password: "密碼",
-        name: "使用者名稱",
+        username: "使用者名稱",
         tel: "電話",
         address: "地址",
         comment: "留言",
         country: "縣市",
-        zone: "鄉鎮[市]區"
-
+        zone: "鄉鎮[市]區",
+        mobile: "手機"
       },
       validation: zh_TW.messages
-    },
-    en: {
-      fields: {
-        email: "E-mail",
-        password: "Password"
-      },
-      validation: en.messages
     }
-  }
+  },
+  silentTranslationWarn: true,
 });
 
 export { i18n };

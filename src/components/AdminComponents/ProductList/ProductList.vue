@@ -28,6 +28,15 @@ export default {
       page: 0
     };
   },
+  watch: {
+    $route (to, from) {
+      this.page = parseInt(to.params.page);
+      if(this.page>this.pagination.total_pages||this.page<=0){
+         this.page =1;
+      }
+      this.getProducts(this.page);
+    }
+  },
   methods: {
     openModal (isNew, item) {
       $('#productModal').modal('show');
@@ -97,6 +106,7 @@ export default {
     },
     getProducts (page = 1) {
       this.getProductList(page);
+      this.$router.push({ name: 'productList', params: { page: page } });
     },
     deleteProduct (id) {
       deleteProduct(id)
@@ -140,13 +150,8 @@ export default {
         });
     }
   },
-  beforeRouteUpdate(to, from, next) {
-    this.page = to.params.page;
-    this.getProductList(this.page);
-    next();
-  },
   mounted() {
-    this.page = this.$route.params.page;
+    this.page = parseInt(this.$route.params.page);
     this.getProducts();
   }
 };

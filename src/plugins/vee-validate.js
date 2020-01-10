@@ -1,4 +1,4 @@
-import { extend, configure } from "vee-validate";
+import { extend, configure, ValidationObserver, ValidationProvider } from "vee-validate";
 import { required, email, min, between, numeric } from "vee-validate/dist/rules";
 import { i18n } from "./i18n.js";
 
@@ -14,18 +14,22 @@ configure({
   }
 });
 
-// Install required rule and message.
-extend("required", required);
+export default {
+  install(Vue) {
+    Vue.component('ValidationObserver', ValidationObserver)
+    Vue.component('ValidationProvider', ValidationProvider)
 
-// Install email rule and message.
-extend("email", email);
-
-// Install min rule and message.
-extend("min", min);
-
-extend("between", between);
-extend("numeric", numeric);
-
+    extend("required", required);
+    extend("email", email);
+    extend("min", min);
+    extend("between", between);
+    extend("numeric", numeric);
+    extend("mobile", {
+      message: "手機格式錯誤",
+      validate: value => value.length === 10 && /^09\d{8}$/.test(value)
+    });
+  }
+}
 
 
 

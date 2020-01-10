@@ -1,85 +1,50 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import axios from 'axios'
+import qs from 'querystring'
 import loading from './modules/loading'
-
-import { getCartList, deleteFromCart, addToCart } from "@/api/api";
+import cart from './modules/cart'
 import { EventBus } from "@/eventBus/eventBus";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    carts: [],
-    cart: [
-      {
-        final_total: "",
-        total: ""
-      }
-    ],
+    token: null,
+    token_type: null
+  },
+  getters: {
+    kkbox_token(state) {
+      return `${state.token_type} ${state.token}`
+    }
   },
   mutations: {
-    get_cart: (state, { carts, final_total, total }) => {
-      state.carts = carts
-      state.cart.final_total = final_total
-      state.cart.total = total
-      // console.log({ carts, final_total, total })
-    },
+    get_token(state, { token, token_type }) {
+      [state.token, state.token_type] = [token, token_type]
+    }
   },
   actions: {
-    async GET_CART_LIST({ commit }, payload) {
-      this.state.loading.isLoading = true;
-      await getCartList().then(res => {
-        try {
-          if (res.data.success) {
-            let carts = res.data.data ? res.data.data.carts : []
-            let final_total = res.data.data ? res.data.data.final_total : ''
-            let total = res.data.data ? res.data.data.total : ''
-            commit('get_cart', { carts, final_total, total })
-            this.state.loading.isLoading = false;
-          } else {
-            EventBus.emitHandler(false, "取得列表失敗");
-            this.state.loading.isLoading = false;
-          }
-        } catch (error) {
-          EventBus.emitHandler(false, "取得資料失敗");
-          this.state.loading.isLoading = false;
+    GET_KKBOX_TOKEN({ commit }, payload) {
+      let OAuth = {
+        'grant_type': 'client_credentials',
+        'client_id': process.env.VUE_APP_CLIENT_ID,
+        'client_secret': process.env.VUE_APP_CLIENT_SECRET
+      }
+      axios.post('/token', qs.stringify(OAuth), {
+        headers: {
+          Access: 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/x-www-form-urlencoded'
         }
-      });
-
-    },
-    DELETE_FROM_CART: ({ commit, dispatch }, id) => {
-      // this.state.loading.isLoading = true;
-      deleteFromCart(id).then(res => {
-        if (res.data.success) {
-          dispatch('GET_CART_LIST');
-          // this.state.loading.isLoading = false;
-          EventBus.emitHandler(true, res.data.message);
-        } else {
-          EventBus.emitHandler(false, res.data.message);
-        }
-      });
-    },
-    ADD_TO_CART: ({ commit, dispatch }, { id, qty = 1 }) => {
-      // this.state.loading.isLoading = true;
-      let cart = {
-        product_id: id,
-        qty
-      };
-
-      addToCart({ data: cart }).then(res => {
-        if (res.data.success) {
-          // this.state.loading.isLoading = false;
-          dispatch('GET_CART_LIST');
-        } else {
-          EventBus.emitHandler(false, res.data.message);
-        }
-      }).catch(error => {
-        EventBus.emitHandler(false, "取得資料錯誤");
-      });
+      }).then(res => {
+        let token = res.data.access_token ? res.data.access_token : null
+        let token_type = res.data.token_type ? res.data.token_type : null
+        commit('get_token', { token, token_type })
+      }).catch(error => console.error(error))
     }
   },
   modules: {
-    loading: loading
+    loading,
+    cart
   }
 })
+

@@ -1,56 +1,42 @@
 <template>
   <div>
     <div class="form-group">
-      <ValidationProvider name="name" rules="required" v-slot="{ classes , errors }">
-        <label for="username">收件人姓名</label>
-        <input
-          type="text"
-          class="form-control mb-2"
-          :class="classes"
-          name="name"
-          id="username"
-          placeholder="輸入姓名"
-          v-model="userForm.user.name"
-        />
-        <span class="text-danger">{{ errors[0] }}</span>
+      <ValidateInput
+        text="收件人姓名"
+        v-model="userForm.user.name"
+        rules="required"
+        class="classes"
+        name="username"
+        :showLabel="true"
+      ></ValidateInput>
+    </div>
+    <div class="form-group">
+        <ValidateInput
+        text="Email"
+        v-model="userForm.user.email"
+        rules="required|email"
+        class="classes"
+        name="email"
+        :showLabel="true"
+      ></ValidateInput>
       </ValidationProvider>
     </div>
     <div class="form-group">
-      <ValidationProvider name="email" rules="required|email" v-slot="{ classes,errors }">
-        <label for="email">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          :class="classes"
-          name="email"
-          id="email"
-          placeholder="請輸入 Email"
-          v-model="userForm.user.email"
-        />
-        <span class="text-danger">{{ errors[0] }}</span>
-      </ValidationProvider>
-    </div>
-    <div class="form-group">
-      <ValidationProvider name="tel" rules="required|numeric" v-slot="{ classes,errors }">
-        <label for="tel">收件人電話</label>
-        <input
-          type="tel"
-          class="form-control"
-          :class="classes"
-          id="tel"
-          name="tel"
-          placeholder="請輸入電話"
-          v-model="userForm.user.tel"
-        />
-        <span class="text-danger">{{ errors[0] }}</span>
-      </ValidationProvider>
+         <ValidateInput
+        text="手機號碼"
+        v-model="userForm.user.tel"
+        rules="required|mobile"
+        class="classes"
+        name="mobile"
+        :showLabel="true"
+      ></ValidateInput>
     </div>
     <div class="form-group">
       <label for="useraddress">收件人地址</label>
       <div class="form-row justify-content-center">
         <div class="form-group col-md-3">
           <ValidationProvider name="country" rules="required" v-slot="{ classes,errors }">
-            <select class="form-control" v-model="countryIndex" :class="classes">
+            <select class="form-control mb-2" v-model="countryIndex" :class="classes">
               <option :value="null" selected disabled class="form-control">請選擇</option>
               <option
                 v-for="(country,index) in postal"
@@ -64,7 +50,7 @@
         </div>
         <div class="form-group col-md-3">
           <ValidationProvider name="zone" rules="required" v-slot="{ classes,errors }">
-            <select class="form-control" v-model="areaIndex" :class="classes">
+            <select class="form-control mb-2" v-model="areaIndex" :class="classes">
               <option :value="null" selected disabled>請選擇</option>
               <option v-for="(area,index) in areas" :key="index" :value="index">{{area.name}}</option>
             </select>
@@ -72,18 +58,14 @@
           </ValidationProvider>
         </div>
         <div class="form-group col-md-6">
-          <ValidationProvider name="address" rules="required" v-slot="{ classes,errors }">
-            <input
-              type="text"
-              class="form-control"
-              :class="classes"
-              name="address"
-              id="useraddress"
-              placeholder="請輸入地址"
-              v-model="userForm.user.address"
-            />
-            <span class="text-danger">{{ errors[0] }}</span>
-          </ValidationProvider>
+            <ValidateInput
+        text="地址"
+        v-model="userForm.user.address"
+        rules="required"
+        class="classes"
+        name="address"
+        :showLabel="false"
+      ></ValidateInput>
         </div>
       </div>
     </div>
@@ -103,9 +85,9 @@
 </template>
 
 <script>
-import { ValidationProvider } from "vee-validate";
+import ValidateInput from './ValidateInput'
 export default {
-  name: "CartListItem",
+  name: "CartList",
   props: {
     userForm: {
       type: Object,
@@ -124,8 +106,8 @@ export default {
       required: true
     }
   },
-  components: {
-    ValidationProvider
+  components:{
+    ValidateInput
   },
   computed: {
     countryIndex: {

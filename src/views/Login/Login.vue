@@ -20,8 +20,9 @@ export default {
     login () {
       login(this.user).then(res => {
         if (res.data.success) {
-          this.$router.push({ name: 'productList', params: { page: 1 } });
-          this.$store.dispatch('CHECK_LOGIN',true)
+          this.$router.push({ name: 'productList', params: { page: 1 } }).catch((error)=>{
+            console.error(error)
+          });
         }
       });
     }

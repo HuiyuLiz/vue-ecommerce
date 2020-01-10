@@ -24,8 +24,10 @@
           </div>
           <div class="collapse" id="collapse">
             <div class="card-body">
+
               <CartList :carts="carts" :cart="cart" @deleteToCart="deleteFromCart">
               </CartList>
+
               <div class="mb-2 text-left small" :class="{'text-success':isUse,'text-danger':!isUse}">{{message}}
               </div>
               <div class="input-group mb-3 input-group-sm">
@@ -48,9 +50,9 @@
       <!-- 資料表單驗證 -->
       <ValidationObserver ref="form" v-slot="{ invalid  }" class="col-md-9 m-auto" v-if="step===1">
         <form @submit.prevent="submitOrder">
-          <CartValidateItem :postal="postal" :index="index" :userForm="userForm" :countryIndex="countryIndex"
+          <CartValidate :postal="postal" :index="index" :userForm="userForm" :countryIndex="countryIndex"
             :areaIndex="areaIndex" :areas="areas">
-          </CartValidateItem>
+          </CartValidate>
           <div class="d-flex justify-content-between mb-5">
             <div class="btn btn-light w-25" @click.prevent="step--">上一步</div>
             <button class="btn btn-secondary w-25">送出訂單</button>

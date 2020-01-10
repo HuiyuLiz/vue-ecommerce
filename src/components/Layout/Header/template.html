@@ -9,15 +9,17 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item ">
-            <a class="nav-link" href="#">本週排行</a>
+            <router-link :to="{name:'MusicCharts'}" class="nav-link">音樂情報
+            </router-link>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="#">搜尋專輯</a>
           </li>
-          <li class="nav-item dropdown " @click="isDropDown=!isDropDown">
-            <a class="nav-link dropdown-toggle" href="#">實體專輯</a>
-            <div class="dropdown-menu" :class="{'show':isDropDown}">
-              <router-link :to="{name:'shopping_List',params: { page: 1 }}" class="dropdown-item" href="#">全部商品
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">實體專輯</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <router-link :to="{name:'shopping_List',params: { page: 1 }}" class="dropdown-item">全部商品
               </router-link>
               <a class="dropdown-item" href="#">Another action</a>
               <div class="dropdown-divider"></div>
@@ -28,15 +30,14 @@
         <div>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
-              <router-link :to="{name:'admin'}" class="nav-link" href="#">後臺管理</router-link>
+              <router-link :to="{name:'admin'}" class="nav-link">後臺管理</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/login">登入</router-link>
             </li>
             <li class="nav-item d-sm-block d-lg-none">
               <router-link :to="{name:'cart'}" before-appear class="nav-link d-flex align-items-center bg-danger"
-                href="#" id="cartDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
+                id="cartDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 購物車
                 <i class="material-icons ml-2">shopping_cart</i>
               </router-link>

@@ -1,5 +1,6 @@
 <template src='./template.html'></template>
 <script>
+import vuex from "vuex";
 import { getShoppingList,getShoppingListAll, addToCart } from '@/api/api';
 import { EventBus } from '@/eventBus/eventBus';
 import Pagination from '@/components/Pagination/Pagination';
@@ -49,7 +50,7 @@ export default {
     },
     addToCart( id, qty=1 ) {
       // this.$store.dispatch('loading/ASYNC_LOADING', true);
-        this.$store.dispatch('ADD_TO_CART', { id, qty });
+        this.$store.dispatch('cart/ADD_TO_CART', { id, qty });
       // let cart = {
       //   product_id: id,
       //   qty

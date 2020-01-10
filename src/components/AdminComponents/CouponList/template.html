@@ -22,7 +22,8 @@
           <td class="align-middle"><small>{{item.id}}</small></td>
           <td class="align-middle">{{item.title}}</td>
           <td class="align-middle">{{item.percent}}</td>
-          <td class="align-middle">{{item.due_date}}</td>
+          <td class="align-middle">{{item.due_date|dateFormat}}
+          </td>
           <td class="align-middle">{{item.is_enabled===1?"啟用":"未啟用"}}</td>
 
           <td class="align-middle">
@@ -65,8 +66,8 @@
                   </select>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="price">日期</label>
-                  <input type="" class=" form-control" id="unit" v-model="tempCoupon.due_date" />
+                  <label for="date">日期</label>
+                  <date-picker name="date" v-model="date" :config="options"></date-picker>
                 </div>
               </div>
 
@@ -87,7 +88,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" @click="closeModal">取消</button>
           <button type="button" class="btn btn-primary" @click="createCoupon">確認</button>
         </div>
       </div>
@@ -100,14 +101,14 @@
       <div class="modal-content border-0">
         <div class="modal-header bg-danger text-white">
           <h5 class="modal-title" id="exampleModalLabel">
-            <span>刪除產品</span>
+            <span>刪除優惠券</span>
           </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          是否刪除 <strong class="text-danger">{{ tempCoupon.title }}</strong> 商品(刪除後將無法恢復)。
+          是否刪除 <strong class="text-danger">{{ tempCoupon.title }}</strong> 優惠券(刪除後將無法恢復)。
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
