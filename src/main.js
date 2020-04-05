@@ -7,6 +7,7 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import currency from './filters/currency';
 import dateFormat from './filters/dateFormat';
+import trackDuration from './filters/trackDuration';
 import { i18n } from "@/plugins/i18n.js";
 import Validate from "@/plugins/vee-validate.js";
 import VueMoment from 'vue-moment'
@@ -28,6 +29,7 @@ Vue.component('Loading', Loading)
 
 Vue.filter('currency', currency)
 Vue.filter('dateFormat', dateFormat)
+Vue.filter('trackDuration', trackDuration)
 Vue.use(Toasted, {
   router
 });
@@ -45,7 +47,7 @@ router.beforeEach((to, from, next) => {
     checkLogIn().then(res => {
       if (res.data.success === true) {
         next()
-      } else {
+      } else if (res.data.success === false) {
         return next({ path: '/login' })
       }
     })

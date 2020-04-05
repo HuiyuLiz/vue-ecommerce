@@ -2,22 +2,41 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  border-radius: 0.25rem;
+  transition: 0.4s ease-out; // border-radius: 0.25rem;
 
   .mask,
-  .border-rounded,
   .material-icons {
     display: none;
+    transition: 0.4s ease-out;
+    overflow: hidden;
   }
 
-  &:hover {
+  .border-rounded {
+    width: 35%;
+    height: 35%;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    border: 1px solid white;
+    transition: 0.4s ease-out;
+    transform: scale(0.25);
+  }
+
+  h2 {
+    position: absolute;
+    top: 0%;
+    color: white;
+    font-size: 1.2rem;
+    display: none;
+    position: relative;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
     .border-rounded {
-      width: 40%;
-      height: 40%;
-      border-radius: 50%;
-      background-color: rgba(0, 0, 0, 0.5);
       display: block;
-      border: 1px solid white;
+      transform: scale(1);
     }
 
     .material-icons {
@@ -40,7 +59,29 @@
     }
 
     .bg-dark-50 {
-      background-color: rgba(0, 0, 0, 0.5)
+      background-color: rgba(0, 0, 0, 0.75);
     }
+
+    .bg-dark-100 {
+      background-color: black;
+    }
+
+    button {
+      display: block;
+      opacity: 0;
+      animation: easeIn 0.4s 0.3s forwards;
+    }
+  }
+}
+
+@keyframes easeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }

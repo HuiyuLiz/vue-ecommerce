@@ -1,6 +1,6 @@
 <div>
-  <div class="container my-5">
-    <CartProgress :step="step"></CartProgress>
+  <div class="container pt-3 pt-md-5 mt-5 pb-5">
+    <CartProgress class="" :step="step"></CartProgress>
     <div class="row justify-content-center" v-if="carts.length===0">
       <div class="h3 text-secondary mt-5">
         尚未選購專輯喔!
@@ -8,9 +8,9 @@
     </div>
     <div class="row" v-else>
       <!-- 確認商品 -->
-      <div class="col-md-9 m-auto " v-if="step===0">
-        <div class="card text-center mb-4">
-          <div class="card-header bg-white" id="heading" @click="isOpen=!isOpen">
+      <div class="col-md-9 m-auto " v-if="step===0" style="min-height: 200px;">
+        <div class="card text-center mb-4  border-0">
+          <div class="card-header bg-muted" id="heading" @click="isOpen=!isOpen">
             <div class="mb-0 collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false"
               aria-controls="collapse">
               <div class="d-flex align-items-center text-secondary">購物車明細<i class="material-icons" v-if="isOpen">
@@ -22,9 +22,8 @@
               </div>
             </div>
           </div>
-          <div class="collapse" id="collapse">
-            <div class="card-body">
-
+          <div class="collapse show " id="collapse">
+            <div class="card-body px-0">
               <CartList :carts="carts" :cart="cart" @deleteToCart="deleteFromCart">
               </CartList>
 
@@ -41,10 +40,12 @@
 
         </div>
         <div class="d-flex justify-content-between  mb-5">
-          <router-link class="btn btn-light w-25" :to="{name:'shopping_List',params: { page: 1 }}">
+          <router-link class="btn btn-outline-secondary w-25 py-3"
+            :to="{name:'shopping_List', params:{ category:'all' , page: 1 }}">
             繼續購物
           </router-link>
-          <div class="btn btn-secondary w-25" @click="step++">下一步</div>
+          <div class=" btn btn-dark w-25 py-3" @click="step++">下一步
+          </div>
         </div>
       </div>
       <!-- 資料表單驗證 -->
@@ -54,8 +55,8 @@
             :areaIndex="areaIndex" :areas="areas">
           </CartValidate>
           <div class="d-flex justify-content-between mb-5">
-            <div class="btn btn-light w-25" @click.prevent="step--">上一步</div>
-            <button class="btn btn-secondary w-25">送出訂單</button>
+            <div class="btn btn-outline-dark w-25 py-3" @click.prevent="step--">上一步</div>
+            <button class="btn btn-dark w-25 py-3">送出訂單</button>
           </div>
         </form>
       </ValidationObserver>

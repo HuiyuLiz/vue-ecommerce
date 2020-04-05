@@ -1,8 +1,8 @@
 <template>
-  <div class="container my-5">
+  <div class="container pt-3 pt-md-5 mt-5 pb-5">
     <CartProgress :step="step"></CartProgress>
-    <div class="container my-5">
-      <div class="row mb-3">
+    <div class="container">
+      <div class="row mb-3" v-if="order.is_paid">
         <div class="col-md-9 m-auto">
           <h6 class="h6 text-left text-secondary">
             親愛的顧客您好，感謝您的訂購，訂單編號為
@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="row mb-3" v-if="order!==null">
-        <div class="col-md-9 m-auto">
+        <div class="col-md-9 m-auto px-0">
           <form class="m-auto" @submit.prevent="checkoutOrder">
             <div class="accordion" id="accordion">
               <div class="card">
@@ -37,12 +37,12 @@
                   aria-labelledby="headingOne"
                   data-parent="#accordion"
                 >
-                  <div class="card-body">
+                  <div class="card-body px-0">
                     <CheckListItem v-if="order!==null" :carts="order.products" :cart="order"></CheckListItem>
                   </div>
                 </div>
               </div>
-              <div class="card">
+              <div class="card card border-0">
                 <div class="card-header" id="headingTwo">
                   <div class="mb-0">
                     <a
@@ -65,9 +65,9 @@
                   aria-labelledby="headingTwo"
                   data-parent="#accordion"
                 >
-                  <div class="card-body" v-if="user!==null">
+                  <div class="card-body px-0" v-if="user!==null">
                     <table class="table">
-                      <tbody>
+                      <tbody class="text-secondary">
                         <tr>
                           <th scope="row">Email</th>
                           <td colspan="3">{{user.email}}</td>

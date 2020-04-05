@@ -25,18 +25,28 @@
 import Dashboard from '@/components/Layout/Dashboard/Dashboard';
 import { logout } from '@/api/api';
 export default {
-  name: 'home',
+  name: 'admin',
   components: {
     Dashboard
   },
+  computed: {
+
+  },
+  watch: {
+  },
   methods: {
-    logout() {
+    logout () {
       logout().then(res => {
         if (res.data.success) {
-          this.$router.push('/login');
+          this.$router.push('/login');          
         }
       });
     },
   },
 };
 </script>
+<style lang="scss" scoped>
+body {
+  background-color: #fff;
+}
+</style>

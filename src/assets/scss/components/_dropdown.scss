@@ -1,6 +1,8 @@
 .navbar-nav li.drop-hover:hover > .dropdown-menu {
   display: block;
   animation: showDrop 0.5s ease-in 0s forwards;
+  border-radius: 0;
+  transform: translateY(1px);
 
   table,
   .btn {
@@ -11,11 +13,11 @@
 
 @keyframes showDrop {
   0% {
-    transform: translateX(-3%);
+    transform: translate(-2%, 1px);
   }
 
   100% {
-    transform: translateX(0%);
+    transform: translateX(0%, 1px);
   }
 }
 

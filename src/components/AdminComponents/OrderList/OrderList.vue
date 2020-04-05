@@ -30,13 +30,13 @@ export default {
   },
   methods: {
     getOrderList (page = 1) {
-      this.$store.dispatch('loading/ASYNC_LOADING', true);
+      this.$store.commit('loading/loading_status', true);
       getOrders(page)
         .then(res => {
           if (res.data.success) {
-            res.data.orders?this.orders = res.data.orders:this.orders =[];
-            res.data.pagination?this.pagination = res.data.pagination:this.pagination = [];
-            this.$store.dispatch('loading/ASYNC_LOADING', false);
+            res.data.orders ? this.orders = res.data.orders : this.orders = [];
+            res.data.pagination ? this.pagination = res.data.pagination:this.pagination = [];
+            this.$store.commit('loading/loading_status', false);
           } else {
             EventBus.emitHandler(false, '取得訂單失敗');
           }

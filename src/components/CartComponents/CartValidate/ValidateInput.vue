@@ -1,6 +1,6 @@
 <template>
   <ValidationProvider :name="name" :rules="rules" v-slot="{ classes , errors }">
-    <label :for="name" :class="{'d-none':!showLabel}">{{text}}</label>
+    <label :for="name" :class="{'d-none':!showLabel}" class="text-secondary">{{text}}</label>
     <input
       type="text"
       class="form-control mb-2"

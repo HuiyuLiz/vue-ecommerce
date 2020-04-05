@@ -61,8 +61,8 @@ export default {
       }
     },
 
-    createProduct () {
-      if (this.isNew) {
+    createProduct () {      
+      if (this.isNew) {       
         createProduct({ data: this.tempProduct }).then(res => {
           this.dataResponse(res.data.success);
           EventBus.emitHandler(true, res.data.message);
@@ -82,7 +82,7 @@ export default {
       });
     },
     getProductList (page) {
-      this.$store.dispatch('loading/ASYNC_LOADING', true);
+      this.$store.commit('loading/loading_status', true);
       getProductList(page)
         .then(res => {
           if (res.data.success === true) {
@@ -93,7 +93,7 @@ export default {
                 name: 'productList',
                 params: { page: page }
               });
-              this.$store.dispatch('loading/ASYNC_LOADING', false);
+              this.$store.commit('loading/loading_status', false);
             }
           } else {
             this.$router.replace('/login');

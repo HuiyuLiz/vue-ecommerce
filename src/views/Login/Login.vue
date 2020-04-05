@@ -11,18 +11,22 @@ export default {
   data () {
     return {
       user: {
-        username: "",
+        username: '',
         password: ''
-      }
+      },
+      message:''
     };
   },
   methods: {
     login () {
       login(this.user).then(res => {
         if (res.data.success) {
+          this.message = ''
           this.$router.push({ name: 'productList', params: { page: 1 } }).catch((error)=>{
             console.error(error)
           });
+        }else{
+           this.message = res.data.message
         }
       });
     }

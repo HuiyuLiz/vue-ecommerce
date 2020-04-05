@@ -99,41 +99,12 @@ export default {
   methods: {
     getCartList () {
       this.$store.dispatch('cart/GET_CART_LIST');
-      // this.$store.dispatch('loading/ASYNC_LOADING', true);
-      // getCartList()
-      //   .then(res => {
-      //     if (res.data.success) {
-      //       this.carts = res.data.data.carts;
-      //       [this.cart.final_total, this.cart.total] = [
-      //         res.data.data.final_total,
-      //         res.data.data.total
-      //       ];
-      //       this.$store.dispatch('loading/ASYNC_LOADING', false);
-      //     } else {
-      //       EventBus.emitHandler(false, '取得訂單失敗');
-      //     }
-      //   })
-      //   .catch(error => {
-      //     EventBus.emitHandler(false, '取得資料錯誤');
-      //   });
     },
     deleteFromCart (id) {
       this.$store.dispatch('cart/DELETE_FROM_CART', id);
-      // this.$store.dispatch('loading/ASYNC_LOADING', true);
-      // deleteFromCart(id)
-      //   .then(res => {
-      //     if (res.data.success) {
-      //       this.getCartList();
-      //       this.$store.dispatch('loading/ASYNC_LOADING', false);
-      //       EventBus.emitHandler(true, res.data.message);
-      //     }
-      //   })
-      //   .catch(error => {
-      //     EventBus.emitHandler(false, '取得資料錯誤');
-      //   });
     },
     useCoupon () {
-      this.$store.dispatch('loading/ASYNC_LOADING', true);
+      this.$store.commit('loading/loading_status', true);
       let code = {
         code: this.coupon
       };
@@ -141,13 +112,13 @@ export default {
         .then(res => {
           if (res.data.success) {
             this.getCartList();
-            this.$store.dispatch('loading/ASYNC_LOADING', false);
+            this.$store.commit('loading/loading_status', false);
             this.isUse = true;
-            this.message =res.data? res.data.message:'';
+            this.message =res.data.message ?  res.data.message:'';
           } else {
             this.isUse = false;
-            this.$store.dispatch('loading/ASYNC_LOADING', false);
-            this.message =res.data? res.data.message:'';
+            this.$store.commit('loading/loading_status', false);
+            this.message =res.data.message ? res.data.message:'';
           }
         })
         .catch(error => {
@@ -169,7 +140,7 @@ export default {
                 name: 'checkout',
                 params: { orderId: res.data.orderId }
               });
-              this.isLoading = false;
+              this.$store.commit('loading/loading_status', false);
               EventBus.emitHandler(true, res.data.message);
             } else {
               EventBus.emitHandler(false, res.data.message);

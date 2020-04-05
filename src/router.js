@@ -33,7 +33,7 @@ export default new Router({
     {
       path: '/musicCharts',
       name: 'MusicCharts',
-      redirect: 'musicCharts/chart',
+      redirect: 'musicCharts',
       components: {
         default: () => import(/* webpackChunkName: "MusicCharts" */ './views/MusicCharts/MusicCharts.vue'),
         Header: Header,
@@ -41,11 +41,11 @@ export default new Router({
       },
       children: [
         {
-          path: 'chart',
+          path: '',
           name: 'MusicChartList',
           component: () => import(/* webpackChunkName: "MusicChartDetail" */ './components/MusicCharts/MusicChartList.vue'),
         }, {
-          path: 'chart/:chart_id',
+          path: ':chart_title',
           name: 'MusicChartDetail',
           component: () => import(/* webpackChunkName: "MusicChartDetail" */ './components/MusicCharts/MusicChartDetail.vue'),
         }
@@ -57,10 +57,6 @@ export default new Router({
       redirect: '/admin/productList/page/1',
       component: () => import(/* webpackChunkName: "Admin" */ './views/Admin/Admin.vue'),
       meta: { requiresAuth: true },
-      beforeRouteEnter(to, from, next) {
-        console.log(to, from)
-        next()
-      },
       children: [
         {
           path: '',
@@ -124,7 +120,7 @@ export default new Router({
     {
       path: '/shopping',
       name: 'shopping',
-      redirect: '/shopping_List/page/1',
+      redirect: '/shopping_List/all/1',
       components: {
         default: () => import(/* webpackChunkName: "Shopping" */ './views/Shopping/Shopping.vue'),
         Header: Header,
@@ -133,20 +129,22 @@ export default new Router({
       children: [
         {
           path: '',
-          redirect: 'shopping_List/page/1'
+          redirect: 'shopping_List/all/1'
         },
         {
-          path: 'shopping_List/page/:page',
+          path: 'shopping_List/:category/:page',
           name: 'shopping_List',
           component: () => import(/* webpackChunkName: "ProductCardList" */ './components/Shopping/ProductCardList/ProductCardList.vue'),
         },
         {
-          path: 'shopping_List/product/:id',
+          path: 'shopping_List/:category/:id',
           name: 'shopping_product',
           component: () => import(/* webpackChunkName: "ProductDetail" */ './components/Shopping/ProductDetail/ProductDetail.vue'),
-        }, {
+        },
+        {
           path: '*',
-          redirect: 'shopping_List/page/1'
+          redirect: '/shopping_List/all/1',
+          component: () => import(/* webpackChunkName: "ProductDetail" */ './components/Shopping/ProductDetail/ProductDetail.vue'),
         }
       ]
     }, {
@@ -176,6 +174,9 @@ export default new Router({
     }, {
       path: '*',
       redirect: '/'
-    }]
+    }],
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
 

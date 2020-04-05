@@ -1,0 +1,46 @@
+.page-item {
+  background-color: transparent;
+  color: $dark;
+  border-radius: 0;
+  font-weight: bold;
+
+  &:last-child,
+  &:first-child {
+    .page-link {
+      border-top-right-radius: 0rem;
+      border-bottom-right-radius: 0rem;
+      border-top-left-radius: 0rem;
+      border-bottom-left-radius: 0rem;
+    }
+  }
+
+  .page-link {
+    z-index: 1;
+    color: $dark;
+    background-color: transparent;
+    border-color: $dark;
+    border-radius: 0;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.active {
+    .page-link {
+      color: #fff;
+      background-color: $dark;
+      border-radius: 0;
+      border-color: $dark;
+    }
+  }
+
+  &.disabled {
+    .page-link {
+      background-color: transparent;
+      border-color: $dark;
+      border-radius: 0;
+    }
+  }
+}

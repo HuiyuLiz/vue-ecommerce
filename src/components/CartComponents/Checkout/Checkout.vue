@@ -21,23 +21,23 @@ export default {
   },
   methods: {
     getOrderList() {
-      this.$store.dispatch("ASYNC_LOADING", true);
+      this.$store.commit('loading/loading_status', true);
       getOrderList(this.orderId).then(res => {
         if (res.data.success) {
           this.order = res.data ? res.data.order : null;
           this.user = res.data.order ? res.data.order.user : null;
-          this.$store.dispatch("ASYNC_LOADING", false);
+          this.$store.commit('loading/loading_status', false);
         } else {
           EventBus.emitHandler(false, "取得訂單失敗");
         }
       });
     },
     checkoutOrder() {
-      this.$store.dispatch("ASYNC_LOADING", true);
+      this.$store.commit('loading/loading_status', true);
       checkoutOrder(this.order.id)
         .then(res => {
           if (res.data.success) {
-            this.$store.dispatch("ASYNC_LOADING", false);
+            this.$store.commit('loading/loading_status', false);
             this.getOrderList();
             EventBus.emitHandler(true, res.data.message);
           } else {

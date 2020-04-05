@@ -3,15 +3,16 @@
     <table class="table">
       <tbody>
         <tr v-for="(item,index) in carts" :key="index">
-          <td colspan="2">
+          <td colspan="3" class="align-middle">
             <div class="d-flex text-left align-items-center">
               <div
-                class="img-thumb background-cover mr-3"
+                class="img-thumb background-cover mr-3 mr-md-5"
                 :style="{backgroundImage:`url(${item.product.imageUrl})`}"
               ></div>
-              <div class="d-flex flex-column text-left">
-                <span>{{ item.product.title }}</span>
-                <span class="small text-success" v-if="item.coupon">{{item.coupon.title}}</span>
+              <div class="d-flex flex-column">
+                <span class="h6 mb-3 text-secondary">{{ item.product.title.trim().split('/')[0] }}</span>
+                <span class="h6 mb-0 text-secondary">{{ item.product.title.trim().split('/')[1] }}</span>
+                <div class="text-muted small mt-3" v-if="item.coupon">已符合折扣活動</div>
               </div>
             </div>
           </td>
@@ -26,11 +27,11 @@
       </tbody>
       <tfoot class>
         <tr>
-          <td colspan="3" class="text-right border-0 text-secondary">運費小計</td>
+          <td colspan="4" class="text-right border-0 text-secondary">運費小計</td>
           <td class="text-right border-0 text-secondary">$0</td>
         </tr>
         <tr v-if="cart.final_total!==cart.total">
-          <td colspan="3" class="text-right text-danger">總計</td>
+          <td colspan="4" class="text-right text-danger">總計</td>
           <td class="text-right text-danger">{{ cart.total |currency }}</td>
         </tr>
       </tfoot>

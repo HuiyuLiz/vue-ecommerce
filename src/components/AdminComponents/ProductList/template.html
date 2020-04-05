@@ -22,6 +22,7 @@
         <tr v-for="item in products" :key="item.id">
           <td class="align-middle">{{item.category}}</td>
           <td class="align-middle">{{item.title}}</br>{{item.description}}</td>
+
           <td class="align-middle p-3">
             <div class="img-thumb background-cover" :style="{backgroundImage:`url(${item.imageUrl})`}"></div>
           </td>
@@ -67,8 +68,8 @@
                   或 上傳圖片
                   <i class="fas fa-spinner fa-spin" v-if="fileUploadLoading"></i>
                 </label>
-                <label for="customFile" class="form-control">
-                  <i class="material-icons">cloud_upload</i> 選擇檔案
+                <label for="customFile" class="form-control d-flex align-items-center">
+                  <i class="material-icons mr-2">cloud_upload</i> 選擇檔案
                 </label>
                 <input type="file" id="customFile" class="form-control" name="file-to-upload" ref="files"
                   @change="uploadFile" />

@@ -1,82 +1,105 @@
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-    <div class="container">
-      <router-link class="text-secondary" to="/">KKBOX</router-link>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item ">
-            <router-link :to="{name:'MusicCharts'}" class="nav-link">音樂情報
+<!-- <div> -->
+<div class="navbar navbar-expand-md py-3" :class="{'navbar-dark bg-dark':$route.path!=='/'}">
+  <div class="container d-flex justify-content-between">
+    <button class="navbar-toggler border-0 " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="d-flex bg-white" style="width: 30px; height: 3px;"></div>
+      <div class="d-flex bg-white mt-2" style="width: 30px; height: 3px;"></div>
+      <div class="d-flex bg-white mt-2" style="width: 18px; height: 3px;"></div>
+    </button>
+    <div class="nav-item nav-item py-md-0 text-center">
+      <router-link to="/" class="nav-link px-3">
+        <h1 class="font-weight-bold mb-0 text-white h4 text-left">
+          <span>GEYAO <i style="margin-left:-4px">!</i></span></h1>
+      </router-link>
+    </div>
+    <div>
+      <router-link :to="{name:'cart'}" before-appear
+        class="nav-link text-muted px-3 d-flex d-md-none align-items-center text-white" id="cartDropdown" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="material-icons material-icons-middle ml-2 text-white">shopping_cart</i>
+      </router-link>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item  py-2 py-md-0 ">
+          <router-link :to="{name:'MusicCharts'}" class="nav-link text-white px-3">音樂情報
+          </router-link>
+        </li>
+        <li class="nav-item dropdown  py-2 py-md-0 ">
+          <a class="nav-link text-white px-3 dropdown-toggle" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">實體專輯</a>
+          <div class="dropdown-menu text-left mt-2 blur" aria-labelledby="dropdownMenuButton">
+            <router-link :to="{name:'shopping_List',params: { category:'all' ,page: 1 }}" class="dropdown-item py-3 h6">
+              全部商品
             </router-link>
+            <router-link :to="{name:'shopping_List',params: { category:'華語流行' ,page: 1 }}"
+              class="dropdown-item py-3 h6">
+              華語流行
+            </router-link>
+            <router-link :to="{name:'shopping_List',params: { category:'西洋流行' ,page: 1 }}"
+              class="dropdown-item py-3 h6">
+              西洋流行
+            </router-link>
+            <router-link :to="{name:'shopping_List',params: { category:'K-Pop' ,page: 1 }}"
+              class="dropdown-item py-3 h6">
+              K-Pop
+            </router-link>
+          </div>
+        </li>
+      </ul>
+      <div>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item nav-item py-2 py-md-0 ">
+            <router-link :to="{name:'admin'}" class="nav-link text-white  px-3">後臺管理</router-link>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">搜尋專輯</a>
+          <li class="nav-item nav-item pt-2 pb-4 py-md-0 ">
+            <router-link class="nav-link text-white  px-3" to="/login">登入</router-link>
           </li>
-          <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">實體專輯</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <router-link :to="{name:'shopping_List',params: { page: 1 }}" class="dropdown-item">全部商品
-              </router-link>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+          <li class="nav-item dropdown d-none d-md-block drop-hover nav-item py-2 py-md-0 ">
+            <a :to="{name:'cart'}" before-appear class="nav-link text-white d-flex align-items-center" href="#"
+              id="cartDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              購物車
+              <i class="material-icons ml-2">shopping_cart</i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right py-4 px-3 mt-2 blur" aria-labelledby="cartDropdown"
+              style="min-width:450px">
+              <table class="table">
+                <thead>
+                  <th class="text-secondary">商品名稱</th>
+                  <th class="text-secondary">數量</th>
+                  <th colspan="2" class="text-secondary">單價</th>
+                </thead>
+                <tbody>
+                  <tr v-for="(item,index) in carts" :key="index">
+                    <td class="align-middle ">
+                      <div class="d-flex text-left align-items-center">
+                        <div class="d-flex flex-column">
+                          <p class="small text-secondary mb-0">{{ item.product.title.trim().split('/')[0] }}</p>
+                          <span class=" mb-0 text-secondary">{{ item.product.title.trim().split('/')[1] }}</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="align-middle text-secondary text-center">{{ item.qty }}</td>
+                    <td class="align-middle text-center pl-0 text-secondary">{{ item.final_total|currency }}</td>
+                    <td class="align-middle">
+                      <div class="btn-delete" @click="deleteFromCart(item.id)" style="cursor:pointer">
+                        <span class="material-icons btn-delete pt-2">clear</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <router-link :to="{name:'cart'}" tag="button" class="btn btn-dark btn-block py-3 w-50 float-right"
+                href="#">
+                前往結帳</router-link>
             </div>
           </li>
         </ul>
-        <div>
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-              <router-link :to="{name:'admin'}" class="nav-link">後臺管理</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/login">登入</router-link>
-            </li>
-            <li class="nav-item d-sm-block d-lg-none">
-              <router-link :to="{name:'cart'}" before-appear class="nav-link d-flex align-items-center bg-danger"
-                id="cartDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                購物車
-                <i class="material-icons ml-2">shopping_cart</i>
-              </router-link>
-            </li>
-            <li class="nav-item dropdown d-none d-lg-block drop-hover">
-              <a :to="{name:'cart'}" before-appear class="nav-link d-flex align-items-center" href="#" id="cartDropdown"
-                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                購物車
-                <i class="material-icons ml-2">shopping_cart</i>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right py-4 px-3 " aria-labelledby="cartDropdown"
-                style="min-width:400px">
-                <table class="table">
-                  <thead>
-                    <th></th>
-                    <th>品名</th>
-                    <th>數量</th>
-                    <th>單價</th>
-                  </thead>
-                  <tbody>
-                    <tr v-for="(item,index) in carts" :key="index">
-                      <td class="align-middle">
-                        <button type="button" class="btn btn-outline-danger btn-sm" @click="deleteFromCart(item.id)">
-                          <i class="far fa-trash-alt"></i>
-                        </button>
-                      </td>
-                      <td class="align-middle">{{ item.product.title }}</td>
-                      <td class="align-middle">{{ item.qty }}/{{ item.product.unit }}</td>
-                      <td class="align-middle text-center pl-0">{{ item.final_total|currency }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <router-link :to="{name:'cart'}" tag="button" class="btn btn-primary btn-block font-weight-bold"
-                  href="#">前往結帳</router-link>
-              </div>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</div>
+
 </div>

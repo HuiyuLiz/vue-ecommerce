@@ -15,7 +15,7 @@ $gray-600: #6c757d !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
-$black: #000 !default;
+$black: #121212; //#000 !default;
 
 $grays: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -29,7 +29,7 @@ $grays: map-merge(
     '600': $gray-600,
     '700': $gray-700,
     '800': $gray-800,
-    '900': $gray-900
+    '900': $gray-900,
   ),
   $grays
 );
@@ -61,7 +61,7 @@ $colors: map-merge(
     'cyan': $cyan,
     'white': $white,
     'gray': $gray-600,
-    'gray-dark': $gray-800
+    'gray-dark': $gray-800,
   ),
   $colors
 );
@@ -71,9 +71,9 @@ $secondary: $gray-600 !default;
 $success: $green !default;
 $info: $cyan !default;
 $warning: $yellow !default;
-$danger: #c73535; //$red !default;
+$danger: #ff5353; //$red !default;
 $light: $gray-100 !default;
-$dark: $gray-800 !default;
+$dark: #171616; //$black; //$gray-800 !default;
 $light: $gray-100 !default;
 
 $theme-colors: () !default;
@@ -87,7 +87,7 @@ $theme-colors: map-merge(
     'warning': $warning,
     'danger': $danger,
     'light': $light,
-    'dark': $dark
+    'dark': $dark,
   ),
   $theme-colors
 );
@@ -133,21 +133,21 @@ $spacers: map-merge(
   (
     0: 0,
     1: (
-      $spacer * 0.25
+      $spacer * 0.25,
     ),
     2: (
-      $spacer * 0.5
+      $spacer * 0.5,
     ),
     3: $spacer,
     4: (
-      $spacer * 1.5
+      $spacer * 1.5,
     ),
     5: (
-      $spacer * 3
+      $spacer * 3,
     ),
     6: (
-      $spacer * 6
-    )
+      $spacer * 6,
+    ),
   ),
   $spacers
 );
@@ -161,7 +161,7 @@ $sizes: map-merge(
     50: 50%,
     75: 75%,
     100: 100%,
-    auto: auto
+    auto: auto,
   ),
   $sizes
 );
@@ -200,7 +200,7 @@ $grid-breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
+  xl: 1200px,
 ) !default;
 
 @include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
@@ -214,7 +214,7 @@ $container-max-widths: (
   sm: 540px,
   md: 720px,
   lg: 960px,
-  xl: 1140px
+  xl: 1140px,
 ) !default;
 
 @include _assert-ascending($container-max-widths, '$container-max-widths');
@@ -301,7 +301,7 @@ $headings-color: null !default;
 $display1-size: 6rem !default;
 $display2-size: 5.5rem !default;
 $display3-size: 4.5rem !default;
-$display4-size: 3.5rem !default;
+$display4-size: 2.5rem; //3.5rem !default;
 
 $display1-weight: 300 !default;
 $display2-weight: 300 !default;
@@ -658,7 +658,7 @@ $custom-file-box-shadow: $input-box-shadow !default;
 $custom-file-button-color: $custom-file-color !default;
 $custom-file-button-bg: $input-group-addon-bg !default;
 $custom-file-text: (
-  en: 'Browse'
+  en: 'Browse',
 ) !default;
 
 // Form validation
@@ -687,12 +687,12 @@ $form-validation-states: map-merge(
   (
     'valid': (
       'color': $form-feedback-valid-color,
-      'icon': $form-feedback-icon-valid
+      'icon': $form-feedback-icon-valid,
     ),
     'invalid': (
       'color': $form-feedback-invalid-color,
-      'icon': $form-feedback-icon-invalid
-    )
+      'icon': $form-feedback-icon-invalid,
+    ),
   ),
   $form-validation-states
 );

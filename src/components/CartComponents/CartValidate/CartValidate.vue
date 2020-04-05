@@ -32,7 +32,7 @@
       ></ValidateInput>
     </div>
     <div class="form-group">
-      <label for="useraddress">收件人地址</label>
+      <label for="useraddress" class="text-secondary">收件人地址</label>
       <div class="form-row justify-content-center">
         <div class="form-group col-md-3">
           <ValidationProvider name="country" rules="required" v-slot="{ classes,errors }">
@@ -71,7 +71,7 @@
     </div>
     <hr />
     <div class="form-group">
-      <label for="comment">留言</label>
+      <label for="comment"  class="text-secondary">留言</label>
       <textarea
         name
         id="comment"
@@ -87,7 +87,7 @@
 <script>
 import ValidateInput from './ValidateInput'
 export default {
-  name: "CartList",
+  name: 'CartList',
   props: {
     userForm: {
       type: Object,
@@ -111,20 +111,20 @@ export default {
   },
   computed: {
     countryIndex: {
-      get() {
+      get () {
         return this.index.country;
       },
-      set(val) {
+      set (val) {
         this.index.country = val;
         this.index.area = null;
         this.userForm.user.address = "";
       }
     },
     areaIndex: {
-      get() {
+      get () {
         return this.index.area;
       },
-      set(val) {
+      set (val) {
         this.index.area = val;
       }
     }

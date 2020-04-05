@@ -9,7 +9,9 @@
           @click="getPage(pagination.current_page - 1) "
           :class="{'disabled':!pagination.has_pre}"
         >
-          <span aria-hidden="true" :class="{'text-secondary':!pagination.has_next}">&laquo;</span>
+          <span aria-hidden="true" :class="{'text-secondary':!pagination.has_next}">
+            <span class="material-icons pt-1">chevron_left</span>
+          </span>
           <span class="sr-only">Previous</span>
         </a>
       </li>
@@ -24,13 +26,15 @@
       </li>
       <li class="page-item" :class="{'disabled':!pagination.has_next}">
         <a
-          class="page-link px-3"
+          class="page-link px-3 align-middle"
           href="#"
           aria-label="Next"
           :class="{'disabled':pagination.has_next}"
           @click="getPage(pagination.current_page + 1)"
         >
-          <span aria-hidden="true">&raquo;</span>
+          <span aria-hidden="true">
+            <span class="material-icons pt-1">chevron_right</span>
+          </span>
           <span class="sr-only">Next</span>
         </a>
       </li>

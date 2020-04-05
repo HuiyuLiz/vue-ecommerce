@@ -1,14 +1,14 @@
 <template>
   <div class="media mb-3 border-bottom align-items-center pb-3">
-    <div class="col-3 p-0">
+    <div class="col-2 p-0">
       <img
-        class="img-fluid rounded d-none d-md-block"
+        class="img-fluid d-none d-md-block"
         :src="track.album.images[0].url"
         :alt="track.name"
         style="width:80%"
       />
       <img
-        class="img-fluid rounded d-block d-md-none"
+        class="img-fluid d-block d-md-none"
         :src="track.album.images[0].url"
         :alt="track.name"
         style
@@ -17,13 +17,17 @@
     <div class="col-7">
       <div class="media-body">
         <div class="row align-items-start">
-          <div class="col-md-1 mr-2">
-            <span class="h5 mb-2 font-weight-bold">{{index+1}}</span>
+          <div class="col-md-2 mr-2">
+            <span class="h3 mb-2 font-weight-bold d-none d-md-block">{{index+1}}</span>
+            <span class="h5 mb-2 font-weight-bold d-block d-md-none">{{index+1}}</span>
           </div>
-          <div class="col-md-10 d-flex flex-column">
-            <span class="mb-2 font-weight-bold" :class="{'h5':track.name.length<25}">{{track.name}}</span>
-            <span class="text-secondary">{{track.album.artist.name}}</span>
-            <span class="small text-secondary">{{track.album.name}}</span>
+          <div class="col-md-9 d-flex flex-column">
+            <span class="small text-secondary d-none d-md-flex">{{track.album.name}}</span>
+            <span class="mb-2 font-weight-bold" :class="{'h5':track.name.length<20}">{{track.name}}</span>
+            <p
+              class="text-secondary mb-0"
+              :class="{'h7':track.album.artist.name.length<20}"
+            >{{track.album.artist.name}}</p>
           </div>
         </div>
       </div>
