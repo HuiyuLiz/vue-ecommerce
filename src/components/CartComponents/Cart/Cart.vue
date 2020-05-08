@@ -10,16 +10,19 @@ import {
   getPostal
 } from '@/api/api';
 import { EventBus } from '@/eventBus/eventBus';
+import DiscountBanner from '@/components/Layout/Banner/DiscountBanner';
 import postal from '../../../assets/postal';
 import CartList from '../CartList/CartList';
 import CartValidate from '../CartValidate/CartValidate';
 import CartProgress from '../CartProgress/CartProgress';
+
 export default {
   name: 'CartComponent',
   components: {
     CartList,
     CartValidate,
-    CartProgress
+    CartProgress,
+    DiscountBanner
   },
   data () {
     return {

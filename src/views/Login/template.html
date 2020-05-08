@@ -1,25 +1,28 @@
-<div class="container pt-3 pt-md-5 mt-5 pb-5">
-  <div class="row">
-    <div class="col-md-6 m-auto">
+<div class="container pt-3 pt-md-5 my-5 pb-5">
+  <div class="row mb-5">
+    <div class="col-md-6 m-auto ">
       <form class="form-signin text-center p-0" @submit.prevent="login">
-        <h1 class="h3 mb-3 font-weight-normal text-left mb-5">-會員登入</h1>
-        <div class="text-secondary d-flex align-items-end mb-3">
-          <div class="h5 mb-0 mr-2">Email Address/Account</div>
-          <small>電子信箱/帳號</small>
+        <h1 class="pb-4 mb-5 font-weight-bold h3 text-white text-left title-border-decoration title-border-white">
+          會員登入</h1>
+        <div class="text-white d-flex align-items-end mb-3">
+          <div class="h5 mb-0 mr-2">Email Address / Account</div>
+          <small>電子信箱 / 帳號</small>
         </div>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus
-          v-model="user.username" />
-        <div class="text-secondary d-flex align-items-end mt-3 mb-3">
+        <input type="email" id="inputEmail" class="form-control form-control-lg rounded-0" placeholder="Email address"
+          required autofocus v-model="user.username" />
+        <div class="text-white d-flex align-items-end mt-3 mb-3">
           <div class="h5 mb-0 mr-2">Password</div>
           <small>會員密碼</small>
         </div>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" v-model="user.password"
-          required />
+        <input type="password" id="inputPassword" class="form-control form-control-lg rounded-0" placeholder="Password"
+          v-model="user.password" required />
 
-        <button class="btn btn-dark btn-block py-3 d-flex align-items-center justify-content-center mt-5"
+        <button
+          class="btn btn-outline-light btn-block py-3 d-flex align-items-center justify-content-center mt-5 rounded-0"
           type="submit">登入</button>
+
         <p class="text-danger font-weight-bold my-3">{{message}}</p>
       </form>
     </div>

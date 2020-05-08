@@ -1,11 +1,11 @@
 <template>
   <div class="media mb-3 border-bottom align-items-center pb-3">
-    <div class="col-2 p-0">
+    <div class="col-2 col-md-3 p-0 d-flex align-items-center mr-auto">
+      <span class="h3 mb-2 font-weight-bold mr-4 title-font">{{index+1}}</span>
       <img
-        class="img-fluid d-none d-md-block"
+        class="img-fluid d-none d-md-block w-50"
         :src="track.album.images[0].url"
         :alt="track.name"
-        style="width:80%"
       />
       <img
         class="img-fluid d-block d-md-none"
@@ -17,11 +17,7 @@
     <div class="col-7">
       <div class="media-body">
         <div class="row align-items-start">
-          <div class="col-md-2 mr-2">
-            <span class="h3 mb-2 font-weight-bold d-none d-md-block">{{index+1}}</span>
-            <span class="h5 mb-2 font-weight-bold d-block d-md-none">{{index+1}}</span>
-          </div>
-          <div class="col-md-9 d-flex flex-column">
+          <div class="col-12 d-flex flex-column ml-3">
             <span class="small text-secondary d-none d-md-flex">{{track.album.name}}</span>
             <span class="mb-2 font-weight-bold" :class="{'h5':track.name.length<20}">{{track.name}}</span>
             <p
@@ -33,7 +29,7 @@
       </div>
     </div>
     <div class="col-2 text-center" @click="playSong(track.id)">
-      <i class="material-icons material-icons-large">play_circle_outline</i>
+      <i class="material-icons material-icons-large text-dark">play_circle_outline</i>
     </div>
   </div>
 </template>

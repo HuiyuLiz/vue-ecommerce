@@ -1,6 +1,12 @@
+.dropdown-menu-min-width {
+  width: 450px;
+}
+.dropdown-toggle::after {
+  display: none;
+}
+
 .dropdown-menu {
   border-radius: 0;
-  transform: translateY(1px);
 
   &.blur {
     backdrop-filter: blur(10px);
@@ -17,9 +23,8 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: map-get($grid-breakpoints, 'md')) {
   .dropdown-menu {
-    transform: translateY(1px);
     position: absolute;
     top: 100%;
     left: 0;
@@ -30,7 +35,7 @@
     padding: 0.5rem 0;
     margin: 0.125rem 0 0;
     font-size: 1rem;
-    color: #212529;
+    color: #2a2727e3;
     text-align: left;
     list-style: none;
     background-color: transparent;
@@ -60,5 +65,38 @@
       background-color: transparent;
       color: white;
     }
+  }
+}
+
+.navbar-nav li.drop-hover:hover > .dropdown-menu {
+  display: block;
+  animation: showDrop 0.15s ease-in 0s forwards;
+  border-radius: 0;
+  transform: translateY(0px);
+
+  table,
+  .btn {
+    opacity: 0;
+    animation: showTable 0.15s 0.15s forwards;
+  }
+}
+
+@keyframes showDrop {
+  0% {
+    transform: translate(-2%, 0px);
+  }
+
+  100% {
+    transform: translateX(0%, 0px);
+  }
+}
+
+@keyframes showTable {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

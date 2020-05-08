@@ -31,8 +31,8 @@
           <td class="text-right border-0 text-secondary">$0</td>
         </tr>
         <tr v-if="cart.final_total!==cart.total">
-          <td colspan="4" class="text-right text-danger">總計</td>
-          <td class="text-right text-danger">{{ cart.total |currency }}</td>
+          <td colspan="4" class="text-right text-danger font-weight-bold">總計</td>
+          <td class="text-right text-danger font-weight-bold">{{ cart.total |currency }}</td>
         </tr>
       </tfoot>
     </table>

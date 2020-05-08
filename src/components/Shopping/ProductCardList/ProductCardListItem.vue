@@ -1,25 +1,23 @@
 <template>
   <div class="card mb-5 rounded-0">
     <div class="card-img" @click.prevent="selectProduct(product.id,product.category)">
-      <button
-        href=" #"
-        class="btn btn-outline-dark btn-block w-75 py-3"
-        @click.prevent="selectProduct(product.id,product.category)"
-      >查看更多</button>
-      <img alt class="card-img-top rounded-0" :src="product.imageUrl" />
+      <img alt class="img-object-fit rounded-0" :src="product.imageUrl" />
+      <slot name="openModal"></slot>
     </div>
     <div class="card-body px-0 pb-0">
-      <h5
-        class="card-title mb-0"
+      <div
+        class="d-flex flex-column align-items-center"
         @click.prevent="selectProduct(product.id,product.category)"
-      >{{album}}</h5>
-      <small class="text-secondary mb-5">{{singer}}</small>
-      <div class="d-flex justify-content-between align-items-center pb-3">
-        <div class="d-flex justify-content-start">
-          <p class="card-text mb-0 mr-2 text-danger font-weight-bold">NT${{product.origin_price}}</p>
-          <del class="card-text text-muted">NT${{product.price}}</del>
+        style="cursor:pointer"
+      >
+        <div class="mb-1">{{singer}}</div>
+        <h6 class="card-title mb-0 font-weight-bold">{{album}}</h6>
+      </div>
+      <div class="d-flex text-center pb-3 mt-3">
+        <div class="d-flex justify-content-center text-center w-100">
+          <div class="card-text text-muted mr-3">NT${{product.price}}</div>
+          <div class="card-text mb-0 text-success font-weight-bold">NT${{product.origin_price}}</div>
         </div>
-        <slot name="openModal"></slot>
       </div>
     </div>
   </div>

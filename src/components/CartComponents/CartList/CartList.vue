@@ -1,12 +1,6 @@
 <template>
   <div>
     <table class="table">
-      <!-- <thead>
-        <th></th>
-        <th>品名</th>
-        <th>數量</th>
-        <th>單價</th>
-      </thead>-->
       <tbody>
         <tr
           is="CartListItem"
@@ -26,8 +20,8 @@
           <td class="text-right border-0 text-secondary">$0</td>
         </tr>
         <tr v-if="cart.final_total!==cart.total">
-          <td colspan="4" class="text-right text-danger">總計</td>
-          <td class="text-right text-danger">{{ cart.final_total |currency }}</td>
+          <td colspan="4" class="text-right text-danger font-weight-bold">總計</td>
+          <td class="text-right text-danger font-weight-bold">{{ cart.final_total |currency }}</td>
         </tr>
       </tfoot>
     </table>

@@ -1,0 +1,11 @@
+$footer-height: 200px;
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  line-height: 1.5;
+  background-color: #171616;
+  z-index: 1000;
+}

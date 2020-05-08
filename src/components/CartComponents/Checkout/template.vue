@@ -69,7 +69,7 @@
                     <table class="table">
                       <tbody class="text-secondary">
                         <tr>
-                          <th scope="row">Email</th>
+                          <th scope="row" class="font-weight-normal">Email</th>
                           <td colspan="3">{{user.email}}</td>
                         </tr>
                         <tr>
@@ -99,12 +99,17 @@
               </div>
             </div>
             <div class="text-right mt-3 mb-5" v-if="order!==null">
-              <button class="btn btn-danger btn-block" v-if="!order.is_paid">確認付款</button>
-              <button
-                class="btn btn-success btn-block"
-                v-else="order.is_paid"
-                :disabled="order.is_paid"
-              >訂單完成</button>
+              <div class="row justify-content-end">
+                <div class="col-12 col-md-4 mt-3">
+                  <CustomButton customClass="btn-danger" text="確認付款" v-if="!order.is_paid"></CustomButton>
+                  <CustomButton
+                    customClass="btn-success"
+                    text="訂單完成"
+                    v-else="order.is_paid"
+                    :disabled="order.is_paid"
+                  ></CustomButton>
+                </div>
+              </div>
             </div>
           </form>
         </div>

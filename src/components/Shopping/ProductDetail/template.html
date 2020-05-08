@@ -1,0 +1,135 @@
+<div class="container-fluid pt-3 pt-md-5 mt-3 pb-5">
+  <HistoryBackButton :last-path="{path:path}"></HistoryBackButton>
+  <!-- MusicModal -->
+  <div class="modal slide-fade p-0 align-items-center justify-content-center" id="MusicModal" tabindex="-1"
+    role="dialog" aria-labelledby="MusicModalTitle" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-center m-0 w-100 m-md-auto " role="document">
+      <div class="modal-content">
+        <button type="button" class="close position-absolute align-self-end pt-2 pr-3">
+          <span aria-hidden="true" class="display-4" @click="closeTrack">&times;</span>
+        </button>
+        <TrackIframe :trackId="track_id"></TrackIframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row mb-5 justify-content-center">
+      <div class="col-md-5 mr-5">
+        <div class="d-none d-md-flex">
+          <img class="img-fluid" :src="product.imageUrl" :alt="product.title" />
+        </div>
+      </div>
+      <div class="col-md-5">
+        <ul class="pl-0 mb-4">
+          <li class="text-secondary d-flex align-items-center mb-1">
+            <router-link :to="{name:'shopping_List',params: { category:'all' ,page: 1 }}" class="text-secondary">All
+            </router-link>&ensp;
+            /
+            &ensp;
+            <router-link :to="{name:'shopping_List',params: { category:product.category ,page: 1 }}"
+              class="text-secondary">{{product.category}}</router-link>
+          </li>
+          <li class="text-dark mb-3">
+            <h1 class="h2">{{album}}</h1>
+          </li>
+          <div class="h-100 w-100 d-flex d-md-none">
+            <img class="img-fluid" :src="product.imageUrl" :alt="product.title" />
+          </div>
+          <li class="text-secondary border-bottom mt-4 mt-md-5 h6 pb-2 d-flex align-items-start">
+            <span>建議售價</span>
+            <div class="text-success pb-1 ml-3 d-flex align-items-center">
+              <i class="material-icons pr-1">monetization_on</i>
+              <span>全館免運</span>
+            </div>
+          </li>
+          <li class="my-3 border-bottom pb-3" v-if="product.price">
+            <span class="text-secondary h4 font-weight-light mr-4">NT${{product.origin_price}}</span>
+            <span class="text-success h4">NT${{product.price}}</span>
+          </li>
+          <li class="text-muted mt-3 small">藝人</li>
+          <li class="text-secondary">{{singer}}</li>
+          <li class="text-muted mt-3 small">發行月份</li>
+          <li class="text-secondary">{{product.description}}</li>
+        </ul>
+        <select name id v-model="product.num" class="form-control form-control-lg rounded-0">
+          <option value="null" selected disabled>請選擇數量</option>
+          <option :value="num" v-for="num in 10" :key="num">{{num}}{{product.unit}}</option>
+        </select>
+        <i class="material-icons material-icons-middle">keyboard_arrow_down</i>
+        <div class="d-flex mt-4">
+          <CustomButton class="mr-3 w-50" customClass="btn-outline-dark" text="專輯試聽" @click.native="openTrack">
+          </CustomButton>
+          <AddToCartButton class="w-50" @click.native="addToCart(product.id,product.num)"></AddToCartButton>
+        </div>
+      </div>
+    </div>
+    <div class="row tablists">
+      <div class="col-md-12 mt-3 mb-5">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active text-secondary" id="home-tab" data-toggle="tab" href="#home" role="tab"
+              aria-controls="home" aria-selected="true">專輯介紹</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+              aria-controls="profile" aria-selected="false">專輯曲目</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+              aria-controls="contact" aria-selected="false">購物說明</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="my-3 p-3">
+              <p class="card-text text-secondary text-justify h7" v-if="product.content" v-html="content"></p>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <table class="table mt-3">
+              <thead>
+                <tr class="text-secondary">
+                  <th scope="col" class="border-top-0">#</th>
+                  <th scope="col" class="border-top-0">曲目</th>
+                  <th scope="col" class="border-top-0 text-center">
+                    <div class="d-none d-md-flex text-center">藝人</div>
+                  </th>
+                  <th scope="col" class="border-top-0 text-center">
+                    <i class="material-icons align-middle">access_time</i>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="text-secondary" v-for="(track,index) in tracks" :key="track.name">
+                  <th scope="row" class="align-middle text-secondary">
+                    <p class="mb-0">{{index+1}}</p>
+                  </th>
+                  <td class="align-middle text-secondary">
+                    <p class="mb-0">{{track.name}}</p>
+                  </td>
+                  <td class="text-secondary text-center">
+                    <div class="d-none d-md-flex text-center text-secondary">
+                      <p class="mb-0">{{singer}}</p>
+                    </div>
+                  </td>
+                  <td class="align-middle text-center text-secondary">
+                    <p class="mb-0">{{track.duration |trackDuration}}</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="my-3 p-3">
+              <p class="card-text text-secondary h7">
+                使用電腦播放程式請留意：CD曲目的編排是否正確，將視您所使用之播放程式其串連的媒體資料庫所提供的資訊而定。若播放程式所顯示的專輯資訊內容與實際商品有出入，此非商品本身問題，請您可手動更新程式或向程式管理人員反應。
+              </p>
+              <p class="card-text text-secondary h7">限量商品購買提醒：因數量有限，若庫存不足時，將無法提供換貨，敬請包涵見諒。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

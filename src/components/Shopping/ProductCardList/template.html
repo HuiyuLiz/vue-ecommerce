@@ -1,90 +1,95 @@
-<div class="container pt-3 pt-md-5 mt-5 pb-5">
-  <!-- modal -->
-  <div class="modal fade" id="addCartModal" tabindex="-1" role="dialog" aria-labelledby="addCartModalTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-      <div class="modal-content rounded-0" style="backdrop-filter: blur(10px);background-color:#ffffffbf">
-        <div class="modal-body mx-md-3 mt-3 ">
-          <div class="row mb-3 rounded-0">
-            <div class="col-4">
-              <div class="card-img">
-                <img alt class="card-img-top rounded-0" :src="currentProduct.imageUrl" />
-              </div>
-            </div>
-            <div class="col-8 ">
-              <div class="card-body px-0 py-0 d-flex flex-column align-items-start justify-content-between h-100">
-                <div class="d-flex justify-content-between w-100 align-items-start">
-                  <div>
-                    <h4 class="card-title mb-0 font-weight-bold h4" v-if="currentProduct.title">
-                      {{currentProduct.title.trim().split('/')[1]}}
-                    </h4>
-                    <small class="text-secondary"
-                      v-if="currentProduct.title">{{currentProduct.title.trim().split('/')[0]}}</small>
-                  </div>
-                  <button type="button" class="close h1" data-dismiss="modal" aria-label="Close"
-                    style="transform: translateY(-10px);font-size: 2.5rem;">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+<div class="container-fluid px-0">
+  <DiscountBanner></DiscountBanner>
+  <div class="container pb-5">
+    <!-- modal -->
+    <div class="modal fade bd-example-modal-lg" id="addCartModal" tabindex="-1" role="dialog"
+      aria-labelledby="addCartModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content rounded-0" style="backdrop-filter: blur(10px);background-color:#ffffffbf">
+          <div class="modal-body my-0 my-lg-3">
+            <div class="d-flex flex-column flex-lg-row rounded-0 align-items-between">
+              <div class="col-lg-6">
+                <button type="button" class="close align-self-end d-flex d-lg-none" data-dismiss="modal"
+                  aria-label="Close" style="transform: translateY(-10px);">
+                  <span aria-hidden="true" class="display-4">&times;</span>
+                </button>
+                <div class="card-img my-3 my-lg-0">
+                  <img alt class="card-img-top rounded-0" :src="currentProduct.imageUrl" />
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="">
-                    <del class="card-text text-secondary">NT${{currentProduct.price}}</del>
-                    <p class="card-text mb-0 mr-2 font-weight-bold text-danger h6">NT${{currentProduct.origin_price}}
+              </div>
+              <div class="col-lg-6  pb-5 pb-lg-0">
+                <div class="card-body px-0 py-0 d-flex flex-column align-items-start justify-content-start h-100">
+                  <div class="d-flex justify-content-between w-100 align-items-start">
+                    <div>
+                      <h4 class="" v-if="currentProduct.title">{{currentProduct.title.trim().split('/')[0]}}</h4>
+                      <h4 class="card-title mb-0 font-weight-bold h4" v-if="currentProduct.title">
+                        {{currentProduct.title.trim().split('/')[1]}}
+                      </h4>
+                    </div>
+                    <button type="button" class="close align-self-end d-none d-lg-block" data-dismiss="modal"
+                      aria-label="Close" style="transform: translateY(-25px);">
+                      <span aria-hidden="true" class="display-4">&times;</span>
+                    </button>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <p class="card-text text-secondary mb-0 mr-4">NT${{currentProduct.price}}</p>
+                    <p class="card-text mb-0 mr-2 font-weight-bold text-success">
+                      NT${{currentProduct.origin_price}}
                     </p>
                   </div>
+                  <div class="d-flex flex-column flex-md-row  justify-content-between align-items-end w-100 mt-auto">
+                    <div class="btn-group mr-md-3 mt-3 text-center mb-3 mb-md-0 w-100" role="group"
+                      aria-label="Basic example">
+                      <button type="button" class="btn btn-outline-dark py-3 px-2 rounded-0" @click="numberHandler(-1)"
+                        :class="{'disabled button-secondary':num===1}" :disabled="num===1" style="width:25%">-</button>
+                      <button type="button" class="btn btn-outline-dark py-3 text-center" style="width:50%">
+                        <span class="text-center">{{num}}</span>
+                      </button>
+                      <button type="button" class="btn btn-outline-dark py-3 px-2 rounded-0" @click="numberHandler(1)"
+                        :class="{'disabled button-secondary':num===total}" :disabled="num===total"
+                        style="width:25%">+</button>
+                    </div>
+                    <AddToCartButton class="" @click.native="addToCart(currentProduct.id,num)"></AddToCartButton>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="modal-footer d-flex justify-content-between">
-          <div class="btn-group mr-3 mr-md-auto mx-md-3 my-3 text-center" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-outline-dark py-3 px-4 " @click="numberHandler(-1)"
-              :class="{'disabled button-secondary':num===1}" :disabled="num===1">-</button>
-            <button type="button" class="btn btn-outline-dark py-3 text-center" style="width:60px">
-              <span class="text-center">{{num}}</span>
-            </button>
-            <button type="button" class="btn btn-outline-dark py-3 px-4 " @click="numberHandler(1)"
-              :class="{'disabled button-secondary':num===total}" :disabled="num===total">+</button>
+      </div>
+    </div>
+    <p class="font-weight-bold font-weight-bold">專輯分類</p>
+    <hr>
+    <div class="row mt-5">
+      <div class="col-md-2">
+        <div class="nav d-none d-md-flex flex-md-column nav-pills text-dark" id="v-pills-tab" role="tablist"
+          aria-orientation="vertical">
+          <router-link class="nav-link text-dark text-left mb-3 h6"
+            :to="{name:'shopping_List', params:{ category:'all' , page: 1 }}"
+            :class="{'active':currentCategory==='all'}" aria-selected="true" href="#">
+            All
+          </router-link>
+          <router-link class=" nav-link text-dark text-left mb-3 h6" v-for="category in categories"
+            :to="{name:'shopping_List', params:{ category:category , page: 1 }}" :key="category"
+            :class="{'active':currentCategory===category}" aria-selected="true" href="#">
+            {{category}}
+          </router-link>
+        </div>
+      </div>
+      <div class="col-md-10 mb-5 pb-5" style="min-height:650px">
+        <div class="row" :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}">
+          <div class="col-6 col-md-4 col-md-4" v-for="(product,index) in filterProducts" :key="product.title">
+            <ProductCardListItem :product="product" @selectProduct="selectProduct">
+              <template slot="openModal">
+                <AddToCartButton @click.native.stop="openModal(product)"></AddToCartButton>
+              </template>
+            </ProductCardListItem>
           </div>
-          <button class="btn btn-dark py-3 w-50 mx-md-3 mt-0 d-flex align-items-center justify-content-center"
-            @click="addToCart(currentProduct.id,num)">
-            <span class="d-none d-md-flex">加入購物車</span>
-            <i class="material-icons material-icons-middle ml-2">shopping_cart</i>
-          </button>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <div class="nav d-none d-md-flex flex-md-column nav-pills text-dark" id="v-pills-tab" role="tablist"
-        aria-orientation="vertical">
-        <router-link class="nav-link text-dark text-left mb-3 h6"
-          :to="{name:'shopping_List', params:{ category:'all' , page: 1 }}" :class="{'active':currentCategory==='all'}"
-          aria-selected="true" href="#">
-          全部專輯
-        </router-link>
-        <router-link class=" nav-link text-dark text-left mb-3 h6" v-for="category in categories"
-          :to="{name:'shopping_List', params:{ category:category , page: 1 }}" :key="category"
-          :class="{'active':currentCategory===category}" aria-selected="true" href="#">
-          {{category}}
-        </router-link>
-      </div>
-    </div>
-    <div class="col-md-10 mb-5 pb-5" style="min-height:650px">
-      <div class="row" :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}">
-        <div class="col-6 col-md-4 col-md-4" v-for="(product,index) in filterProducts" :key="product.title">
-          <ProductCardListItem :product="product" @selectProduct="selectProduct">
-            <div slot="openModal" @click="openModal(product)">
-              <i class="material-icons material-icons-middle ml-2 pl-3 py-3">shopping_cart</i>
-            </div>
-          </ProductCardListItem>
-        </div>
-      </div>
-    </div>
-  </div>
-  <Pagination :pagination="pagination" @getPage="getProducts" v-if="currentCategory==='all'">
-  </Pagination>
+    <Pagination :pagination="pagination" @getPage="getProducts" v-if="currentCategory==='all'">
+    </Pagination>
 
+  </div>
 </div>

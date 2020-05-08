@@ -26,7 +26,7 @@ export default {
             console.error(error)
           });
         }else{
-           this.message = res.data.message
+           this.message = res.data.message+'，帳號或密碼錯誤，請重新輸入。'
         }
       });
     }

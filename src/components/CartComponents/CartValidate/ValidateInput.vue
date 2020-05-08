@@ -3,7 +3,7 @@
     <label :for="name" :class="{'d-none':!showLabel}" class="text-secondary">{{text}}</label>
     <input
       type="text"
-      class="form-control mb-2"
+      class="form-control rounded-0 mb-2"
       :class="classes"
       :name="name"
       :id="name"

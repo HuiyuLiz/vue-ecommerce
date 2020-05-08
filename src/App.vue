@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{'bg-dark min-height':$route.path==='/login'}">
     <Loading
       :active.sync="isLoading"
       loader="bars"
-      background-color="rgba(0,0,0, 0.9)"
+      background-color="rgba(255,255,255, 0.9)"
       color="#52e3c7"
     ></Loading>
     <router-view name="Header" />
@@ -23,14 +23,20 @@ export default {
   computed: {
     ...mapState('loading', ['isLoading'])
   },
+  data () {
+    return {
+      
+    }
+  },
   methods: {
     async getToken () {
       await this.$store.dispatch('GET_KKBOX_TOKEN')
-    },
+    }
   },
   created () {
     this.getToken()
-  }
+  },
+ 
 };
 </script>
 

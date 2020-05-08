@@ -2,15 +2,19 @@
 <script>
 import { getShoppingList,getShoppingListAll } from '@/api/api';
 import { EventBus } from '@/eventBus/eventBus';
+import  AddToCartButton from '@/components/Button/AddToCartButton';
 import Pagination from '@/components/Pagination/Pagination';
 import ProductCardListItem from './ProductCardListItem';
+import DiscountBanner from '@/components/Layout/Banner/DiscountBanner';
 import $ from 'jquery';
 
 export default {
   name: 'ProductCardList',
   components:{
     Pagination,
-    ProductCardListItem
+    ProductCardListItem,
+    AddToCartButton,
+    DiscountBanner
   },
   data () {
     return {

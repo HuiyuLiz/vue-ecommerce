@@ -4,6 +4,10 @@
   border-radius: 0;
   font-weight: bold;
 
+  &.not-allowed {
+    background-color: $light;
+  }
+
   &:last-child,
   &:first-child {
     .page-link {
@@ -18,7 +22,7 @@
     z-index: 1;
     color: $dark;
     background-color: transparent;
-    border-color: $dark;
+    border-color: transparent;
     border-radius: 0;
     height: 40px;
     width: 40px;
@@ -32,14 +36,14 @@
       color: #fff;
       background-color: $dark;
       border-radius: 0;
-      border-color: $dark;
+      border-color: transparent;
     }
   }
 
   &.disabled {
     .page-link {
       background-color: transparent;
-      border-color: $dark;
+      border-color: transparent;
       border-radius: 0;
     }
   }

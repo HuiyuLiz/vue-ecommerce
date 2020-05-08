@@ -27,7 +27,8 @@
           <td class="align-middle">{{item.is_enabled===1?"啟用":"未啟用"}}</td>
 
           <td class="align-middle">
-            <button type="button" class="btn btn-secondary btn-sm mr-2" @click="openModal(false,item)">編輯</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm mr-2"
+              @click="openModal(false,item)">編輯</button>
           </td>
           <td class="align-middle">
             <button type="button" class="btn btn-danger btn-sm" @click="openDelModal(item)">刪除</button>

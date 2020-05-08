@@ -1,8 +1,12 @@
 <template>
-  <div class="container-fluid pt-3 pt-md-5 mt-3 pb-5">
+  <div class="container-fluid pt-3 pt-md-5 mt-3 pb-5 background-cover">
+    <HistoryBackButton :last-path="{name:'MusicCharts'}"></HistoryBackButton>
+    <div class="blur-background d-none d-md-block" v-if="images">
+      <img alt class="rounded-0 img-object-fit position-absolute" :src="images[1].url" />
+    </div>
     <!-- MusicModal -->
     <div
-      class="modal slide-fade p-0"
+      class="modal slide-fade p-0 align-items-center justify-content-center"
       id="MusicModal"
       tabindex="-1"
       role="dialog"
@@ -10,111 +14,118 @@
       aria-hidden="true"
       data-backdrop="static"
     >
-      <div class="modal-dialog m-0 m-auto" role="document">
+      <div
+        class="modal-dialog modal-dialog-center m-0 d-flex justify-content-center align-items-center w-100 m-md-auto align-middle"
+        role="document"
+      >
         <div class="modal-content">
           <button type="button" class="close position-absolute align-self-end pt-2 pr-3">
             <span aria-hidden="true" class="display-4" @click="closeTrack">&times;</span>
           </button>
-          <iframe
-            :src="`https://widget.kkbox.com/v1/?id=${track_id}&type=playlist&terr=TW&lang=TC&autoplay=false`"
-            frameborder="0"
-            allow="autoplay"
-            id="iframeID"
-            width="100%"
-            ref="iframe"
-          ></iframe>
+          <PlayListIframe :trackId="trackId"></PlayListIframe>
         </div>
       </div>
     </div>
 
+    <!-- Playlist -->
     <div id="playlist" class="playlist">
-      <iframe
-        :src="`https://widget.kkbox.com/v1/?id=${songID}&type=song&terr=TW&lang=TC&autoplay=true`"
-        allow="autoplay"
-        autoplay="true"
-        width="100%"
-        frameborder="0"
-        class="p-0"
-        :class="{'isOpen':isOpen,'isClose':!isOpen}"
-        ref="playSong"
-        id="playSong"
-        v-if="songID!==null"
-      ></iframe>
+      <SongIframe :songId="songId" :isOpen="isOpen" v-if="songId!==null"></SongIframe>
     </div>
-    <div class="row">
-      <div class="container pb-5" v-if="tracks.length>0">
-        <div class="row mb-5">
-          <div class="col-md-4 mr-auto">
-            <div class="d-none d-md-flex">
-              <img :src="images[1].url" alt class="img-fluid" />
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div>
-              <div v-if="title" class="display-4 mb-5 d-none d-md-flex">{{title}}</div>
-              <div v-if="title" class="h2 mb-3 d-flex d-md-none">{{title}}</div>
-              <div class="d-flex d-md-none mb-3">
-                <img :src="images[1].url" alt class="img-fluid" />
-              </div>
-              <div class="border py-3 px-3">
-                <h5 class="mb-2 h5 text-secondary">排行榜計算說明：</h5>
-                <p class="mb-0">依據會員在特定期間完整聆聽歌曲的有效點播總次數排序而成，並由系統自動定期更新。</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 col-md-5">
-                <button
-                  class="btn btn-dark btn-block py-3 d-flex align-items-center justify-content-center mt-5"
-                  @click="openTrack"
-                >全部試聽</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row align-items-center mb-3">
-          <div class="col-md-6 text-center d-none d-md-flex">
-            <h5 class="font-weight-bold h5">排名</h5>
-          </div>
-          <div class="col-md-6 text-center d-block d-md-none mb-3">
-            <h3 class="font-weight-bold h3">排名</h3>
-          </div>
-          <div class="col-md-4 ml-auto">
-            <div class="d-flex justify-content-center align-items-center">
-              <div class="align-center" @click="getPrevTrack">
-                <i class="material-icons material-icons-middle text-secondary">fast_rewind</i>
-              </div>
-              <p class="text-secondary h6 text-center mx-3 w-50">顯示 {{limit_array}} 筆資料</p>
-              <div class="align-center" @click="getNextTrack">
-                <i class="material-icons material-icons-middle text-secondary">fast_forward</i>
-              </div>
-            </div>
-          </div>
-        </div>
 
+    <div class="container pb-5" v-if="tracks.length>0">
+      <div class="row mb-5 mt-md-5 pt-md-3">
         <div
-          class="row pt-3 border-top pb-3 pb-md-5"
-          style="min-height:500px"
-          :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}"
-        >
-          <div class="col-md-6 justify-content-between">
-            <TrackItem
-              v-for="(track,index) in limit_tracks_first"
-              :key="track.id"
-              :track="track"
-              :index="index+paging.offset"
-              @playSong="playSong"
-            ></TrackItem>
+          class="col-md-12 mr-auto background-cover d-none d-md-flex flex-md-column justify-content-center align-items-left overflow-hidden"
+        ></div>
+        <div class="col-md-8 m-auto">
+          <div class>
+            <div class="d-none d-md-flex align-items-center">
+              <div class="flex-grow-1 pr-2 d-none d-md-block">
+                <div class="line bg-light mb-2 opacity-75"></div>
+              </div>
+              <div class="h5 text-light font-weight-bold opacity-75">KEEP TO UP DATE</div>
+            </div>
+            <div class="p-md-5 bg-white">
+              <router-link
+                :to="{name:'MusicCharts'}"
+                class="text-success font-weight-bold d-flex d-md-none"
+              >音樂情報</router-link>
+              <div v-if="title" class="h2 mb-3 d-flex d-md-none mt-2 font-weight-bold">{{title}}</div>
+              <div class="d-flex d-md-none mb-3">
+                <img class="img-fluid d-flex d-md-none" :src="images[1].url" alt />
+              </div>
+
+              <ul class="z-index-3 pl-0 mb-4 mt-4">
+                <router-link
+                  :to="{name:'MusicCharts'}"
+                  class="text-success font-weight-bold d-none d-md-flex"
+                >音樂情報</router-link>
+                <li
+                  class="text-dark align-items-center mb-2 h2 font-weight-bold mt-2 d-none d-md-flex"
+                  v-if="title"
+                >{{title}}</li>
+              </ul>
+              <p>排行榜計算說明：人氣排行榜計算方式：依照全體會員每日透過撥放軟體（含Web Player）播放歌曲的有效點播次數分類排序，當日顯示資料為前一日的統計結果。 有效點播次數：每位會員聽歌時，一首歌須聽完全曲，才計算為一次。</p>
+
+              <div class="row mt-5">
+                <div class="col-md-6 m-auto">
+                  <div class="d-flex mb-4">
+                    <CustomButton
+                      class
+                      customClass="btn-dark"
+                      text="全部試聽"
+                      @click.native="openTrack"
+                    ></CustomButton>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-md-6 justify-content-between">
-            <TrackItem
-              v-for="(track,index) in limit_tracks_second"
-              :key="track.id"
-              :track="track"
-              :index="index+paging.offset+limit_tracks_first.length"
-              class="border-bottom-none"
-              @playSong="playSong"
-            ></TrackItem>
+        </div>
+      </div>
+      <div class="row align-items-center mb-3">
+        <div class="col-md-6 text-center d-none d-md-flex">
+          <h5 class="font-weight-bold h5">排名</h5>
+        </div>
+        <div class="col-md-6 text-center d-block d-md-none mb-3">
+          <h3 class="font-weight-bold h3">排名</h3>
+        </div>
+        <div class="col-md-4 ml-auto">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="align-center" @click="getPrevTrack">
+              <i class="material-icons material-icons-middle text-secondary">keyboard_arrow_left</i>
+            </div>
+            <p class="text-secondary h6 text-center mx-3 w-50">顯示 {{limit_array}} 筆資料</p>
+            <div class="align-center" @click="getNextTrack">
+              <i class="material-icons material-icons-middle text-secondary">keyboard_arrow_right</i>
+            </div>
           </div>
+        </div>
+      </div>
+
+      <div
+        class="row pt-3 border-top pb-3 pb-md-5"
+        style="min-height:500px"
+        :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}"
+      >
+        <div class="col-md-6 justify-content-between">
+          <TrackItem
+            v-for="(track,index) in limit_tracks_first"
+            :key="track.id"
+            :track="track"
+            :index="index+paging.offset"
+            @playSong="playSong"
+          ></TrackItem>
+        </div>
+        <div class="col-md-6 justify-content-between">
+          <TrackItem
+            v-for="(track,index) in limit_tracks_second"
+            :key="track.id"
+            :track="track"
+            :index="index+paging.offset+limit_tracks_first.length"
+            class="border-bottom-none"
+            @playSong="playSong"
+          ></TrackItem>
         </div>
       </div>
     </div>
@@ -127,18 +138,26 @@ import { EventBus } from '@/eventBus/eventBus'
 import { getChartList } from '@/api/kkbox';
 import TrackItem from './TrackItem'
 import $ from 'jquery'
+import PlayListIframe from '@/components/Iframes/PlayListIframe';
+import SongIframe from '@/components/Iframes/SongIframe';
+import  CustomButton from '@/components/Button/CustomButton';
+import  HistoryBackButton from '@/components/Button/HistoryBackButton';
 export default {
   name:'MusicChartDetail',
   components:{
-    TrackItem
+    TrackItem,
+    SongIframe,
+    PlayListIframe,
+    CustomButton,
+    HistoryBackButton
   },
   data () {
     return {
       tracks:[],
       images:'',
-      songID:null,
+      songId:null,
       isOpen:false,
-      track_id:'5_8O4H1Dg7hHJZ5NQy',
+      trackId:'5_8O4H1Dg7hHJZ5NQy',
       autoplay:false,
       isChange:false,
       total:0,
@@ -175,11 +194,11 @@ export default {
       if (this.isOpen) {
         setTimeout(() => {
           this.isOpen = !this.isOpen
-          this.songID = null
+          this.songId = null
         }, 1000);
       }
       setTimeout(() => {
-        this.track_id = this.chart_id
+        this.trackId = this.chart_id
       }, 1500);      
       setTimeout(() => {
         this.resizeIframeHeight()
@@ -188,7 +207,7 @@ export default {
     },
     closeTrack (e) {
       $('#MusicModal').modal('hide')
-      this.track_id = '5_8O4H1Dg7hHJZ5NQy'  
+      this.trackId = '5_8O4H1Dg7hHJZ5NQy'  
     },
     resizeIframeHeight () {            
       let D = document
@@ -265,7 +284,7 @@ export default {
       this.getPagingApi(this.paging.next)            
     },
     playSong (id) {
-      this.songID =id
+      this.songId =id
       let playlist = document.querySelector('.playlist')
       playlist.style.position = 'fixed';
       this.checkOffset()

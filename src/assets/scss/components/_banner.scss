@@ -1,0 +1,93 @@
+.carousel-item-min-height {
+  height: 550px;
+}
+
+.carousel-item {
+  &:nth-of-type(1) {
+    background: linear-gradient(90deg, rgb(1, 48, 72) 0%, transparent 70%) right bottom/100% 100%,
+      asset('/img/band.jpg') center center/100% auto no-repeat;
+    background-size: cover;
+    filter: saturate(1.2);
+  }
+
+  &:nth-of-type(2) {
+    background: linear-gradient(90deg, rgb(7, 43, 80) 0%, transparent 70%) right bottom/100% 100%,
+      asset('/img/neon mask.jpg') center center/100% auto no-repeat;
+    background-size: cover;
+    filter: saturate(1.2);
+  }
+}
+
+.carousel-caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(0%, -50%);
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+
+  @media screen and (max-width: map-get($grid-breakpoints, 'sm')) {
+    top: 40%;
+  }
+}
+
+.banner {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  margin-top: -70px;
+  overflow: hidden;
+
+  .display-2 {
+    font-size: 4.5rem;
+  }
+
+  @media screen and (max-width: map-get($grid-breakpoints, 'sm')) {
+    height: 400px;
+
+    .display-1 {
+      font-size: 3rem;
+      line-height: 3rem;
+    }
+
+    .display-2 {
+      font-size: 2.5rem;
+    }
+
+    .h5 {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.carousel-control-icon {
+  img {
+    width: 30px;
+  }
+
+  &.rotate {
+    transform: rotate(180deg);
+  }
+}
+
+.carousel-control-icon {
+  width: 30px;
+  height: 50px;
+  background: asset('/img/arrow-new.svg') no-repeat;
+  background-size: contain;
+
+  @media screen and (max-width: map-get($grid-breakpoints, 'md')) {
+    width: 20px;
+    height: 40px;
+  }
+}
+
+.icon-rotate {
+  transform: rotate(180deg);
+}

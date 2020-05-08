@@ -36,8 +36,8 @@
       <div class="form-row justify-content-center">
         <div class="form-group col-md-3">
           <ValidationProvider name="country" rules="required" v-slot="{ classes,errors }">
-            <select class="form-control mb-2" v-model="countryIndex" :class="classes">
-              <option :value="null" selected disabled class="form-control">請選擇</option>
+            <select class="form-control   rounded-0 mb-2" v-model="countryIndex" :class="classes">
+              <option :value="null" selected disabled class="form-control ">請選擇</option>
               <option
                 v-for="(country,index) in postal"
                 :key="country.name"
@@ -50,7 +50,7 @@
         </div>
         <div class="form-group col-md-3">
           <ValidationProvider name="zone" rules="required" v-slot="{ classes,errors }">
-            <select class="form-control mb-2" v-model="areaIndex" :class="classes">
+            <select class="form-control  rounded-0 mb-2" v-model="areaIndex" :class="classes">
               <option :value="null" selected disabled>請選擇</option>
               <option v-for="(area,index) in areas" :key="index" :value="index">{{area.name}}</option>
             </select>
@@ -70,12 +70,12 @@
       </div>
     </div>
     <hr />
-    <div class="form-group">
+    <div class="form-group  rounded-0">
       <label for="comment"  class="text-secondary">留言</label>
       <textarea
         name
         id="comment"
-        class="form-control"
+        class="form-control rounded-0"
         cols="30"
         rows="5"
         v-model="userForm.message"

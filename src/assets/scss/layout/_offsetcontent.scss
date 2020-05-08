@@ -1,0 +1,35 @@
+.line {
+  display: block;
+  min-width: 60px;
+  height: 1px;
+}
+
+.img-half {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.offset-left {
+  position: absolute;
+  left: -80%;
+  z-index: 3;
+
+  @media (max-width: map-get($grid-breakpoints, 'sm')) {
+    position: relative;
+    left: 0%;
+  }
+}
+
+.grid-background {
+  background: white;
+  background-image: linear-gradient(rgba($secondary, 0.15) 1px, transparent 0),
+    linear-gradient(90deg, rgba($secondary, 0.15) 1px, transparent 0), linear-gradient(white 1px, transparent 0),
+    linear-gradient(90deg, white 1px, transparent 0);
+  background-size: 20px 20px, 20px 20px, 75px 75px, 75px 75px;
+
+  @media (max-width: map-get($grid-breakpoints, 'sm')) {
+    background: transparent;
+    background-image: none;
+  }
+}

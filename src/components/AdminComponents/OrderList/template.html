@@ -39,7 +39,7 @@
             {{order.is_paid?"已付款":"尚未付款"}}</br>
           <td class="text-center align-middle"><small>{{order.message}}</small></td>
           <td class="align-middle">
-            <button type="button" class="btn btn-primary btn-sm" @click="openModal(order)">編輯</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm" @click="openModal(order)">編輯</button>
           </td>
         </tr>
       </tbody>
@@ -110,7 +110,7 @@
                   </div>
                   <div class="form-group col-md-2">
                     <label for="" v-if="i===0">刪除</label>
-                    <button type="button" class="form-control btn btn-primary" @click="item.qty=0">刪除</button>
+                    <button type="button" class="form-control btn btn-danger" @click="item.qty=0">刪除</button>
                   </div>
                 </div>
               </div>
@@ -125,8 +125,9 @@
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="productId">付款方式</label>
-                    <select name="" id="" v-model="tempOrder.payment_method" class="custom-select mr-sm-2">
+                    <label for="payment">付款方式</label>
+                    <select name="payment" id="payment" v-model="tempOrder.payment_method"
+                      class="custom-select mr-sm-2 custom-select mr-sm-2 form-control">
                       <option value="credit_card">信用卡</option>
                       <option value="cod">貨到付款</option>
                     </select>

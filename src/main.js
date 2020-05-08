@@ -14,6 +14,7 @@ import VueMoment from 'vue-moment'
 import moment from 'moment-timezone'
 import datePicker from 'vue-bootstrap-datetimepicker';
 import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
+import VueCarousel from 'vue-carousel';
 import { EventBus } from '@/eventBus/eventBus'
 import Toasted from 'vue-toasted';
 import App from './App.vue'

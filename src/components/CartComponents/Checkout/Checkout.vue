@@ -1,16 +1,18 @@
 <template src="./template.vue"></template>
 <script>
-import { getOrderList, checkoutOrder } from "@/api/api";
-import { EventBus } from "@/eventBus/eventBus";
-import CartProgress from "../CartProgress/CartProgress";
-import CheckListItem from "./CheckListItem";
+import { getOrderList, checkoutOrder } from '@/api/api';
+import { EventBus } from '@/eventBus/eventBus';
+import CartProgress from '../CartProgress/CartProgress';
+import CheckListItem from './CheckListItem';
+import CustomButton from '@/components/Button/CustomButton';
 export default {
-  neme: "checkout",
+  neme: 'checkout',
   components: {
     CartProgress,
-    CheckListItem
+    CheckListItem,
+    CustomButton
   },
-  data() {
+  data () {
     return {
       order: {},
       user: {},
@@ -20,7 +22,7 @@ export default {
     };
   },
   methods: {
-    getOrderList() {
+    getOrderList () {
       this.$store.commit('loading/loading_status', true);
       getOrderList(this.orderId).then(res => {
         if (res.data.success) {
@@ -28,11 +30,11 @@ export default {
           this.user = res.data.order ? res.data.order.user : null;
           this.$store.commit('loading/loading_status', false);
         } else {
-          EventBus.emitHandler(false, "取得訂單失敗");
+          EventBus.emitHandler(false, '取得訂單失敗');
         }
       });
     },
-    checkoutOrder() {
+    checkoutOrder () {
       this.$store.commit('loading/loading_status', true);
       checkoutOrder(this.order.id)
         .then(res => {
@@ -49,14 +51,9 @@ export default {
         });
     }
   },
-  created() {
+  created () {
     this.orderId = this.$route.params.orderId;
     this.getOrderList();
   }
 };
 </script>
-<style lang="scss" scoped>
-a {
-  cursor: pointer;
-}
-</style>

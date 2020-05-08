@@ -1,16 +1,16 @@
 <template>
   <nav aria-label="Page navigation example">
-    <ul class="pagination d-flex justify-content-end">
-      <li class="page-item" :class="{'disabled':!pagination.has_pre}">
+    <ul class="pagination d-flex justify-content-center justify-content-md-end">
+      <li class="page-item" :class="{'disabled not-allowed':!pagination.has_pre}">
         <a
           class="page-link px-3"
           href="#"
           aria-label="Previous"
           @click="getPage(pagination.current_page - 1) "
-          :class="{'disabled':!pagination.has_pre}"
+          :class="{'disabled not-allowed':!pagination.has_pre}"
         >
           <span aria-hidden="true" :class="{'text-secondary':!pagination.has_next}">
-            <span class="material-icons pt-1">chevron_left</span>
+            <span class="material-icons material-icons-middle pt-1">chevron_left</span>
           </span>
           <span class="sr-only">Previous</span>
         </a>
@@ -24,16 +24,16 @@
       >
         <a class="page-link px-3" href="#">{{page}}</a>
       </li>
-      <li class="page-item" :class="{'disabled':!pagination.has_next}">
+      <li class="page-item" :class="{'disabled not-allowed':!pagination.has_next}">
         <a
           class="page-link px-3 align-middle"
           href="#"
           aria-label="Next"
-          :class="{'disabled':pagination.has_next}"
+          :class="{'disabled not-allowed':pagination.has_next}"
           @click="getPage(pagination.current_page + 1)"
         >
           <span aria-hidden="true">
-            <span class="material-icons pt-1">chevron_right</span>
+            <span class="material-icons material-icons-middle pt-1">chevron_right</span>
           </span>
           <span class="sr-only">Next</span>
         </a>

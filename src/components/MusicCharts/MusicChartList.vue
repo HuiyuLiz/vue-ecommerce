@@ -1,9 +1,9 @@
-<template>
+<template >
   <div class="container mt-5">
-    <h3
-      class="h3 text-dark font-weight-bold mb-5 pb-3 border-bottom"
+    <h1
+      class="pb-4 mb-5 font-weight-bold h3 text-dark text-left title-border-decoration title-border-dark"
       v-if="$route.name==='MusicChartList'&& charts.length > 0"
-    >熱門排行榜</h3>
+    >熱門排行榜</h1>
     <transition-group name="fade" mode="in-out" class="row">
       <component
         :is="currntComponent"
@@ -42,7 +42,7 @@ export default {
     limit_charts () {
       let charts=[]
       this.charts.map(function(chart,index) {
-        if(index < 6) {
+        if(index < 8) {
           charts.push(chart)
         }
       })
