@@ -24,7 +24,7 @@
       </div>
       <div class="carousel-item carousel-item-min-height">
         <div class="carousel-caption">
-          <h1 class="display-2 text-white text-left font-weight-bold">Best of EDM</h1>
+          <h1 class="display-2 text-white text-left font-weight-bold">電子單曲週榜</h1>
           <p class="text-muted mt-2 text-left">百大 DJ 最新單曲，豐富電子音樂打造你的音樂世界。</p>
           <div class="row">
             <div class="col-md-6 col-lg-3">

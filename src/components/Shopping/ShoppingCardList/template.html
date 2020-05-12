@@ -79,11 +79,11 @@
       <div class="col-md-10 mb-5 pb-5" style="min-height:650px">
         <div class="row" :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}">
           <div class="col-6 col-md-4 col-md-4" v-for="(product,index) in filterProducts" :key="product.title">
-            <ProductCardListItem :product="product" @selectProduct="selectProduct">
+            <ShoppingCardListItem :product="product" @selectProduct="selectProduct">
               <template slot="openModal">
                 <AddToCartButton @click.native.stop="openModal(product)"></AddToCartButton>
               </template>
-            </ProductCardListItem>
+            </ShoppingCardListItem>
           </div>
         </div>
       </div>

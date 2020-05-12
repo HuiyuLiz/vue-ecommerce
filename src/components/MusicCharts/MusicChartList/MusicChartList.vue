@@ -1,5 +1,5 @@
 <template >
-  <div class="container mt-5">
+  <div class="container mt-5 pb-5">
     <h1
       class="pb-4 mb-5 font-weight-bold h3 text-dark text-left title-border-decoration title-border-dark"
       v-if="$route.name==='MusicChartList'&& charts.length > 0"
@@ -19,16 +19,16 @@
 </template>
 
 <script>
-import MusicChartGrid from './MusicChartGrid'
-import MusicChartItem from './MusicChartItem'
+import MusicChartListItemNoGutter from './MusicChartListItemNoGutter'
+import MusicChartListItem from './MusicChartListItem'
 import { EventBus } from '@/eventBus/eventBus'
 import { getCharts } from '@/api/kkbox';
 import qs from 'querystring'
 export default {
   name: 'MusicChartList',
   components: {
-    MusicChartItem,
-    MusicChartGrid
+    MusicChartListItem,
+    MusicChartListItemNoGutter
   },
   data () {
     return {
@@ -51,9 +51,9 @@ export default {
     currntComponent () {
       if (this.$route.name === 'home') {
         this.charts = this.limit_charts
-        return MusicChartGrid
+        return MusicChartListItemNoGutter
       } else {
-        return MusicChartItem
+        return MusicChartListItem
       }
     }
   },

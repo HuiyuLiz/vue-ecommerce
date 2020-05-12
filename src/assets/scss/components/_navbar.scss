@@ -28,7 +28,7 @@
     background: white;
   }
 
-  + .bar {
+  +.bar {
     transition: all 0.15s ease;
 
     &.active {
@@ -51,9 +51,10 @@
 }
 
 .navbar {
+
   .nav-logo,
-  .cart-icon > .material-icons,
-  .nav-link > .material-icons {
+  .cart-icon>.material-icons,
+  .nav-link>.material-icons {
     color: white;
     font-weight: 700;
 
@@ -81,6 +82,7 @@
   }
 
   &.scrolled {
+
     .nav-link,
     .nav-item {
       transition: all 0.5s ease-in;
@@ -163,8 +165,8 @@
     height: 6px;
     border-radius: 6px;
     position: absolute;
-    right: -2px;
-    top: -1px;
+    right: -4px;
+    top: 1px;
     background-color: $success;
     display: block;
   }

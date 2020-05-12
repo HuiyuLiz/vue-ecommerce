@@ -43,7 +43,7 @@
               <div class="flex-grow-1 pr-2 d-none d-md-block">
                 <div class="line bg-light mb-2 opacity-75"></div>
               </div>
-              <div class="h5 text-light font-weight-bold opacity-75">KEEP TO UP DATE</div>
+              <div class="h5 text-light font-weight-bold opacity-75">Hot Topic</div>
             </div>
             <div class="p-md-5 bg-white">
               <router-link
@@ -109,23 +109,23 @@
         :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}"
       >
         <div class="col-md-6 justify-content-between">
-          <TrackItem
+          <MusicTrackItem
             v-for="(track,index) in limit_tracks_first"
             :key="track.id"
             :track="track"
             :index="index+paging.offset"
             @playSong="playSong"
-          ></TrackItem>
+          ></MusicTrackItem>
         </div>
         <div class="col-md-6 justify-content-between">
-          <TrackItem
+          <MusicTrackItem
             v-for="(track,index) in limit_tracks_second"
             :key="track.id"
             :track="track"
             :index="index+paging.offset+limit_tracks_first.length"
             class="border-bottom-none"
             @playSong="playSong"
-          ></TrackItem>
+          ></MusicTrackItem>
         </div>
       </div>
     </div>
@@ -136,7 +136,7 @@
 <script>
 import { EventBus } from '@/eventBus/eventBus'
 import { getChartList } from '@/api/kkbox';
-import TrackItem from './TrackItem'
+import MusicTrackItem from './MusicTrackItem'
 import $ from 'jquery'
 import PlayListIframe from '@/components/Iframes/PlayListIframe';
 import SongIframe from '@/components/Iframes/SongIframe';
@@ -145,7 +145,7 @@ import  HistoryBackButton from '@/components/Button/HistoryBackButton';
 export default {
   name:'MusicChartDetail',
   components:{
-    TrackItem,
+    MusicTrackItem,
     SongIframe,
     PlayListIframe,
     CustomButton,

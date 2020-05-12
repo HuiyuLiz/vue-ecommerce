@@ -1,3 +1,15 @@
+.before-enter {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease-in;
+  transition-delay: 0.5s;
+}
+
+.enter {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.25s;
@@ -6,8 +18,7 @@
 .fade-enter,
 .fade-leave-to
 
-/* .fade-leave-active below version 2.1.8 */
-  {
+/* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 
@@ -22,8 +33,7 @@
 .slide-fade-enter,
 .slide-fade-leave-to
 
-/* .slide-fade-leave-active for below version 2.1.8 */
-  {
+/* .slide-fade-leave-active for below version 2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
 }

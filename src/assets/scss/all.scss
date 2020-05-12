@@ -30,7 +30,9 @@ html {
 }
 
 body {
-  font-family: 'Lato', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-family: 'Lato', 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Sans-Serif !important;
+  letter-spacing: 1.25px;
+  font-weight: 700;
   margin-bottom: $footer-height;
   background-color: white;
 }
@@ -54,7 +56,7 @@ input::placeholder {
 }
 
 .min-height {
-  height: calc(100vh - 200px);
+  min-height: calc(100vh - 200px);
 }
 
 .form-control-lg {
@@ -62,8 +64,8 @@ input::placeholder {
 }
 
 .form-control:focus {
-  border-color: rgba($color: $success, $alpha: 0.75);
-  box-shadow: 0 0 0 0.2rem rgba($color: $success, $alpha: 0.25);
+  border-color: rgba($color: $secondary, $alpha: 0.75);
+  box-shadow: 0 0 0 0.2rem rgba($color: $secondary, $alpha: 0.25);
 }
 
 .title-font {

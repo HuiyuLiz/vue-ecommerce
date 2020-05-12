@@ -20,7 +20,7 @@
 <script>
 import  CustomButton from '@/components/Button/CustomButton';
 export default {
-  name:'MusicChartGrid',
+  name:'MusicChartListItemNoGutter',
   components:{
     CustomButton
   },

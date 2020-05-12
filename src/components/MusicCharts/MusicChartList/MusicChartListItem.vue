@@ -13,7 +13,7 @@
     </div>
     <div class="d-flex flex-column text-center">
       <a
-        class="mb-1 font-weight-bold"
+        class="mb-1 font-weight-bold h5"
         @click="goTochart(chart.title,chart.id)"
         style="cursor:pointer"
       >{{chart.title}}</a>
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name:'MusicChartItem',
+  name:'MusicChartListItem',
   props:{
     chart:{
       type:Object,

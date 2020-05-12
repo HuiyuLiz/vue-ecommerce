@@ -31,16 +31,16 @@
               class="text-secondary">{{product.category}}</router-link>
           </li>
           <li class="text-dark mb-3">
-            <h1 class="h2">{{album}}</h1>
+            <h1 class="h2 font-weight-bold text-secondary">{{album}}</h1>
           </li>
           <div class="h-100 w-100 d-flex d-md-none">
             <img class="img-fluid" :src="product.imageUrl" :alt="product.title" />
           </div>
           <li class="text-secondary border-bottom mt-4 mt-md-5 h6 pb-2 d-flex align-items-start">
-            <span>建議售價</span>
+            <span class="font-weight-bold">建議售價</span>
             <div class="text-success pb-1 ml-3 d-flex align-items-center">
               <i class="material-icons pr-1">monetization_on</i>
-              <span>全館免運</span>
+              <span class="font-weight-bold">全館免運</span>
             </div>
           </li>
           <li class="my-3 border-bottom pb-3" v-if="product.price">

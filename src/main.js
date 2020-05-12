@@ -20,6 +20,7 @@ import Toasted from 'vue-toasted';
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import scrollanimation from './directives/scrollanimation'
 
 Vue.use(require('vue-moment'))
 Vue.config.productionTip = false
@@ -31,6 +32,8 @@ Vue.component('Loading', Loading)
 Vue.filter('currency', currency)
 Vue.filter('dateFormat', dateFormat)
 Vue.filter('trackDuration', trackDuration)
+
+Vue.directive('scrollanimation', scrollanimation)
 Vue.use(Toasted, {
   router
 });

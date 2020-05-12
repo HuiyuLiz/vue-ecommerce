@@ -43,11 +43,11 @@ export default new Router({
         {
           path: '',
           name: 'MusicChartList',
-          component: () => import(/* webpackChunkName: "MusicChartDetail" */ './components/MusicCharts/MusicChartList.vue'),
+          component: () => import(/* webpackChunkName: "MusicChartList" */ './components/MusicCharts/MusicChartList/MusicChartList.vue'),
         }, {
           path: ':chart_title',
           name: 'MusicChartDetail',
-          component: () => import(/* webpackChunkName: "MusicChartDetail" */ './components/MusicCharts/MusicChartDetail.vue'),
+          component: () => import(/* webpackChunkName: "MusicChartDetail" */ './components/MusicCharts/MusicChartDetail/MusicChartDetail.vue'),
         }
       ]
     },
@@ -134,17 +134,17 @@ export default new Router({
         {
           path: 'shopping_List/:category/:page',
           name: 'shopping_List',
-          component: () => import(/* webpackChunkName: "ProductCardList" */ './components/Shopping/ProductCardList/ProductCardList.vue'),
+          component: () => import(/* webpackChunkName: "ShoppingCardList" */ './components/Shopping/ShoppingCardList/ShoppingCardList.vue'),
         },
         {
           path: 'shopping_List/:category/:id',
           name: 'shopping_product',
-          component: () => import(/* webpackChunkName: "ProductDetail" */ './components/Shopping/ProductDetail/ProductDetail.vue'),
+          component: () => import(/* webpackChunkName: "ShoppingDetail" */ './components/Shopping/ShoppingDetail/ShoppingDetail.vue'),
         },
         {
           path: '*',
           redirect: '/shopping_List/all/1',
-          component: () => import(/* webpackChunkName: "ProductDetail" */ './components/Shopping/ProductDetail/ProductDetail.vue'),
+          component: () => import(/* webpackChunkName: "ShoppingDetail" */ './components/Shopping/ShoppingDetail/ShoppingDetail.vue'),
         }
       ]
     }, {
