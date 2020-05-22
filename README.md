@@ -12,7 +12,7 @@
 
 ### 點選播放單曲  
 ![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/captureimg/chartplaysong.png)  
-榜單透過 Api 從 1-100 名做切分，音樂撥放介面顯示網頁底部，可同時瀏覽頁面並進行不同的單曲撥放。
+榜單排名透過 KKBOX Open API 可從 1-100 名做切分顯示，音樂撥放介面顯示網頁底部，可同時瀏覽頁面並進行不同的單曲撥放。
     
 ### 點選播放全部歌單  
 ![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/captureimg/fullplaymodal.png)  
