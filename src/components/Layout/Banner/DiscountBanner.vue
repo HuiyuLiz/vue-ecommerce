@@ -14,14 +14,20 @@
         </div>
         <div class="col-md-6">
           <div class="pb-5 py-md-5 my-md-5 d-flex flex-column align-items-center">
-            <p class="text-success font-weight-bold h5">
-              購物輸入
-              <span
-                class="border-2 border-success px-3 text-success title-font mr-4 h5 font-weight-bold"
-              >happy99</span>
-              享
-              <span class="display-3 font-weight-bold title-font">9</span> 折優惠
-            </p>
+            <div
+              class="text-success font-weight-bold h5 d-flex flex-column flex-md-row align-items-center align-items-md-baseline justify-content-center"
+            >
+              <div class="mb-3 mb-md-0">
+                購物輸入
+                <span
+                  class="border-2 border-success px-3 text-success title-font mr-md-4 h5 font-weight-bold"
+                >happy99</span>
+              </div>
+              <div>
+                享
+                <span class="display-3 font-weight-bold title-font">9</span> 折優惠
+              </div>
+            </div>
             <p class="font-weight-bold text-success h5 title-font">4/30 - 9/9</p>
           </div>
         </div>
