@@ -1,7 +1,5 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/vue-ecommerce/'
-    : '/',
+  publicPath: './',
   devServer: {
     proxy: {
       '/token': {

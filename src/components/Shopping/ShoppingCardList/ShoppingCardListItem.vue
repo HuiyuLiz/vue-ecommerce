@@ -10,8 +10,8 @@
         @click.prevent="selectProduct(product.id,product.category)"
         style="cursor:pointer"
       >
-        <div class="mb-1">{{singer}}</div>
-        <h6 class="card-title mb-0 font-weight-bold">{{album}}</h6>
+        <p class="mb-0">{{singer}}</p>
+        <div class="card-title mb-0 font-weight-bold h5">{{album}}</div>
       </div>
       <div class="d-flex text-center pb-3 mt-3">
         <div class="d-flex justify-content-center text-center w-100">

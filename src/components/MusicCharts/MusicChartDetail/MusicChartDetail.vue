@@ -37,7 +37,7 @@
         <div
           class="col-md-12 mr-auto background-cover d-none d-md-flex flex-md-column justify-content-center align-items-left overflow-hidden"
         ></div>
-        <div class="col-md-8 m-auto">
+        <div class="col-md-8 m-auto" v-scrollanimation>
           <div class>
             <div class="d-none d-md-flex align-items-center">
               <div class="flex-grow-1 pr-2 d-none d-md-block">
@@ -83,7 +83,7 @@
           </div>
         </div>
       </div>
-      <div class="row align-items-center mb-3">
+      <div class="row align-items-center mb-3" v-scrollanimation>
         <div class="col-md-6 text-center d-none d-md-flex">
           <h5 class="font-weight-bold h5">排名</h5>
         </div>
@@ -104,8 +104,7 @@
       </div>
 
       <div
-        class="row pt-3 border-top pb-3 pb-md-5"
-        style="min-height:500px"
+        class="row pt-3 border-top pb-3 pb-md-5 min-height"
         :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}"
       >
         <div class="col-md-6 justify-content-between">
@@ -161,10 +160,7 @@ export default {
       autoplay:false,
       isChange:false,
       total:0,
-      paging:{
-
-      },
-      currentLength:history.length,
+      paging:{ },
     }
   },
   computed: {
@@ -175,7 +171,7 @@ export default {
       return this.tracks.filter((track,index)=> index >=this.tracks.length / 2 && index <= this.tracks.length)
     },
     kkbox_token () {
-      return this.$store.getters.kkbox_token
+      return this.$store.getters['kkbox/kkbox_token']
     },
     chart_id () { 
       return this.$route.query.chart_id
@@ -224,12 +220,11 @@ export default {
       }
     },
     async getToken () {
-      await this.$store.dispatch('GET_KKBOX_TOKEN')
+      await this.$store.dispatch('kkbox/GET_KKBOX_TOKEN')
       await this.getChartList()
     },
     getPagingApi (paging) {
       let config = {
-        withCredentials: false,
         headers:{
           Authorization: `${this.kkbox_token}`
         }
@@ -255,7 +250,6 @@ export default {
     getChartList () {
       this.$store.commit('loading/loading_status', true);
       let config = {
-        withCredentials: false,
         headers:{
           Authorization: `${this.kkbox_token}`
         }

@@ -22,6 +22,8 @@
 @import './components/_nav-tabs';
 @import './components/_card';
 @import './components/_banner';
+@import './components/_discountbanner';
+@import './components/_modal';
 
 html {
   min-height: 100%;
@@ -30,7 +32,7 @@ html {
 }
 
 body {
-  font-family: 'Lato', 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Sans-Serif !important;
+  font-family: 'Lato', 'PingFang TC', 'Microsoft JhengHei', Sans-Serif !important;
   letter-spacing: 1.25px;
   font-weight: 700;
   margin-bottom: $footer-height;
@@ -43,7 +45,8 @@ li {
 
 p {
   line-height: 1.75rem;
-  font-family: '微軟正黑體';
+  font-size: 0.95rem;
+  font-family: 'Microsoft JhengHei';
 }
 
 a:hover {
@@ -73,16 +76,18 @@ input::placeholder {
   letter-spacing: 0.15rem;
 }
 
+.border {
+  @media (max-width: map-get($grid-breakpoints, 'md')) {
+    border: none !important;
+  }
+}
+
 .border-2 {
   border: 2px solid;
 }
 
 .border-dark-bottom {
   border-bottom: 1px solid rgba($color: $secondary, $alpha: 0.5) !important;
-}
-
-.nav-link {
-  letter-spacing: 0.15rem;
 }
 
 .container-fluid {
@@ -185,7 +190,7 @@ input[type='file'] {
   width: 100%;
   height: 250px;
 
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: map-get($grid-breakpoints, 'md')) {
     height: 150px;
   }
 }
@@ -313,23 +318,6 @@ span.material-icons.btn-delete {
 
 .z-index-3 {
   z-index: 3;
-}
-
-.modal {
-  z-index: 2000;
-}
-
-.modal.show .modal-dialog.modal-dialog-center {
-  -webkit-transform: none;
-  transform: none;
-  position: absolute;
-  width: 100%;
-  height: max-content;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
 }
 
 .pointer {

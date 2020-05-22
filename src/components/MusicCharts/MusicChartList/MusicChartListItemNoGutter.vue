@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import  CustomButton from '@/components/Button/CustomButton';
+import CustomButton from '@/components/Button/CustomButton';
 export default {
   name:'MusicChartListItemNoGutter',
   components:{

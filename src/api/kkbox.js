@@ -1,10 +1,9 @@
 import axios from 'axios'
-
 let api = 'https://api.kkbox.com/v1.1/'
 
 const apiRequest = axios.create({
   baseURL: api,
-  withCredentials: false,
+  withCredentials: false
 })
 
 

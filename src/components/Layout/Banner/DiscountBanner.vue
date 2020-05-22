@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="background-cover h-75 w-100 mb-5"
-    style="background-image:url('https://images.unsplash.com/photo-1453090927415-5f45085b65c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1931&q=80')"
-  >
+  <div class="background-cover h-75 w-100 mb-5 discount-banner">
     <div class="container">
       <div class="d-flex flex-column flex-md-row">
         <div class="col-md-6 d-flex align-items-center">

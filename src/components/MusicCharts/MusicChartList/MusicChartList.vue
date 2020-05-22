@@ -2,12 +2,13 @@
   <div class="container mt-5 pb-5">
     <h1
       class="pb-4 mb-5 font-weight-bold h3 text-dark text-left title-border-decoration title-border-dark"
-      v-if="$route.name==='MusicChartList'&& charts.length > 0"
-    >熱門排行榜</h1>
-    <transition-group name="fade" mode="in-out" class="row">
+      v-if="$route.name !== 'home'"
+      v-scrollanimation
+    >{{totalCharts.length>0?"熱門排行榜":"資料串聯中..."}}</h1>
+    <transition-group name="fade" mode="in-out" class="row" v-scrollanimation data-delay="1.5s">
       <component
         :is="currntComponent"
-        v-for="(chart,index) in charts"
+        v-for="(chart,index) in totalCharts"
         :key="chart.id"
         :chart="chart"
         :formatTime="chart.updated_at"
@@ -22,8 +23,6 @@
 import MusicChartListItemNoGutter from './MusicChartListItemNoGutter'
 import MusicChartListItem from './MusicChartListItem'
 import { EventBus } from '@/eventBus/eventBus'
-import { getCharts } from '@/api/kkbox';
-import qs from 'querystring'
 export default {
   name: 'MusicChartList',
   components: {
@@ -32,25 +31,25 @@ export default {
   },
   data () {
     return {
-      charts:[],
+      charts:[]
     }
   },
   computed: {
     kkbox_token () {
-      return this.$store.getters.kkbox_token
+      return this.$store.getters['kkbox/kkbox_token']
     },
     limit_charts () {
-      let charts=[]
-      this.charts.map(function(chart,index) {
-        if(index < 8) {
-          charts.push(chart)
-        }
-      })
-      return charts
+      return this.$store.getters['kkbox/limit_charts']
+    },
+    totalCharts() {       
+       if (this.$route.name === 'home') {
+        return this.limit_charts
+      } else {
+        return this.$store.state.kkbox.charts
+      }   
     },
     currntComponent () {
       if (this.$route.name === 'home') {
-        this.charts = this.limit_charts
         return MusicChartListItemNoGutter
       } else {
         return MusicChartListItem
@@ -59,30 +58,7 @@ export default {
   },
   methods: {
     async getToken () {
-      await this.$store.dispatch('GET_KKBOX_TOKEN')
-      await this.getCharts()
-    },
-    getCharts () {
-      this.$store.commit('loading/loading_status', true);
-      let config = {
-        withCredentials: false,
-        headers:{
-          Authorization: `${this.kkbox_token}`
-        }
-      }
-      getCharts(config)
-        .then(res => {
-          this.$store.commit('loading/loading_status', false);
-          if(res.data) {
-            res.data ? this.charts = res.data.data : this.charts = []
-          } else {
-            EventBus.emitHandler(false, '取得資料錯誤')
-          }
-        })
-        .catch(error => {
-          EventBus.emitHandler(false, '取得資料錯誤')
-          console.error(error)
-        })
+      await this.$store.dispatch('kkbox/GET_KKBOX_TOKEN')
     },
     goTochart ({title,id}) {
       this.$router.push({ name: 'MusicChartDetail', params: { chart_title: title },query:{chart_id: id } }).catch((error)=>{
@@ -91,7 +67,7 @@ export default {
     }
   },
   created () {
-    this.getToken()         
+    this.getToken()      
   },
 }
 </script>

@@ -22,25 +22,11 @@ export default {
   },
   computed: {
     ...mapState('loading', ['isLoading'])
-  },
-  data () {
-    return {
-      
-    }
-  },
-  methods: {
-    async getToken () {
-      await this.$store.dispatch('GET_KKBOX_TOKEN')
-    }
-  },
-  created () {
-    this.getToken()
-  },
- 
+  }
 };
 </script>
 
 <style lang="scss">
-@import 'assets/scss/all';
+@import './assets/scss/all';
 </style>
 

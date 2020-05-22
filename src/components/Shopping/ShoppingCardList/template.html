@@ -5,7 +5,7 @@
     <div class="modal fade bd-example-modal-lg" id="addCartModal" tabindex="-1" role="dialog"
       aria-labelledby="addCartModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content rounded-0" style="backdrop-filter: blur(10px);background-color:#ffffffbf">
+        <div class="modal-content rounded-0 modal-bg-blur">
           <div class="modal-body my-0 my-lg-3">
             <div class="d-flex flex-column flex-lg-row rounded-0 align-items-between">
               <div class="col-lg-6">
@@ -21,7 +21,7 @@
                 <div class="card-body px-0 py-0 d-flex flex-column align-items-start justify-content-start h-100">
                   <div class="d-flex justify-content-between w-100 align-items-start">
                     <div>
-                      <h4 class="" v-if="currentProduct.title">{{currentProduct.title.trim().split('/')[0]}}</h4>
+                      <h4 class="h6" v-if="currentProduct.title">{{currentProduct.title.trim().split('/')[0]}}</h4>
                       <h4 class="card-title mb-0 font-weight-bold h4" v-if="currentProduct.title">
                         {{currentProduct.title.trim().split('/')[1]}}
                       </h4>
@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-    <p class="font-weight-bold font-weight-bold">專輯分類</p>
+    <div class="font-weight-bold font-weight-bold h6">專輯分類</div>
     <hr>
     <div class="row mt-5">
       <div class="col-md-2">
@@ -76,7 +76,7 @@
           </router-link>
         </div>
       </div>
-      <div class="col-md-10 mb-5 pb-5" style="min-height:650px">
+      <div class="col-md-10 mb-5 pb-5 min-height">
         <div class="row" :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}">
           <div class="col-6 col-md-4 col-md-4" v-for="(product,index) in filterProducts" :key="product.title">
             <ShoppingCardListItem :product="product" @selectProduct="selectProduct">

@@ -8,9 +8,4 @@ export default {
       state.isLoading = payload
     }
   }
-  // actions: {
-  //   ASYNC_LOADING: ({ commit }, payload) => {
-  //     commit('loading_status', payload)
-  //   }
-  // }
 }

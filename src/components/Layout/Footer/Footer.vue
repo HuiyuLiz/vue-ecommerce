@@ -9,10 +9,13 @@
           <small class="text-light">© 2020 Geyao Sandwich | All rights reserved.</small>
         </div>
         <div class="col-md-4 d-none d-md-flex justify-content-center">
-          <span class="h6 text-light font-weight-bold">About</span>
+          <a
+            class="h6 text-light font-weight-bold"
+            href="https://github.com/HuiyuLiz/vue-ecommerce"
+          >About</a>
         </div>
         <div class="col-md-4 d-none d-md-flex justify-content-center">
-          <span class="h6 text-light font-weight-bold">GitHub</span>
+          <a class="h6 text-light font-weight-bold" href="https://github.com/HuiyuLiz">GitHub</a>
         </div>
       </div>
     </div>

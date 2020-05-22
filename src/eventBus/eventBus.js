@@ -21,15 +21,15 @@ export const EventBus = new Vue({
       });
     },
     onHandler(isSuccess, message, type) {
-      this.$on("responseStatus", (isSuccess, message, type) => {
+      this.$on('responseStatus', (isSuccess, message, type) => {
         this.toastOpen(isSuccess, message, type);
       });
     },
     emitHandler(isSuccess, res) {
-      this.$emit("responseStatus", isSuccess, res);
+      this.$emit('responseStatus', isSuccess, res);
     },
     offHandler() {
-      this.$off("responseStatus")
+      this.$off('responseStatus')
     }
   },
 })

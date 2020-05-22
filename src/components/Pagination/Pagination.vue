@@ -58,11 +58,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-.page-link:focus {
-  z-index: 2;
-  outline: 0;
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-}
-</style>

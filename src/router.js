@@ -5,7 +5,7 @@ import Header from './components/Layout/Header/Header'
 import Footer from './components/Layout/Footer/Footer'
 Vue.use(Router)
 
-const originalPush = Router.prototype.push;
+const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 };

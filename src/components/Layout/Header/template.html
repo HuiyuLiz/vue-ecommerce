@@ -41,7 +41,7 @@
               keyboard_arrow_down
             </span></a>
           <div class="dropdown-menu text-center blur mt-0" aria-labelledby="dropdownMenuButton"
-            style="transform: translateY(2px)">
+            style="transform: translateY(2.75px)">
             <div>
               <router-link :to="{name:'shopping_List',params: { category:'all' ,page: 1 }}"
                 class="dropdown-item py-3 h6">
@@ -72,7 +72,7 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item font-weight-bold">
-          <router-link :to="{name:'admin'}" class="nav-link px-3">後臺管理
+          <router-link :to="{name:'admin'}" class="nav-link px-3">登入
           </router-link>
         </li>
         <li class="nav-item font-weight-bold d-none d-md-block" @click="isToggle=!isToggle">
@@ -93,7 +93,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right dropdown-menu-min-width px-3 blur mt-0 py-4"
             aria-labelledby="cartDropdown">
-            <table class="table">
+            <table class="table" v-if="carts.length>0">
               <thead>
                 <th class="text-secondary">商品名稱</th>
                 <th class="text-secondary">數量</th>
@@ -120,7 +120,7 @@
                 </tr>
               </tbody>
             </table>
-
+            <h4 class="text-secondary text-center py-4" v-else>尚未選購專輯喔!</h4>
             <router-link :to="{name:'cart'}" class="btn btn-dark btn-block py-3 w-50 float-right rounded-0 pointer"
               href="#">
               前往結帳</router-link>

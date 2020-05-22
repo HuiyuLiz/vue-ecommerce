@@ -37,7 +37,6 @@ Vue.directive('scrollanimation', scrollanimation)
 Vue.use(Toasted, {
   router
 });
-axios.defaults.withCredentials = true
 
 new Vue({
   i18n,

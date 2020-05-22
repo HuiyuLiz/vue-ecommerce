@@ -1,0 +1,21 @@
+.modal {
+  z-index: 2000;
+}
+
+.modal.show .modal-dialog.modal-dialog-center {
+  -webkit-transform: none;
+  transform: none;
+  position: absolute;
+  width: 100%;
+  height: max-content;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.modal-bg-blur {
+  backdrop-filter: blur(10px);
+  background-color: #ffffffbf;
+}
