@@ -31,10 +31,6 @@
   padding-bottom: 20px;
   color: #fff;
   text-align: center;
-
-  @media screen and (max-width: map-get($grid-breakpoints, 'sm')) {
-    top: 40%;
-  }
 }
 
 .banner {
@@ -49,8 +45,6 @@
   }
 
   @media screen and (max-width: map-get($grid-breakpoints, 'sm')) {
-    height: 400px;
-
     .display-1 {
       font-size: 3rem;
       line-height: 3rem;
