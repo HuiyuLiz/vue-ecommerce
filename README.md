@@ -41,7 +41,8 @@
 
 ![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/captureimg/shopping.png)  
 
-## 購物車頁面 - 確認商品➞填寫資料➞完成訂購  
+## 購物車頁面 - 模擬結帳程序  
+### 確認商品    
 
 使用者選購完畢後，點選上方 Navbar 購物車前往結帳至購物車頁面，可以選擇繼續購物或刪減專輯；另外填入優惠代碼得到折扣，購物代碼顯示在上面促銷 Banner 資訊。
 
