@@ -2,7 +2,7 @@
 ![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/captureimg/halfpage.png)  
 
 ## 專案說明  
-  使用 Vue.js 打造線上的音樂平台，含線上購物、模擬結帳功能及會員後台管理頁面 ，另外串接 KKBOX Open API，可即時獲取最新歌曲排行榜，內嵌 Widget 音樂撥放小差件，可在網頁上連結歌單直接撥放音樂。版型部分使用了 Bootstrap 應用在響應式的網頁設計，設計參考了 Behance、Pinterest 和一些已上線的購物網站。  
+  使用 Vue.js 打造線上虛擬音樂平台，含線上購物、模擬結帳功能及會員後台管理頁面 ，另外串接 KKBOX Open API，可即時獲取最新歌曲排行榜，內嵌 Widget 音樂撥放小差件，可在網頁上連結歌單直接撥放音樂。版型部分使用了 Bootstrap 應用在響應式的網頁設計，設計參考了 Behance、Pinterest 和一些已上線的購物網站。  
   
   此為個人網站練習，不做任何商業應用。 
   
@@ -13,7 +13,7 @@
 *  Bootstrap
   
 ## 音樂情報 - 藉由串接 KKBOX Open API 來顯示各種類型的音樂榜單  
-  透過申請 KKBOX 開發者網站建立帳號，透用呼叫 API 來獲得 Access Token，即可取得歌手、專輯、歌曲、排行榜等資訊，打造需要的應用介面；該頁面呈現各個即時熱門榜單。
+  透過申請 KKBOX 開發者網站，建立帳號後呼叫 API 來獲得 Access Token，即可取得歌手、專輯、歌曲、排行榜等資訊，打造需要的應用介面；該頁面呈現各個即時熱門榜單。
   
 ![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/captureimg/halfchart.png)  
 
@@ -42,25 +42,25 @@
 ![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/captureimg/shopping.png)  
 
 ## 購物車頁面 - 模擬結帳程序  
-### 確認商品    
+### Step 1.確認商品    
 
-使用者選購完畢後，點選上方 Navbar 購物車前往結帳至購物車頁面，可以選擇繼續購物或刪減專輯；另外填入優惠代碼得到折扣，購物代碼顯示在上面促銷 Banner 資訊。
+使用者選購完畢後，點選上方 Navbar 購物車前往結帳至購物車頁面，可以選擇繼續購物或刪除不需要的專輯；另外填入優惠代碼得到折扣，購物代碼顯示在上面促銷 Banner 資訊。
 
 ![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/captureimg/cart.png)
 
-### 填寫資料    
+### Step 2.填寫資料    
 
-表單驗證採用了 vee-validate 套件和 Bootstrap 的表單驗證做搭配使用。
+表單驗證採用了 VeeValidate 套件和 Bootstrap 的表單驗證做搭配使用。
 
-![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/captureimg/cart.png) 
+![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/captureimg/validation.png) 
 
-### 完成訂購    
+### Step 3.完成訂購    
 
 訂購完成後，將顯示模擬訂購頁面。
 
 ![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/captureimg/checkout.png) 
 
-## 後臺管理 - 商品列表、訂單列表、優惠券  
+## 後臺管理 - 產品列表、訂單列表、優惠券  
 
 需透過登入才能進到後台管理，後臺可編輯和更新產品以及優惠券資訊，另外可讀取目前訂單的狀態。
 
