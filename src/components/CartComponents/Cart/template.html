@@ -33,7 +33,7 @@
               </div>
               <div class="input-group mb-3 input-group-sm">
                 <input type="text" class="form-control form-control-lg rounded-0" placeholder="請輸入優惠碼"
-                  v-model="coupon" />
+                  v-model.trim="coupon" />
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary rounded-0" type="button" @click="useCoupon">套用優惠碼</button>
                 </div>

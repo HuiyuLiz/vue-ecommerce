@@ -95,7 +95,7 @@
             <div class="align-center" @click="getPrevTrack">
               <i class="material-icons material-icons-middle text-secondary">keyboard_arrow_left</i>
             </div>
-            <p class="text-secondary h6 text-center mx-3 w-50">顯示 {{limit_array}} 筆資料</p>
+            <p class="text-secondary h6 text-center mx-3 w-50">第 {{limit_array}} 名次</p>
             <div class="align-center" @click="getNextTrack">
               <i class="material-icons material-icons-middle text-secondary">keyboard_arrow_right</i>
             </div>

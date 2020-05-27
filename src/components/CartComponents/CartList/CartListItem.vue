@@ -20,7 +20,7 @@
       </div>
       <div class="d-flex flex-column">
         <span class="mb-3 text-secondary">{{item.final_total|currency}}</span>
-        <del class="text-muted">{{item.product.origin_price|currency}}</del>
+        <del class="text-muted">{{item.product.origin_price*item.qty|currency}}</del>
       </div>
     </td>
   </tr>

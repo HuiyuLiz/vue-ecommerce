@@ -29,14 +29,16 @@ html {
   min-height: 100%;
   position: relative;
   font-size: 14.5px;
+
+  @media (max-width: map-get($grid-breakpoints, 'md')) {
+    font-size: 16px;
+  }
 }
 
 body {
   font-family: 'Lato', 'PingFang TC', 'Microsoft JhengHei', Sans-Serif !important;
   letter-spacing: 1.25px;
-  font-weight: 700;
   margin-bottom: $footer-height;
-  background-color: white;
 }
 
 li {
@@ -249,11 +251,9 @@ input[type='file'] {
   left: 0;
   top: 0px;
   width: 60px;
-  height: 58px;
+  height: 60px;
   display: block;
   background-color: $dark;
-  width: 60px;
-  height: 58px;
   left: 0;
 
   &::after {

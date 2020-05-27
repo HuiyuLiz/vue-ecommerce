@@ -4,7 +4,7 @@
       class="pb-4 mb-5 font-weight-bold h3 text-dark text-left title-border-decoration title-border-dark"
       v-if="$route.name !== 'home'"
       v-scrollanimation
-    >{{totalCharts.length>0?"熱門排行榜":"資料串聯中..."}}</h1>
+    >{{totalCharts.length>0?"熱門排行榜":"Loading..."}}</h1>
     <transition-group name="fade" mode="in-out" class="row" v-scrollanimation data-delay="1.5s">
       <component
         :is="currntComponent"

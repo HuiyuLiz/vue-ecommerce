@@ -1,23 +1,23 @@
 <template>
   <div class="media mb-3 border-bottom align-items-center pb-3">
     <div class="col-2 col-md-3 p-0 d-flex align-items-center mr-auto">
-      <span class="h4 mb-2 font-weight-bold mr-4 font-weight-bold">{{index+1}}.</span>
+      <span class="h4 mb-2 font-weight-bold mr-4 font-weight-bold d-none d-md-flex">{{index+1}}.</span>
       <img
         class="img-fluid d-none d-md-block w-50"
         :src="track.album.images[0].url"
         :alt="track.name"
       />
       <img
-        class="img-fluid d-block d-md-none"
+        class="d-block d-md-none pr-1"
         :src="track.album.images[0].url"
         :alt="track.name"
-        style
+        style="width: 70px"
       />
     </div>
     <div class="col-7">
       <div class="media-body">
         <div class="row align-items-start">
-          <div class="col-12 d-flex flex-column ml-3">
+          <div class="col-12 d-flex flex-column ml-md-3">
             <span class="small text-secondary d-none d-md-flex">{{track.album.name}}</span>
             <span class="mb-2 font-weight-bold" :class="{'h5':track.name.length<20}">{{track.name}}</span>
             <p

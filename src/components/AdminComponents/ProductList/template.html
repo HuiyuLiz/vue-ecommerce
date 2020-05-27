@@ -4,37 +4,36 @@
     <i class="material-icons ml-2">add</i>
   </div>
   <div class="table-responsive mt-5">
-    <table class="table table-hover table-striped table-bordered table-sm mb-4 text-center">
-      <thead>
-        <tr class="thead-dark">
-          <th class="py-3">分類</th>
-          <th class="py-3" style="width:20%">歌手/專輯</th>
-          <th class="py-3" style="width:8%">商品照片</th>
-          <!-- <th class="py-3">單位</th> -->
-          <th class="py-3">是否啟用</th>
-          <th class="py-3" style="width:15%">原價</th>
-          <th class="py-3" style="width:15%">售價</th>
-          <th class="py-3" style="width:8%">編輯</th>
-          <th class="py-3" style="width:8%">刪除</th>
+    <table class="table table-hover table-striped table-bordered table-sm mb-4 text-center rwd-table">
+      <thead class="">
+        <tr>
+          <th class="py-3 font-weight-bold">分類</th>
+          <th class="py-3 font-weight-bold" style="width:20%">歌手/專輯</th>
+          <th class="py-3 font-weight-bold" style="width:8%">商品照片</th>
+          <!-- <th class="py-3 font-weight-bold">單位</th> -->
+          <th class="py-3 font-weight-bold">是否啟用</th>
+          <th class="py-3 font-weight-bold" style="width:15%">原價</th>
+          <th class="py-3 font-weight-bold" style="width:15%">售價</th>
+          <th class="py-3 font-weight-bold" style="width:8%">編輯</th>
+          <th class="py-3 font-weight-bold" style="width:8%">刪除</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in products" :key="item.id">
-          <td class="align-middle">{{item.category}}</td>
-          <td class="align-middle">{{item.title}}</br>{{item.description}}</td>
+          <td class="align-middle" data-th="分類">{{item.category}}</td>
+          <td class="align-middle" data-th="歌手/專輯">{{item.title}}</br>{{item.description}}</td>
 
-          <td class="align-middle p-3">
+          <td class="align-middle p-3" data-th="商品照片">
             <div class="img-thumb background-cover" :style="{backgroundImage:`url(${item.imageUrl})`}"></div>
           </td>
-          <!-- <td class="align-middle">{{ item.unit}}</td> -->
-          <td class="align-middle">{{item.is_enabled===1?"啟用":"未啟用"}}</td>
-          <td class="text-right pr-3 align-middle">{{item.origin_price | currency}}</td>
-          <td class="text-right pr-3 align-middle">{{item.price | currency}}</td>
+          <td class="align-middle" data-th="是否啟用">{{item.is_enabled===1?"啟用":"未啟用"}}</td>
+          <td class="text-right pr-3 align-middle" data-th="原價">{{item.origin_price | currency}}</td>
+          <td class="text-right pr-3 align-middle" data-th="售價">{{item.price | currency}}</td>
 
-          <td class="align-middle">
+          <td class="align-middle" data-th="編輯">
             <button type="button" class="btn btn-outline-secondary btn-sm " @click="openModal(false,item)">編輯</button>
           </td>
-          <td class="align-middle">
+          <td class="align-middle" data-th="編輯">
             <button type="button" class="btn btn-danger btn-sm" @click="openDelModal(item)">刪除</button>
           </td>
         </tr>

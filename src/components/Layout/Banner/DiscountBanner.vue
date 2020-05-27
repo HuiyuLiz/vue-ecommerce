@@ -20,7 +20,7 @@
               <div class="mb-3 mb-md-0">
                 購物輸入
                 <span
-                  class="border-2 border-success px-3 text-success title-font mr-md-4 h5 font-weight-bold"
+                  class="border-2 border-success px-3 text-success title-font mr-md-4 h5 font-weight-bold py-1"
                 >happy99</span>
               </div>
               <div>
