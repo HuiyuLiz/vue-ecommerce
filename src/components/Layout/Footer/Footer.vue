@@ -1,6 +1,6 @@
 <template>
   <footer class="footer d-flex align-items-center">
-    <div class="container text-left" v-scrollanimation>
+    <div class="container text-left">
       <div class="row">
         <div class="col-md-4">
           <div class="h6 text-light mb-4 d-flex d-md-none font-weight-bold">

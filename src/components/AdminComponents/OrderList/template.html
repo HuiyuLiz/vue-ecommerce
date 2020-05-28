@@ -29,7 +29,7 @@
           <td class="text-left align-middle">
             <ul class="pl-2">
               <li class="" v-for="(product,index) in order['products']" :key="product.id">
-                <small v-if="product.qty>0">{{product.product.title}} / 數量 : {{product.qty}}{{product.unit}}</small>
+                <small v-if="product.qty>0">{{product.product.title}} - 數量 : {{product.qty}}{{product.unit}}</small>
               </li>
             </ul>
           </td>

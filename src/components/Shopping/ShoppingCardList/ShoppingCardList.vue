@@ -44,12 +44,12 @@ export default {
     },
     filterProducts () {
       if (this.currentCategory === 'all') {
-        return this.products
+        return this.products.filter((product)=> product.is_enabled)    
       } else {      
         let array = this.allProducts.filter(product =>{
           return product.category === this.currentCategory
         })
-        return array
+        return array.filter((product)=> product.is_enabled) 
       }
     }
   },
@@ -76,7 +76,7 @@ export default {
       getShoppingList(page)
         .then(res => {
           if (res.data.success) {
-            this.products = res.data.products ;
+            this.products = res.data.products ;            
             this.pagination = res.data.pagination ;
             this.$router.push({
               name: 'shopping_List',
@@ -100,6 +100,8 @@ export default {
     }
   },
   created () {
+    $('.modal-backdrop').remove()
+    $(document.body).removeClass("modal-open");
     this.getProducts();
     this.getShoppingListAll()
   }

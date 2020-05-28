@@ -2,7 +2,7 @@
   <HistoryBackButton :last-path="{path:path}"></HistoryBackButton>
   <!-- MusicModal -->
   <div class="modal slide-fade p-0 align-items-center justify-content-center" id="MusicModal" tabindex="-1"
-    role="dialog" aria-labelledby="MusicModalTitle" aria-hidden="true" data-backdrop="static">
+    role="dialog" aria-labelledby="MusicModalTitle" aria-hidden="true" data-backdrop="static" v-if="track_id!==null">
     <div class="modal-dialog modal-dialog-center m-0 w-100 m-md-auto " role="document">
       <div class="modal-content">
         <button type="button" class="close position-absolute align-self-end pt-2 pr-3">

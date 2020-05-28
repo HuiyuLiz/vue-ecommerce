@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import MusicChartListItemNoGutter from './MusicChartListItemNoGutter'
 import MusicChartListItem from './MusicChartListItem'
 import { EventBus } from '@/eventBus/eventBus'
@@ -67,6 +68,12 @@ export default {
     }
   },
   created () {
+    let modal=document.querySelector('.modal-backdrop')
+    let modalOpen=document.querySelector('.modal-open')
+    if(modal){
+      modal.remove()
+      modalOpen.classList.remove('modal-open')
+    }
     this.getToken()      
   },
 }

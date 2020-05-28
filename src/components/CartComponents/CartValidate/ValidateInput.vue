@@ -2,7 +2,7 @@
   <ValidationProvider :name="name" :rules="rules" v-slot="{ classes , errors }">
     <label :for="name" :class="{'d-none':!showLabel}" class="text-secondary">{{text}}</label>
     <input
-      type="text"
+      :type="type"
       class="form-control rounded-0 mb-2"
       :class="classes"
       :name="name"
@@ -18,6 +18,10 @@
 export default {
   name:'ValidateInput',
   props:{
+    type:{
+      type:String,
+      default:'text'
+    },
     value:{
       type:String,
       required:true

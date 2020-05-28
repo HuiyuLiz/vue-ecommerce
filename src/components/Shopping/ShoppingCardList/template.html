@@ -58,7 +58,10 @@
         </div>
       </div>
     </div>
-    <div class="font-weight-bold font-weight-bold h6">專輯分類</div>
+    <div class="font-weight-bold font-weight-bold h6 d-flex">
+      <span>專輯分類</span>
+      <span class="d-flex d-md-none mr-3" v-if="currentCategory!=='all'">&nbsp;&nbsp;/&nbsp;{{currentCategory}}</span>
+    </div>
     <hr>
     <div class="row mt-5">
       <div class="col-md-2">
@@ -78,13 +81,19 @@
       </div>
       <div class="col-md-10 mb-5 pb-5 min-height">
         <div class="row" :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}">
-          <div class="col-6 col-md-4 col-md-4" v-for="(product,index) in filterProducts" :key="product.title">
-            <ShoppingCardListItem :product="product" @selectProduct="selectProduct">
-              <template slot="openModal">
-                <AddToCartButton @click.native.stop="openModal(product)"></AddToCartButton>
-              </template>
-            </ShoppingCardListItem>
-          </div>
+          <h3 class="text-secondary display-4" v-if="filterProducts.length===0">
+            即將公開，敬請期待！<br /><span class="h4">Coming soon,stay tuned! d(`･∀･)b</span>
+
+          </h3>
+          <template v-else>
+            <div class="col-6 col-md-4 col-md-4" v-for="(product,index) in filterProducts" :key="product.title">
+              <ShoppingCardListItem :product="product" @selectProduct="selectProduct">
+                <template slot="openModal">
+                  <AddToCartButton @click.native.stop="openModal(product)"></AddToCartButton>
+                </template>
+              </ShoppingCardListItem>
+            </div>
+          </template>
         </div>
       </div>
     </div>

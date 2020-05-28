@@ -13,6 +13,7 @@
       aria-labelledby="MusicModalTitle"
       aria-hidden="true"
       data-backdrop="static"
+      v-if="trackId!==null"
     >
       <div
         class="modal-dialog modal-dialog-center m-0 d-flex justify-content-center align-items-center w-100 m-md-auto align-middle"
@@ -83,7 +84,7 @@
           </div>
         </div>
       </div>
-      <div class="row align-items-center mb-3" v-scrollanimation>
+      <div class="row align-items-center mb-3">
         <div class="col-md-6 text-center d-none d-md-flex">
           <h5 class="font-weight-bold h5">排名</h5>
         </div>
@@ -95,7 +96,7 @@
             <div class="align-center" @click="getPrevTrack">
               <i class="material-icons material-icons-middle text-secondary">keyboard_arrow_left</i>
             </div>
-            <p class="text-secondary h6 text-center mx-3 w-50">第 {{limit_array}} 名次</p>
+            <p class="text-secondary h6 text-center mx-3 w-50">第 {{limit_array}} 名</p>
             <div class="align-center" @click="getNextTrack">
               <i class="material-icons material-icons-middle text-secondary">keyboard_arrow_right</i>
             </div>
@@ -156,7 +157,7 @@ export default {
       images:'',
       songId:null,
       isOpen:false,
-      trackId:'5_8O4H1Dg7hHJZ5NQy',
+      trackId:null,
       autoplay:false,
       isChange:false,
       total:0,
@@ -203,7 +204,7 @@ export default {
     },
     closeTrack (e) {
       $('#MusicModal').modal('hide')
-      this.trackId = '5_8O4H1Dg7hHJZ5NQy'  
+      this.trackId = null  
     },
     resizeIframeHeight () {            
       let D = document
@@ -324,26 +325,6 @@ export default {
   .media:nth-child(12).border-bottom-none {
     border-bottom-color: transparent !important;
   }
-}
-.smallPlay {
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-}
-.model-bg {
-  background-color: #00251a;
-  color: #69f0ae;
-}
-.iframe {
-  width: 100%;
-  height: 500px;
-}
-.modal-body {
-  padding: 0px;
-}
-.iframe-hideborder {
-  margin: -6px;
 }
 </style>
 

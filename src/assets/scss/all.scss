@@ -14,7 +14,6 @@
 
 @import './components/_dashboard';
 @import './components/_vue-toasted';
-@import './components/_collapse';
 @import './components/_dropdownmenu';
 @import './components/_navbar';
 @import './components/_pagination';
@@ -39,6 +38,7 @@ body {
   font-family: 'Lato', 'PingFang TC', 'Microsoft JhengHei', Sans-Serif !important;
   letter-spacing: 1.25px;
   margin-bottom: $footer-height;
+  padding-right: 0 !important;
 }
 
 li {
@@ -357,5 +357,12 @@ select option {
 .w-sm-40 {
   @media (max-width: map-get($grid-breakpoints, 'sm')) {
     width: 40% !important;
+  }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  @media (max-width: map-get($grid-breakpoints, 'sm')) {
+    display: none;
   }
 }

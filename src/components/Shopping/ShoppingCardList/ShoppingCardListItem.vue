@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name : 'ProductCardListItem',
+  name : 'ShoppingCardListItem',
   props : {
     product : {
       type : Object,

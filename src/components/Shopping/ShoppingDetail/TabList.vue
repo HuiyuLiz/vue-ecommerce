@@ -10,7 +10,7 @@
           role="tab"
           aria-controls="home"
           aria-selected="true"
-        >專輯介紹</a>
+        >介紹</a>
       </li>
       <li class="nav-item">
         <a
@@ -21,7 +21,7 @@
           role="tab"
           aria-controls="profile"
           aria-selected="false"
-        >專輯曲目</a>
+        >曲目</a>
       </li>
       <li class="nav-item">
         <a

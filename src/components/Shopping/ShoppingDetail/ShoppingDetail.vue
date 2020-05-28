@@ -18,7 +18,7 @@ export default {
       album: '',
       tracks: [],
       album_id: '',
-      track_id: 'OscmvhAIqcVQYb6WN9',
+      track_id: null,
       isOpen: false,
       path: ''
     }
@@ -118,7 +118,7 @@ export default {
     },
     closeTrack (e) {
       $('#MusicModal').modal('hide')
-      this.track_id = '5_8O4H1Dg7hHJZ5NQy'
+      this.track_id = null
     },
     resizeIframeHeight () {
       let D = document

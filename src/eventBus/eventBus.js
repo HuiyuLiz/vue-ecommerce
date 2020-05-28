@@ -13,7 +13,7 @@ export const EventBus = new Vue({
         duration: 3500,
         type: type,
         action: {
-          text: "🗙",
+          icon: 'close',
           onClick: (e, toastObject) => {
             toastObject.goAway(0);
           }

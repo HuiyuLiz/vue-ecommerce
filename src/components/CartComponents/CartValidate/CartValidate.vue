@@ -23,6 +23,7 @@
     </div>
     <div class="form-group">
          <ValidateInput
+        type="number"
         text="手機號碼"
         v-model="userForm.user.tel"
         rules="required|mobile"
@@ -70,7 +71,7 @@
       </div>
     </div>
     <hr />
-    <div class="form-group  rounded-0">
+    <div class="form-group  rounded-0 mb-5">
       <label for="comment"  class="text-secondary">留言</label>
       <textarea
         name

@@ -42,7 +42,7 @@
   </div>
   <Pagination :pagination="pagination" @getPage="getProducts">
   </Pagination>
-  <!-- Modal -->
+  <!-- 新增產品 Modal -->
   <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModal"
     aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
@@ -79,14 +79,15 @@
             <div class="col-sm-8">
               <div class="form-group">
                 <label for="title">標題</label>
-                <input type="text" class="form-control" id="title" placeholder="請輸入標題" v-model="tempProduct.title" />
+                <input type="text" class="form-control" id="title" placeholder="請輸入標題"
+                  v-model.trim="tempProduct.title" />
               </div>
 
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="category">分類</label>
                   <input type="text" class="form-control" id="category" placeholder="請輸入分類"
-                    v-model="tempProduct.category" />
+                    v-model.trim="tempProduct.category" />
                 </div>
                 <div class="form-group col-md-6">
                   <label for="price">單位</label>
@@ -98,12 +99,12 @@
                 <div class="form-group col-md-6">
                   <label for="origin_price">原價</label>
                   <input type="number" class="form-control" id="origin_price" placeholder="請輸入原價"
-                    v-model="tempProduct.origin_price" />
+                    v-model.number="tempProduct.origin_price" />
                 </div>
                 <div class="form-group col-md-6">
                   <label for="price">售價</label>
                   <input type="number" class="form-control" id="price" placeholder="請輸入售價"
-                    v-model="tempProduct.price" />
+                    v-model.number="tempProduct.price" />
                 </div>
               </div>
               <hr />
@@ -135,7 +136,7 @@
       </div>
     </div>
   </div>
-  <!-- 刪除商品Modal -->
+  <!-- 刪除商品 Modal -->
   <div class="modal fade" id="delProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
