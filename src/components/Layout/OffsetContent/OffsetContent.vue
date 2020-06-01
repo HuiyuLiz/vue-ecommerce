@@ -30,7 +30,7 @@
           </div>
           <div class="display-3 font-weight-bold">{{randomProduct.category}}.</div>
         </div>
-        <div class="p-md-5 offset-left border grid-background" v-scrollanimation data-delay="1s">
+        <div class="p-md-5 offset-left grid-background" v-scrollanimation data-delay="1s">
           <img
             class="img-fluid d-flex d-md-none"
             :src="randomProduct.imageUrl"

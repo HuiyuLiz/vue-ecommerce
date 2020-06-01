@@ -6,10 +6,10 @@ export const EventBus = new Vue({
   },
   methods: {
     toastOpen(isSuccess, message, type) {
-      isSuccess ? (type = "success") : (type = "error");
+      isSuccess ? (type = 'success') : (type = 'error');
       let toast = this.$toasted.show(message, {
-        theme: "bubble",
-        position: "top-right",
+        theme: 'bubble',
+        position: 'top-right',
         duration: 3500,
         type: type,
         action: {

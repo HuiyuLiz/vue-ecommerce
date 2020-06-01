@@ -1,6 +1,13 @@
 <template>
   <div>
     <table class="table">
+      <thead>
+        <tr>
+          <th scope="col " class="text-secondary text-left pl-md-4" colspan="3">產品</th>
+          <th scope="col" class="text-secondary">數量</th>
+          <th scope="col" class="text-secondary text-right">價格</th>
+        </tr>
+      </thead>
       <tbody>
         <tr
           is="CartListItem"

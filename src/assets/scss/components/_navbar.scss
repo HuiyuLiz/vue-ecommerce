@@ -136,7 +136,7 @@
     .dropdown-item,
     .nav-link,
     .material-icons {
-      font-size: 1.25rem;
+      font-size: 1rem;
     }
 
     .navbar-nav .nav-link {
@@ -187,5 +187,28 @@
       background-color: $success;
       display: block;
     }
+  }
+}
+
+button:focus {
+  outline: none;
+  outline: none;
+}
+
+.nav-menu-background {
+  position: fixed;
+  left: 10%;
+  bottom: -4rem;
+  font-size: 10rem;
+  color: #3232326f;
+
+  &::after {
+    content: 'SōUND.';
+    display: block;
+    -webkit-text-stroke: 1px rgba($color: $dark, $alpha: 0.5);
+    color: transparent;
+    position: absolute;
+    bottom: 0rem;
+    left: 4px;
   }
 }

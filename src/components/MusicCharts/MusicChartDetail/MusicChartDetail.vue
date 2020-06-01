@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid pt-3 pt-md-5 mt-3 pb-5 background-cover">
+  <div class="container-fluid pt-3 pt-md-5 mt-3 pb-5 background-cover min-height">
     <HistoryBackButton :last-path="{name:'MusicCharts'}"></HistoryBackButton>
     <div class="blur-background d-none d-md-block" v-if="images">
       <img alt class="rounded-0 img-object-fit position-absolute" :src="images[1].url" />
@@ -115,6 +115,7 @@
             :track="track"
             :index="index+paging.offset"
             @playSong="playSong"
+            :songId="songId"
           ></MusicTrackItem>
         </div>
         <div class="col-md-6 justify-content-between">
@@ -125,6 +126,7 @@
             :index="index+paging.offset+limit_tracks_first.length"
             class="border-bottom-none"
             @playSong="playSong"
+            :songId="songId"
           ></MusicTrackItem>
         </div>
       </div>

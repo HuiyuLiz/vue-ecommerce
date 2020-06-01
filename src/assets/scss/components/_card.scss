@@ -20,7 +20,7 @@
     overflow: hidden;
     border-radius: 0;
 
-    >button {
+    > button {
       display: block;
       position: absolute;
       z-index: 3;
@@ -31,7 +31,7 @@
 
     &::after {
       content: '';
-      background-color: rgba(0, 0, 0, 0.75);
+      background-color: rgba(0, 0, 0, 0.5);
       position: absolute;
       top: 0;
       bottom: 0;
@@ -44,7 +44,7 @@
 
   &:hover {
     .card-img {
-      >button {
+      > button {
         opacity: 1;
         bottom: 0px;
       }
@@ -54,4 +54,9 @@
       }
     }
   }
+}
+
+.card-img {
+  display: flex;
+  justify-content: center;
 }

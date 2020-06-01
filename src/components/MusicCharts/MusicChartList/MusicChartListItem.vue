@@ -1,7 +1,7 @@
 <template>
   <div class="col-6 col-md-4 col-lg-3 mb-5">
     <div
-      class="d-flex justify-content-center align-items-center mb-4 overlay"
+      class="d-flex justify-content-center align-items-center mb-4 overlay border"
       @click="goTochart(chart.title,chart.id)"
     >
       <img :src="chart.images[2].url" :alt="chart.title" class="img-fluid" />

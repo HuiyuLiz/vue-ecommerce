@@ -1,6 +1,7 @@
 <div class="container-fluid px-0">
-  <DiscountBanner></DiscountBanner>
-  <div class="container pb-5">
+  <!-- discount banner -->
+  <DiscountBanner v-if="currentCategory==='all'"></DiscountBanner>
+  <div class="container pb-5" :class="{'mt-5':currentCategory!=='all'}">
     <!-- modal -->
     <div class="modal fade bd-example-modal-lg" id="addCartModal" tabindex="-1" role="dialog"
       aria-labelledby="addCartModalTitle" aria-hidden="true">
@@ -10,16 +11,32 @@
             <div class="d-flex flex-column flex-lg-row rounded-0 align-items-between">
               <div class="col-lg-6">
                 <button type="button" class="close align-self-end d-flex d-lg-none" data-dismiss="modal"
-                  aria-label="Close" style="transform: translateY(-10px);">
+                  aria-label="Close">
                   <span aria-hidden="true" class="display-4">&times;</span>
                 </button>
                 <div class="card-img my-3 my-lg-0">
-                  <img alt class="card-img-top rounded-0" :src="currentProduct.imageUrl" />
+                  <div class="d-flex">
+                    <div class="col-6 col-md-12 pl-0 pl-md-3"><img alt class="card-img-top rounded-0 img-fluid"
+                        :src="currentProduct.imageUrl" /></div>
+                    <div class="d-flex flex-column d-md-none">
+                      <div>
+                        <h4 class="h6" v-if="currentProduct.title">{{currentProduct.title.trim().split('/')[0]}}</h4>
+                        <h4 class="card-title mb-0 font-weight-bold h5 mb-3" v-if="currentProduct.title">
+                          {{currentProduct.title.trim().split('/')[1]}}
+                        </h4>
+                      </div>
+                      <del class="small mb-1 card-text mb-0 mr-2 font-weight-bold text-secondary mr-4">
+                        NT${{currentProduct.origin_price}}
+                      </del>
+                      <p class="card-text text-success mb-0 h5 font-weight-bold">NT${{currentProduct.price}}</p>
+                    </div>
+                  </div>
+
                 </div>
               </div>
               <div class="col-lg-6  pb-5 pb-lg-0">
                 <div class="card-body px-0 py-0 d-flex flex-column align-items-start justify-content-start h-100">
-                  <div class="d-flex justify-content-between w-100 align-items-start">
+                  <div class="d-none d-md-flex justify-content-between w-100 align-items-start">
                     <div>
                       <h4 class="h6" v-if="currentProduct.title">{{currentProduct.title.trim().split('/')[0]}}</h4>
                       <h4 class="card-title mb-0 font-weight-bold h4" v-if="currentProduct.title">
@@ -31,11 +48,11 @@
                       <span aria-hidden="true" class="display-4">&times;</span>
                     </button>
                   </div>
-                  <div class="d-flex justify-content-between align-items-center mt-3">
-                    <p class="card-text text-secondary mb-0 mr-4">NT${{currentProduct.price}}</p>
-                    <p class="card-text mb-0 mr-2 font-weight-bold text-success">
+                  <div class="d-none d-md-flex justify-content-between align-items-center mt-3">
+                    <del class="card-text mb-0 mr-2 font-weight-bold text-secondary mr-4">
                       NT${{currentProduct.origin_price}}
-                    </p>
+                    </del>
+                    <p class="card-text text-success mb-0 ">NT${{currentProduct.price}}</p>
                   </div>
                   <div class="d-flex flex-column flex-md-row  justify-content-between align-items-end w-100 mt-auto">
                     <div class="btn-group mr-md-3 mt-3 text-center mb-3 mb-md-0 w-100" role="group"
@@ -63,6 +80,7 @@
       <span class="d-flex d-md-none mr-3" v-if="currentCategory!=='all'">&nbsp;&nbsp;/&nbsp;{{currentCategory}}</span>
     </div>
     <hr>
+    <!-- 專輯分類 categories -->
     <div class="row mt-5">
       <div class="col-md-2">
         <div class="nav d-none d-md-flex flex-md-column nav-pills text-dark" id="v-pills-tab" role="tablist"
@@ -79,17 +97,21 @@
           </router-link>
         </div>
       </div>
+      <!-- 產品 filterProducts -->
       <div class="col-md-10 mb-5 pb-5 min-height">
-        <div class="row" :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}">
-          <h3 class="text-secondary display-4" v-if="filterProducts.length===0">
-            即將公開，敬請期待！<br /><span class="h4">Coming soon,stay tuned! d(`･∀･)b</span>
-
+        <div class="row" :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}" v-if="!isLoading">
+          <h3 class="text-secondary display-5 px-3" v-if="filterProducts.length===0">
+            即將公開，敬請期待！<br /><span class="h5">Coming soon,stay tuned! d(`･∀･)b</span>
           </h3>
           <template v-else>
             <div class="col-6 col-md-4 col-md-4" v-for="(product,index) in filterProducts" :key="product.title">
               <ShoppingCardListItem :product="product" @selectProduct="selectProduct">
                 <template slot="openModal">
-                  <AddToCartButton @click.native.stop="openModal(product)"></AddToCartButton>
+                  <AddToCartButton @click.native.stop="openModal(product)" class="d-none d-md-flex"></AddToCartButton>
+                </template>
+                <template slot="openModalIcon">
+                  <span @click="openModal(product)"
+                    class="material-icons material-icons-outlined material-icons-middle ml-2 pb-1 d-flex d-md-none">shopping_cart</span>
                 </template>
               </ShoppingCardListItem>
             </div>

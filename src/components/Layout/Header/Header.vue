@@ -31,6 +31,9 @@ export default {
     },
     scrollRouterCheck () {
       return this.currentRouter !== 'home' || this.scrollPosition > 30
+    },
+    categories(){
+      return this.$store.getters.categories
     }
   },
   methods: {
@@ -46,6 +49,7 @@ export default {
   },
   created () {
     this.getCartList();
+     this.$store.dispatch('GET_CATEGORIES')
   },
   mounted () {
     window.addEventListener('scroll', this.updateScroll)

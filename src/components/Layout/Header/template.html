@@ -30,43 +30,32 @@
     </div>
 
     <div class="nav-menu " :class="{'active':isToggle,'scrolled':scrollPosition>30}">
-      <ul class="navbar-nav mr-md-auto" @click="isToggle=!isToggle">
-        <li class="nav-item font-weight-bold">
+      <div class="nav-menu-background d-md-none" :class="{'d-flex':isToggle,'d-none':!isToggle}">SōUND.</div>
+      <ul class="navbar-nav mr-md-auto">
+        <li class="nav-item font-weight-bold" @click="isToggle=!isToggle">
           <router-link :to="{name:'MusicCharts'}" class="nav-link px-3">音樂情報
           </router-link>
         </li>
         <li class="nav-item font-weight-bold dropdown">
           <a class="nav-link  px-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">實體專輯<span class="material-icons  position-absolute">
+            aria-haspopup="true" aria-expanded="false">實體專輯<span class="material-icons  position-absolute"
+              :class="{'scrolled':scrollPosition>30}">
               keyboard_arrow_down
             </span></a>
           <div class="dropdown-menu text-center blur mt-0" aria-labelledby="dropdownMenuButton"
-            style="transform: translateY(2.75px)">
+            @click="isToggle=!isToggle" style="transform: translateY(2.75px)">
             <div>
               <router-link :to="{name:'shopping_List',params: { category:'all' ,page: 1 }}"
                 class="dropdown-item py-3 h6">
                 All
               </router-link>
             </div>
-            <div>
-              <router-link :to="{name:'shopping_List',params: { category:'Indie Pop' ,page: 1 }}"
+            <div v-for="category in categories" :key="category">
+              <router-link :to="{name:'shopping_List',params: {category:category ,page: 1 }}"
                 class="dropdown-item py-3 h6">
-                Indie Pop
+                {{category}}
               </router-link>
             </div>
-            <div>
-              <router-link :to="{name:'shopping_List',params: { category:'Top Hits' ,page: 1 }}"
-                class="dropdown-item py-3 h6">
-                Top Hits
-              </router-link>
-            </div>
-            <div>
-              <router-link :to="{name:'shopping_List',params: { category:'K-Pop' ,page: 1 }}"
-                class="dropdown-item py-3 h6">
-                K-Pop
-              </router-link>
-            </div>
-
           </div>
         </li>
       </ul>

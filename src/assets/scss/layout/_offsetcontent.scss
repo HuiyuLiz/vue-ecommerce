@@ -27,9 +27,11 @@
     linear-gradient(90deg, rgba($secondary, 0.15) 1px, transparent 0), linear-gradient(white 1px, transparent 0),
     linear-gradient(90deg, white 1px, transparent 0);
   background-size: 20px 20px, 20px 20px, 75px 75px, 75px 75px;
+  border: 1px solid #eee;
 
   @media (max-width: map-get($grid-breakpoints, 'sm')) {
     background: transparent;
     background-image: none;
+    border: none;
   }
 }

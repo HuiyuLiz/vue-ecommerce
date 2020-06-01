@@ -1,3 +1,14 @@
 .discount-banner {
-  background-image: asset('/img/micro.jpg');
+  background-image: asset('/img/banner-01.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 250px;
+  display: flex;
+  padding: 4rem 0;
+
+  @media (max-width: map-get($grid-breakpoints, 'sm')) {
+    background-image: asset('/img/banner-02.jpg');
+    min-height: 350px;
+  }
 }

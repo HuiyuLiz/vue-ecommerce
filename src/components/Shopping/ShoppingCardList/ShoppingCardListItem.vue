@@ -13,11 +13,19 @@
         <p class="mb-0">{{singer}}</p>
         <div class="card-title mb-0 font-weight-bold h5">{{album}}</div>
       </div>
-      <div class="d-flex text-center pb-3 mt-3">
-        <div class="d-flex justify-content-center text-center w-100">
-          <div class="card-text text-muted mr-3">NT${{product.price}}</div>
-          <div class="card-text mb-0 text-success font-weight-bold">NT${{product.origin_price}}</div>
+      <div class="d-flex text-center pb-3 mt-3 align-items-end">
+        <div
+          class="d-flex flex-column align-items-start align-items-md-center flex-md-row justify-content-center w-100"
+        >
+          <del
+            class="card-text mb-0 text-muted font-weight-bold mr-3 d-none d-md-flex"
+          >NT${{product.origin_price}}</del>
+          <del
+            class="card-text mb-0 text-muted font-weight-bold mr-3 small d-flex d-md-none"
+          >NT${{product.origin_price}}</del>
+          <div class="card-text text-success">NT${{product.price}}</div>
         </div>
+        <slot name="openModalIcon"></slot>
       </div>
     </div>
   </div>

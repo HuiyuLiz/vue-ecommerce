@@ -2,7 +2,7 @@
 <script>
 import { getShoppingList,getShoppingListAll } from '@/api/api';
 import { EventBus } from '@/eventBus/eventBus';
-import  AddToCartButton from '@/components/Button/AddToCartButton';
+import AddToCartButton from '@/components/Button/AddToCartButton';
 import Pagination from '@/components/Pagination/Pagination';
 import ShoppingCardListItem from './ShoppingCardListItem';
 import DiscountBanner from '@/components/Layout/Banner/DiscountBanner';
@@ -20,7 +20,6 @@ export default {
     return {
       products: [],
       pagination: {},
-      categories: [],
       isChange: false,
       allProducts:[],
       currentProduct:{},
@@ -51,6 +50,12 @@ export default {
         })
         return array.filter((product)=> product.is_enabled) 
       }
+    },
+    isLoading(){
+      return this.$store.state.loading.isLoading
+    },
+    categories(){
+      return this.$store.getters.categories
     }
   },
   methods: {
@@ -65,8 +70,6 @@ export default {
     getShoppingListAll () {
       getShoppingListAll().then(res => {
         if (res.data.success && res.data.products) {
-          let categories = res.data.products.map(product => product.category)
-          this.categories = res.data.products ? new Set(categories) : []
           this.allProducts = res.data.products ? res.data.products : []
         }
       })
@@ -91,7 +94,7 @@ export default {
           EventBus.emitHandler(false, '取得資料錯誤');
         });
     },
-    selectProduct ({id,category}) {
+    selectProduct ({ id,category }) {
       this.$router.push({ name: 'shopping_product', params: { category: category , id: id } });
     },
     addToCart ( id, qty = 1 ) {

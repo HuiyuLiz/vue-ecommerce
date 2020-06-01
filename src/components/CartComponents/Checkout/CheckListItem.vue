@@ -1,26 +1,37 @@
 <template>
   <div>
     <table class="table">
+      <thead>
+        <tr>
+          <th scope="col " class="text-secondary text-left pl-md-4" colspan="3">產品</th>
+          <th scope="col" class="text-secondary">數量</th>
+          <th scope="col" class="text-secondary text-right">價格</th>
+        </tr>
+      </thead>
       <tbody>
         <tr v-for="(item,index) in carts" :key="index">
           <td colspan="3" class="align-middle">
             <div class="d-flex text-left align-items-center">
-              <div
-                class="img-thumb background-cover mr-3 mr-md-5"
-                :style="{backgroundImage:`url(${item.product.imageUrl})`}"
-              ></div>
-              <div class="d-flex flex-column">
-                <span class="h6 mb-3 text-secondary">{{ item.product.title.trim().split('/')[0] }}</span>
+              <div class="col-4 col-md-3 px-0 px-md-3">
+                <img :src="item.product.imageUrl" alt class="img-fluid" />
+              </div>
+              <div class="col-8 col-md-8 d-flex flex-column pr-0">
+                <small
+                  class="mb-1 mb-md-3 text-secondary"
+                >{{ item.product.title.trim().split('/')[0] }}</small>
                 <span class="h6 mb-0 text-secondary">{{ item.product.title.trim().split('/')[1] }}</span>
-                <div class="text-muted small mt-3" v-if="item.coupon">已符合折扣活動</div>
+                <div class="small mt-3 text-success" v-if="item.coupon">已符合折扣活動</div>
               </div>
             </div>
           </td>
-          <td class="align-middle text-secondary">{{ item.qty }}{{ item.product.unit }}</td>
+          <td
+            class="align-middle text-secondary"
+            style="width:20%"
+          >{{ item.qty }}{{ item.product.unit }}</td>
           <td class="align-middle text-secondary text-right">
             <div class="d-flex flex-column">
               <span>{{item.final_total|currency}}</span>
-              <del class="text-muted">{{item.product.origin_price|currency}}</del>
+              <del class="text-muted">{{item.product.origin_price * item.qty|currency}}</del>
             </div>
           </td>
         </tr>
@@ -41,7 +52,7 @@
 
 <script>
 export default {
-  name: "CheckListItem",
+  name: 'CheckListItem',
   props: {
     carts: {
       type: Object
@@ -49,11 +60,6 @@ export default {
     cart: {
       type: Object,
       required: true
-    }
-  },
-  methods: {
-    deleteToCart(id) {
-      this.$emit("deleteToCart", id);
     }
   }
 };
