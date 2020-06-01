@@ -9,8 +9,9 @@
 ## 使用技術
 *  Vue.js
 *  Vue CLI 3
+*  Vue Router
 *  Vuex
-*  Bootstrap
+*  Bootstrap 搭配 SCSS
   
 ## 音樂情報 - 藉由串接 KKBOX Open API 來顯示各種類型的音樂榜單  
   透過申請 KKBOX 開發者網站，建立帳號後呼叫 API 來獲得 Access Token，即可取得歌手、專輯、歌曲、排行榜等資訊，打造需要的應用介面；該頁面呈現各個即時熱門榜單。
