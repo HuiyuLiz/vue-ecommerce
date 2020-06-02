@@ -18,7 +18,7 @@
     <div class="container text-center pb-3 pb-md-5 pt-4">
       <h1 class="pb-4 my-5 font-weight-bold h3 text-white text-left title-border-decoration title-border-white"
         v-scrollanimation>熱銷專輯</h1>
-      <Carousel :speed="3000" :scrollPerPage="true" :perPageCustom="[[480, 2], [768, 4]]" :autoplay="true"
+      <Carousel :speed="3000" :scrollPerPage="true" :perPageCustom="[[480, 3], [768, 4]]" :autoplay="true"
         v-scrollanimation>
         <slide v-for="(img, index) in images" :key="img" class="mx-3">
           <img :src="img" :key="index" style="width: 300px; max-width: 100%;" class="pointer"
