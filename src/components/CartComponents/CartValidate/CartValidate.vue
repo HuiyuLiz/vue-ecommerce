@@ -38,7 +38,7 @@
         <div class="form-group col-md-3">
           <ValidationProvider name="country" rules="required" v-slot="{ classes,errors }">
             <select class="form-control   rounded-0 mb-2" v-model="countryIndex" :class="classes">
-              <option :value="null" selected disabled class="form-control ">請選擇</option>
+              <option :value="null" selected disabled class="form-control ">請選擇縣市</option>
               <option
                 v-for="(country,index) in postal"
                 :key="country.name"
@@ -52,7 +52,7 @@
         <div class="form-group col-md-3">
           <ValidationProvider name="zone" rules="required" v-slot="{ classes,errors }">
             <select class="form-control  rounded-0 mb-2" v-model="areaIndex" :class="classes">
-              <option :value="null" selected disabled>請選擇</option>
+              <option :value="null" selected disabled>請選擇鄉鎮市區</option>
               <option v-for="(area,index) in areas" :key="index" :value="index">{{area.name}}</option>
             </select>
             <span class="text-danger" v-if="errors[0]">{{ errors[0] }}</span>
