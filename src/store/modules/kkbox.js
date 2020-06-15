@@ -1,19 +1,19 @@
 import Axios from 'axios'
 import qs from 'querystring'
-import { getCharts } from '@/api/kkbox';
-import { EventBus } from '@/eventBus/eventBus';
+import { getCharts } from '@/api/kkbox'
+import { EventBus } from '@/eventBus/eventBus'
 export default ({
   namespaced: true,
   state: {
     token: process.env.VUE_APP_TOKEN,
-    token_type: process.env.VUE_APP_TOKEN_TYPE,
+    tokenType: process.env.VUE_APP_TOKEN_TYPE,
     charts: []
   },
   getters: {
-    kkbox_token(state) {
-      return `${state.token_type} ${state.token}`
+    kkbox_token (state) {
+      return `${state.tokenType} ${state.token}`
     },
-    limit_charts(state) {
+    limit_charts (state) {
       let charts = []
       state.charts.map(function (chart, index) {
         if (index < 8) {
@@ -24,15 +24,15 @@ export default ({
     }
   },
   mutations: {
-    get_token(state, { token, token_type }) {
-      [state.token, state.token_type] = [token, token_type]
+    get_token (state, { token, tokenType }) {
+      [state.token, state.tokenType] = [token, tokenType]
     },
-    get_charts(state, charts) {
+    get_charts (state, charts) {
       state.charts = charts
-    },
+    }
   },
   actions: {
-    async GET_KKBOX_TOKEN({ commit, dispatch }, payload) {
+    async GET_KKBOX_TOKEN ({ commit, dispatch }, payload) {
       let OAuth = {
         'grant_type': 'client_credentials',
         'client_id': process.env.VUE_APP_CLIENT_ID,
@@ -46,12 +46,16 @@ export default ({
       }
       await Axios.post(process.env.VUE_APP_KKBOX_OAUTH, qs.stringify(OAuth), config).then(res => {
         let token = res.data.access_token ? res.data.access_token : process.env.VUE_APP_TOKEN
-        let token_type = res.data.token_type ? res.data.token_type : process.env.VUE_APP_TOKEN_TYPE
-        commit('get_token', { token, token_type })
+        let tokenType = res.data.token_type ? res.data.token_type : process.env.VUE_APP_TOKEN_TYPE
+        commit('get_token', { token, tokenType })
         dispatch('GET_CHART')
-      }).catch(error => console.error(error))
+      }).catch(error => {
+        if (error instanceof ReferenceError) {
+          EventBus.emitHandler(false, '取得資料錯誤')
+        }
+      })
     },
-    GET_CHART({ commit, getters }, payload) {
+    GET_CHART ({ commit, getters }, payload) {
       let config = {
         headers: {
           Authorization: `${getters.kkbox_token}`
@@ -67,8 +71,9 @@ export default ({
           }
         })
         .catch(error => {
-          EventBus.emitHandler(false, '取得資料錯誤')
-          console.error(error)
+          if (error instanceof ReferenceError) {
+            EventBus.emitHandler(false, '取得資料錯誤')
+          }
         })
     }
   }

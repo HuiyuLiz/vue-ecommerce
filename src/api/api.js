@@ -5,12 +5,12 @@ let path = `${process.env.VUE_APP_CUSTOMER_PATH}`
 
 const apiRequest = axios.create({
   baseURL: api,
-  withCredentials: true,
+  withCredentials: true
 })
 
 const postalRequest = axios.create({
   baseURL: '../assets/postal.json',
-  withCredentials: true,
+  withCredentials: true
 })
 
 // 登入登出

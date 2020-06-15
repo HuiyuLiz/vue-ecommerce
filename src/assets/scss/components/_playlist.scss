@@ -1,0 +1,33 @@
+.mini-view .page-client-relay .page-content .button-group-mini {
+  padding: 10px 35px 10px 10px !important;
+  width: auto !important;
+  height: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: map-get($grid-breakpoints, 'md')) {
+    // flex-direction: column;
+  }
+}
+
+.mini-view .page-client-relay .page-content .button {
+  width: 25% !important;
+  height: 35px !important;
+  border-radius: 0;
+  margin: 0 1rem;
+  padding: 1rem;
+
+  @media screen and (max-width: map-get($grid-breakpoints, 'md')) {
+    width: 75% !important;
+    margin: 1rem 0.5rem !important;
+  }
+}
+
+.mini-view .page-client-relay .page-content .button .icon {
+  width: 35px;
+  height: 35px;
+  top: -0.5rem !important;
+  left: auto;
+}
+

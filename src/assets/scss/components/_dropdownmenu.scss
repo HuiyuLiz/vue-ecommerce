@@ -1,6 +1,7 @@
 .dropdown-menu-min-width {
   width: 450px;
 }
+
 .dropdown-toggle::after {
   display: none;
 }
@@ -15,6 +16,7 @@
 }
 
 .dropdown-item {
+
   &:active,
   &:focus,
   &:hover {
@@ -23,7 +25,7 @@
   }
 }
 
-@media (max-width: map-get($grid-breakpoints, 'md')) {
+@media (max-width: 767px) {
   .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -69,7 +71,18 @@
   }
 }
 
-.navbar-nav li.drop-hover:hover > .dropdown-menu {
+@media (max-width: 767px) {
+  .dropdown-menu {
+    display: block;
+
+    &.blur {
+      backdrop-filter: blur(0px);
+      background-color: transparent;
+    }
+  }
+}
+
+.navbar-nav li.drop-hover:hover>.dropdown-menu {
   display: block;
   animation: showDrop 0.15s ease-in 0s forwards;
   border-radius: 0;
