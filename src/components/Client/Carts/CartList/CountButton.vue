@@ -1,6 +1,6 @@
 <template>
   <div
-    class="btn-group mr-md-3 mt-3 text-center mb-3 mb-md-0 "
+    class="btn-group mt-3 text-center mb-3 mb-md-0 "
     role="group"
     aria-label="Basic example"
   >

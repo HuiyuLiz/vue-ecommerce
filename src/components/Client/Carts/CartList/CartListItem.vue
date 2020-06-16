@@ -5,7 +5,7 @@
       class="align-middle"
     >
       <div class="d-flex text-left align-items-center">
-        <div class="col-4 col-md-4 px-0 px-md-3">
+        <div class="col-4 col-md-3 px-0 px-md-3">
           <img
             :src="item.product.imageUrl"
             alt
@@ -36,7 +36,7 @@
     </td>
     <td
       class="align-middle text-secondary d-none d-md-table-cell"
-      style="width:22%"
+      style="width:20%"
     >
       <CountButton
         :item="item"
