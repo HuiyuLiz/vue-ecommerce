@@ -34,7 +34,7 @@
 
 商品用音樂類型做為區分，可以直接點選加入購物車，使用 Vuex 管理全域的購物車資訊，可同步顯示在 Navbar 的購物車下拉選單。 
 
-![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/img/captureimg/shoppingAll.png)  
+![image]( https://raw.githubusercontent.com/HuiyuLiz/vue-ecommerce/master/src/assets/img/captureimg/shoppingAll.jpg)  
 
 ### 商品資訊細節  
 
