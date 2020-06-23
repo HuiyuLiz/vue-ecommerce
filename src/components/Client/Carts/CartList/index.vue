@@ -6,20 +6,17 @@
           <th
             scope="col "
             class="text-secondary text-left pl-md-4"
-            :colspan="colspan"
-          >
+            :colspan="colspan">
             產品
           </th>
           <th
             scope="col"
-            class="text-secondary d-none d-md-table-cell"
-          >
+            class="text-secondary d-none d-md-table-cell">
             數量
           </th>
           <th
             scope="col"
-            class="text-secondary text-right"
-          >
+            class="text-secondary text-right">
             價格
           </th>
         </tr>
@@ -31,15 +28,13 @@
           :key="index"
           :item="item"
           :colspan="colspan"
-          @deleteToCart="deleteToCart"
-        />
+          @deleteToCart="deleteToCart" />
       </tbody>
       <tfoot class>
         <tr>
           <td
             colspan="4"
-            class="text-right text-secondary"
-          >
+            class="text-right text-secondary">
             商品金額
           </td>
           <td class="text-right text-secondary">
@@ -49,8 +44,7 @@
         <tr>
           <td
             colspan="4"
-            class="text-right border-0 text-secondary"
-          >
+            class="text-right border-0 text-secondary">
             運費小計
           </td>
           <td class="text-right border-0 text-secondary">
@@ -60,8 +54,7 @@
         <tr v-if="cart.finalTotal!==cart.total">
           <td
             colspan="4"
-            class="text-right text-danger font-weight-bold"
-          >
+            class="text-right text-danger font-weight-bold">
             總計
           </td>
           <td class="text-right text-danger font-weight-bold">

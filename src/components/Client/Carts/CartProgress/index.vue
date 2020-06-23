@@ -3,13 +3,11 @@
     <div
       v-for="(p,index) in progress"
       :key="index"
-      class="col-md-3"
-    >
+      class="col-md-3">
       <div
         class="alert border text-secondary d-none d-md-flex justify-content-center"
         role="alert"
-        :class="{'d-flex alert-secondary':step===index }"
-      >
+        :class="{'d-flex alert-secondary':step===index }">
         {{ p }}
       </div>
     </div>

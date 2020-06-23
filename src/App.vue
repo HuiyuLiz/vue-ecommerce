@@ -1,17 +1,14 @@
 <template>
   <div
     id="app"
-    :class="{'bg-dark min-height':$route.path==='/login'}"
-  >
+    :class="{'bg-dark min-height':$route.path==='/login'}">
     <Loading
       :active.sync="isLoading"
       loader="bars"
       background-color="rgba(255,255,255, 0.9)"
-      color="#52e3c7"
-    />
+      color="#52e3c7" />
     <AppHeader
-      v-if="isShow"
-    />
+      v-if="isShow" />
     <AlertEventBus />
     <router-view />
     <AppFooter v-if="isShow" />

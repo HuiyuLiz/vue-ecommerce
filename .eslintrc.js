@@ -9,7 +9,12 @@ module.exports = {
     '@vue/standard'
   ],
   rules: {
-    semi: ['error', 'never']
+    semi: ['error', 'never'],
+    'vue/html-closing-bracket-newline': ['error', {
+      'singleline': 'never',
+      'multiline': 'never'
+    }]
+
   },
   parserOptions: {
     parser: 'babel-eslint'

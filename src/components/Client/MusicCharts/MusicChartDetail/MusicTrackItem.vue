@@ -5,28 +5,23 @@
       <img
         class="img-fluid d-none d-md-block w-50"
         :src="track.album.images[0].url"
-        :alt="track.name"
-      >
+        :alt="track.name">
       <img
         class="d-block d-md-none pr-1"
         :src="track.album.images[0].url"
         :alt="track.name"
-        style="width: 70px"
-      >
+        style="width: 70px">
     </div>
     <div class="col-7 px-0">
       <div class="media-body">
         <div class="d-flex align-items-start">
           <div class="col-12 d-flex flex-column ml-md-3 ml-2">
-            <!-- <span class="small text-secondary d-none d-md-flex">{{ track.album.name }}</span> -->
             <span
-              class="mb-2 font-weight-bold"
-              :class="{'h5':track.name.length<20}"
-            >{{ track.name }}</span>
+              class="mb-1 mb-md-2 font-weight-bold"
+              :class="{'h5':track.name.length<20}">{{ track.name }}</span>
             <p
               class="text-secondary mb-0"
-              :class="{'h7':track.album.artist.name.length<20}"
-            >
+              :class="{'h7':track.album.artist.name.length<20}">
               {{ track.album.artist.name }}
             </p>
           </div>
@@ -35,12 +30,10 @@
     </div>
     <div
       class="col-3 text-center"
-      @click="playSong(track.id)"
-    >
+      @click="playSong(track.id)">
       <i
         class="material-icons material-icons-large"
-        :class="{'text-success':songId===track.id}"
-      >play_circle_outline</i>
+        :class="{'text-success':songId===track.id}">play_circle_outline</i>
     </div>
   </div>
 </template>

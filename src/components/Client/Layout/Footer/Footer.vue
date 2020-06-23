@@ -7,13 +7,11 @@
             <a
               class="h6 text-light font-weight-bold"
               target="_blank"
-              href="https://github.com/HuiyuLiz/vue-ecommerce"
-            >About</a> &nbsp; |&nbsp;
+              href="https://github.com/HuiyuLiz/vue-ecommerce">About</a> &nbsp; |&nbsp;
             <a
               class="h6 text-light font-weight-bold"
               target="_blank"
-              href="https://github.com/HuiyuLiz"
-            >GitHub</a>
+              href="https://github.com/HuiyuLiz">GitHub</a>
           </div>
           <div class="h6 text-light font-weight-bold">
             Zhongping Rd., Xinzhuang Dist.,
@@ -27,15 +25,13 @@
           <a
             class="h6 text-light font-weight-bold"
             target="_blank"
-            href="https://github.com/HuiyuLiz/vue-ecommerce"
-          >About</a>
+            href="https://github.com/HuiyuLiz/vue-ecommerce">About</a>
         </div>
         <div class="col-md-4 d-none d-md-flex justify-content-center">
           <a
             class="h6 text-light font-weight-bold"
             target="_blank"
-            href="https://github.com/HuiyuLiz"
-          >GitHub</a>
+            href="https://github.com/HuiyuLiz">GitHub</a>
         </div>
       </div>
     </div>
@@ -45,10 +41,14 @@
 <script>
 export default {
   name: 'AppFooter',
+  data () {
+    return {
+      currentDate: new Date()
+    }
+  },
   computed: {
     year () {
-      let d = new Date()
-      return d.getFullYear()
+      return this.currentDate.getFullYear()
     }
   }
 }

@@ -9,8 +9,7 @@
       width="100%"
       frameborder="0"
       class="p-0"
-      :class="{'isOpen':isOpen,'isClose':!isOpen}"
-    />
+      :class="{'isOpen':isOpen,'isClose':!isOpen}" />
   </div>
 </template>
 <script>

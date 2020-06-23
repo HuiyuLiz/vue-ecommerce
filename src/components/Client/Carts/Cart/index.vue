@@ -1,4 +1,139 @@
-<template src="./template.html" />
+<template>
+  <div>
+    <div
+      class="container-fluid px-0 ">
+      <DiscountBanner
+        v-if="step===0" />
+    </div>
+    <div
+      class="container pt-3 pt-md-5 mt-5 pb-5">
+      <CartProgress
+        class=""
+        :step="step" />
+      <div
+        v-if="carts.length===0"
+        class="row justify-content-center">
+        <div
+          class="h3 text-secondary my-5 py-5">
+          尚未選購專輯喔!
+        </div>
+      </div>
+      <div
+        v-else
+        class="row">
+        <!-- 確認商品 -->
+        <div
+          v-if="step===0"
+          class="col-md-9 m-auto "
+          style="min-height: 200px;">
+          <div
+            class="card text-center mb-4  border-0">
+            <div
+              id="heading"
+              class="card-header bg-muted"
+              @click="isOpen=!isOpen">
+              <div
+                class="mb-0 collapsed"
+                data-toggle="collapse"
+                data-target="#collapse"
+                aria-expanded="false"
+                aria-controls="collapse">
+                <div
+                  class="d-flex align-items-center text-secondary">
+                  購物車明細<i
+                    v-if="isOpen"
+                    class="material-icons">
+                    arrow_drop_up
+                  </i>
+                  <i
+                    v-else
+                    class="material-icons">
+                    arrow_drop_down
+                  </i>
+                </div>
+              </div>
+            </div>
+            <div
+              id="collapse"
+              class="collapse show ">
+              <div
+                class="card-body px-0">
+                <CartList
+                  :carts="carts"
+                  :cart="cart"
+                  @deleteToCart="deleteFromCart" />
+                <div
+                  class="mb-2 text-left small"
+                  :class="{'text-success':isUse,'text-danger':!isUse}">
+                  {{ message }}
+                </div>
+                <div
+                  class="input-group mb-3 input-group-sm">
+                  <input
+                    v-model.trim="coupon"
+                    type="text"
+                    class="form-control form-control-lg rounded-0"
+                    placeholder="請輸入優惠碼">
+                  <div
+                    class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary rounded-0"
+                      type="button"
+                      @click="useCoupon">
+                      套用優惠碼
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-between  mb-5">
+            <router-link
+              class="btn btn-secondary w-25 w-sm-40 py-3 rounded-0"
+              :to="{name:'shopping_List', params:{ category:'all' , page: 1 }}">
+              繼續購物
+            </router-link>
+            <button
+              class=" btn btn-dark w-25 w-sm-40 py-3 rounded-0"
+              @click="step++">
+              下一步
+            </button>
+          </div>
+        </div>
+        <!-- 資料表單驗證 -->
+        <ValidationObserver
+          v-if="step===1"
+          ref="form"
+          v-slot="{ invalid }"
+          class="col-md-9 m-auto">
+          <form
+            @submit.prevent="submitOrder">
+            <CartValidate
+              :postal="postal"
+              :index="index"
+              :user-form="userForm"
+              :country-index="countryIndex"
+              :area-index="areaIndex"
+              :areas="areas" />
+            <div
+              class="d-flex justify-content-between mb-5">
+              <button
+                class="btn btn-outline-dark w-25 w-sm-40 py-3  rounded-0"
+                @click.prevent="step--">
+                上一步
+              </button>
+              <button
+                class="btn btn-dark w-25 w-sm-40 py-3 rounded-0">
+                送出訂單
+              </button>
+            </div>
+          </form>
+        </ValidationObserver>
+      </div>
+    </div>
+  </div>
+</template>
 <script>
 import {
   useCoupon,

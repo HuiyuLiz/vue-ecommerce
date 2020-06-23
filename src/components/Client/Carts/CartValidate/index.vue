@@ -10,8 +10,7 @@
         rules="required"
         class="classes"
         name="username"
-        :show-label="true"
-      />
+        :show-label="true" />
     </div>
     <div class="form-group">
       <ValidateInput
@@ -20,8 +19,7 @@
         rules="required|email"
         class="classes"
         name="email"
-        :show-label="true"
-      />
+        :show-label="true" />
     </div>
     <div class="form-group">
       <ValidateInput
@@ -31,8 +29,7 @@
         rules="required|mobile"
         class="classes"
         name="mobile"
-        :show-label="true"
-      />
+        :show-label="true" />
     </div>
     <div class="h5 text-secondary mt-5 mb-4 font-weight-bold title-border-decoration title-border-secondary pb-3">
       配送資訊<span class="text-danger"> (必填)</span>
@@ -40,34 +37,29 @@
     <div class="form-group">
       <label
         for="useraddress"
-        class="text-secondary"
-      >收件人地址</label>
+        class="text-secondary">收件人地址</label>
       <div class="form-row justify-content-center">
         <div class="form-group col-md-3">
           <ValidationProvider
             v-slot="{ classes,errors }"
             name="country"
-            rules="required"
-          >
+            rules="required">
             <select
               v-model="countryIndex"
               class="form-control   rounded-0 mb-2"
-              :class="classes"
-            >
+              :class="classes">
               <option
                 :value="null"
                 selected
                 disabled
-                class="form-control "
-              >
+                class="form-control ">
                 請選擇縣市
               </option>
               <option
                 v-for="(country,cindex) in postal"
                 :key="country.name"
                 :value="cindex"
-                class="form-control"
-              >
+                class="form-control">
                 {{ country.name }}
               </option>
             </select>
@@ -78,32 +70,27 @@
           <ValidationProvider
             v-slot="{ classes,errors }"
             name="zone"
-            rules="required"
-          >
+            rules="required">
             <select
               v-model="areaIndex"
               class="form-control  rounded-0 mb-2"
-              :class="classes"
-            >
+              :class="classes">
               <option
                 :value="null"
                 selected
-                disabled
-              >
+                disabled>
                 請選擇鄉鎮市區
               </option>
               <option
                 v-for="(area,aindex) in areas"
                 :key="aindex"
-                :value="aindex"
-              >
+                :value="aindex">
                 {{ area.name }}
               </option>
             </select>
             <span
               v-if="errors[0]"
-              class="text-danger"
-            >{{ errors[0] }}</span>
+              class="text-danger">{{ errors[0] }}</span>
           </ValidationProvider>
         </div>
         <div class="form-group col-md-6">
@@ -113,8 +100,7 @@
             rules="required"
             class="classes"
             name="address"
-            :show-label="false"
-          />
+            :show-label="false" />
         </div>
       </div>
     </div>
@@ -122,8 +108,7 @@
     <div class="form-group  rounded-0 mb-5">
       <label
         for="comment"
-        class="h5 text-secondary mt-3 mb-4 font-weight-bold title-border-decoration title-border-secondary pb-3"
-      >留言 (選填)</label>
+        class="h5 text-secondary mt-3 mb-4 font-weight-bold title-border-decoration title-border-secondary pb-3">留言 (選填)</label>
       <textarea
         id="comment"
         v-model="userForm.message"
@@ -131,8 +116,7 @@
         class="form-control rounded-0 mt-1"
         cols="30"
         rows="5"
-        placeholder="有什麼話想對我們說呢?"
-      />
+        placeholder="有什麼話想對我們說呢?" />
     </div>
   </div>
 </template>
@@ -184,6 +168,5 @@ export default {
   }
 }
 </script>
-
 <style>
 </style>

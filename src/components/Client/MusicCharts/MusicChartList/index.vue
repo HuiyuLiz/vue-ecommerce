@@ -3,8 +3,7 @@
     <h1
       v-if="$route.name !== 'Home'"
       v-scrollanimation
-      class="pb-4 mb-5 font-weight-bold h3 text-dark text-left title-border-decoration title-border-dark"
-    >
+      class="pb-4 mb-5 font-weight-bold h3 text-dark text-left title-border-decoration title-border-dark">
       {{ totalCharts.length>0 ? "熱門排行榜" : "Loading..." }}
     </h1>
     <transition-group
@@ -12,8 +11,7 @@
       name="fade"
       mode="in-out"
       class="row"
-      data-delay="1.5s"
-    >
+      data-delay="1.5s">
       <component
         :is="currntComponent"
         v-for="(chart,index) in totalCharts"
@@ -21,8 +19,7 @@
         :chart="chart"
         :format-time="chart.updated_at"
         :style="`transition-delay: ${index*0.2}s`"
-        @goTochart="goTochart"
-      />
+        @goTochart="goTochart" />
     </transition-group>
   </div>
 </template>

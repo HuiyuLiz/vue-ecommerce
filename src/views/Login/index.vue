@@ -4,8 +4,7 @@
       <div class="col-md-6 m-auto ">
         <form
           class="form-signin text-center p-0"
-          @submit.prevent="login"
-        >
+          @submit.prevent="login">
           <h1 class="pb-4 mb-5 font-weight-bold h3 text-white text-left title-border-decoration title-border-white">
             會員登入
           </h1>
@@ -17,8 +16,7 @@
           </div>
           <label
             for="inputEmail"
-            class="sr-only"
-          >Email address</label>
+            class="sr-only">Email address</label>
           <input
             id="inputEmail"
             v-model="user.username"
@@ -26,8 +24,7 @@
             class="form-control form-control-lg rounded-0"
             placeholder="Email address"
             required
-            autofocus
-          >
+            autofocus>
           <div class="text-white d-flex align-items-end mt-3 mb-3">
             <div class="h5 mb-0 mr-2">
               Password
@@ -36,21 +33,18 @@
           </div>
           <label
             for="inputPassword"
-            class="sr-only"
-          >Password</label>
+            class="sr-only">Password</label>
           <input
             id="inputPassword"
             v-model="user.password"
             type="password"
             class="form-control form-control-lg rounded-0"
             placeholder="Password"
-            required
-          >
+            required>
 
           <button
             class="btn btn-outline-light btn-block py-3 d-flex align-items-center justify-content-center mt-5 rounded-0"
-            type="submit"
-          >
+            type="submit">
             登入
           </button>
 

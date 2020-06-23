@@ -7,8 +7,7 @@
       frameborder="0"
       allow="autoplay"
       width="100%"
-      class="d-block"
-    />
+      class="d-block" />
   </div>
 </template>
 <script>

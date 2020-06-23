@@ -1,8 +1,7 @@
 <template>
   <button
     class="btn btn-block py-3 mt-0 font-weight-bold rounded-0"
-    :class="customClass"
-  >
+    :class="customClass">
     {{ text }}
   </button>
 </template>

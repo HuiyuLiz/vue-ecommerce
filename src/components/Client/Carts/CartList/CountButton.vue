@@ -2,23 +2,20 @@
   <div
     class="btn-group mt-3 text-center mb-3 mb-md-0 "
     role="group"
-    aria-label="Basic example"
-  >
+    aria-label="Basic example">
     <button
       type="button"
       class="btn btn-outline-secondary py-2 px-2 rounded-0"
       style="width:40px"
       :class="{'disabled button-secondary':item.qty<=1}"
       :disabled="item.qty<=1"
-      @click="numberHandler(item,-1)"
-    >
+      @click="numberHandler(item,-1)">
       -
     </button>
     <button
       type="button"
       class="btn btn-outline-secondary py-2 text-center"
-      style="width:45%"
-    >
+      style="width:45%">
       <span class="text-center">{{ item.qty }}</span>
     </button>
     <button
@@ -27,8 +24,7 @@
       style="width:40px"
       :class="{'disabled button-secondary':item.qty>=20}"
       :disabled="item.qty>=20"
-      @click="numberHandler(item,1)"
-    >
+      @click="numberHandler(item,1)">
       +
     </button>
   </div>

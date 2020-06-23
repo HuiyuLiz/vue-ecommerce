@@ -3,13 +3,11 @@
     <HistoryBackButton :last-path="{name:'MusicCharts'}" />
     <div
       v-if="images"
-      class="blur-background d-none d-md-block"
-    >
+      class="blur-background d-none d-md-block">
       <img
         alt
         class="rounded-0 img-object-fit position-absolute"
-        :src="images[1].url"
-      >
+        :src="images[1].url">
     </div>
     <!-- MusicModal -->
     <div
@@ -20,24 +18,19 @@
       role="dialog"
       aria-labelledby="MusicModalTitle"
       aria-hidden="true"
-      data-backdrop="static"
-    >
+      data-backdrop="static">
       <div
         class="modal-dialog modal-dialog-center m-0 d-flex justify-content-center align-items-center w-100 m-md-auto align-middle"
-        role="document"
-      >
+        role="document">
         <div
-          class="modal-content"
-        >
+          class="modal-content">
           <button
             type="button"
-            class="close position-absolute align-self-end pt-2 pr-3"
-          >
+            class="close position-absolute align-self-end pt-2 pr-3">
             <span
               aria-hidden="true"
               class="display-4"
-              @click="closeTrack"
-            >&times;</span>
+              @click="closeTrack">&times;</span>
           </button>
           <PlayListIframe :track-id="trackId" />
         </div>
@@ -47,27 +40,22 @@
     <!-- Playlist -->
     <div
       id="playlist"
-      class="playlist"
-    >
+      class="playlist">
       <SongIframe
         v-if="songId!==''"
         :song-id="songId"
-        :is-open="isOpen"
-      />
+        :is-open="isOpen" />
     </div>
 
     <div
       v-if="tracks.length>0"
-      class="container pb-5"
-    >
+      class="container pb-5">
       <div class="row mb-5 mt-md-5 pt-md-3">
         <div
-          class="col-md-12 mr-auto background-cover d-none d-md-flex flex-md-column justify-content-center align-items-left overflow-hidden"
-        />
+          class="col-md-12 mr-auto background-cover d-none d-md-flex flex-md-column justify-content-center align-items-left overflow-hidden" />
         <div
           v-scrollanimation
-          class="col-md-8 m-auto"
-        >
+          class="col-md-8 m-auto">
           <div class>
             <div class="d-none d-md-flex align-items-center">
               <div class="flex-grow-1 pr-2 d-none d-md-block">
@@ -80,35 +68,30 @@
             <div class="p-md-5 bg-white">
               <router-link
                 :to="{name:'MusicCharts'}"
-                class="text-success font-weight-bold d-flex d-md-none"
-              >
+                class="text-success font-weight-bold d-flex d-md-none">
                 音樂情報
               </router-link>
               <div
                 v-if="title"
-                class="h2 mb-3 d-flex d-md-none mt-2 font-weight-bold"
-              >
+                class="h2 mb-3 d-flex d-md-none mt-2 font-weight-bold">
                 {{ title }}
               </div>
               <div class="d-flex d-md-none mb-3">
                 <img
                   class="img-fluid d-flex d-md-none"
                   :src="images[1].url"
-                  alt
-                >
+                  alt>
               </div>
 
               <ul class="z-index-3 pl-0 mb-4 mt-4">
                 <router-link
                   :to="{name:'MusicCharts'}"
-                  class="text-success font-weight-bold d-none d-md-flex"
-                >
+                  class="text-success font-weight-bold d-none d-md-flex">
                   音樂情報
                 </router-link>
                 <li
                   v-if="title"
-                  class="text-dark align-items-center mb-2 h2 font-weight-bold mt-2 d-none d-md-flex"
-                >
+                  class="text-dark align-items-center mb-2 h2 font-weight-bold mt-2 d-none d-md-flex">
                   {{ title }}
                 </li>
               </ul>
@@ -121,8 +104,7 @@
                       class
                       custom-class="btn-dark"
                       text="全部試聽"
-                      @click.native="openTrack"
-                    />
+                      @click.native="openTrack" />
                   </div>
                 </div>
               </div>
@@ -145,8 +127,7 @@
           <div class="d-flex justify-content-center justify-content-md-end align-items-center">
             <div
               class="align-center"
-              @click="getPrevTrack"
-            >
+              @click="getPrevTrack">
               <i class="material-icons material-icons-middle text-secondary">keyboard_arrow_left</i>
             </div>
             <p class="text-secondary h6 text-center mx-3 w-50">
@@ -154,8 +135,7 @@
             </p>
             <div
               class="align-center"
-              @click="getNextTrack"
-            >
+              @click="getNextTrack">
               <i class="material-icons material-icons-middle text-secondary">keyboard_arrow_right</i>
             </div>
           </div>
@@ -164,8 +144,7 @@
 
       <div
         class="row pt-3 border-top pb-3 pb-md-5 min-height d-flex justify-content-center"
-        :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}"
-      >
+        :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}">
         <div class="col-md-6 pr-md-5 justify-content-between">
           <MusicTrackItem
             v-for="(track,index) in limit_tracks_first"
@@ -173,8 +152,7 @@
             :track="track"
             :index="index+paging.offset"
             :song-id="songId"
-            @playSong="playSong"
-          />
+            @playSong="playSong" />
         </div>
         <div class="col-md-6 pl-md-5  justify-content-between">
           <MusicTrackItem
@@ -184,8 +162,7 @@
             :index="index+paging.offset+limit_tracks_first.length"
             class="border-bottom-none"
             :song-id="songId"
-            @playSong="playSong"
-          />
+            @playSong="playSong" />
         </div>
       </div>
     </div>

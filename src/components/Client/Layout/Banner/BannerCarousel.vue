@@ -2,18 +2,15 @@
   <div
     id="carouselControls"
     class="carousel slide banner"
-    data-ride="carousel"
-  >
+    data-ride="carousel">
     <ol class="carousel-indicators">
       <li
         data-target="#carouselControls"
         data-slide-to="0"
-        class="active"
-      />
+        class="active" />
       <li
         data-target="#carouselControls"
-        data-slide-to="1"
-      />
+        data-slide-to="1" />
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item carousel-item-min-height active">
@@ -28,8 +25,7 @@
             <div class="btn-max-width ">
               <router-link
                 :to="{name:'MusicChartDetail', params:{ chart_title: '華語單曲日榜' },query:{chart_id: 'HYbr2eYrXtNOaWIKmZ' }}"
-                class="my-4 btn btn-outline-light btn-block py-3 mt-0 font-weight-bold rounded-0 d-flex align-items-center justify-content-center"
-              >
+                class="my-4 btn btn-outline-light btn-block py-3 mt-0 font-weight-bold rounded-0 d-flex align-items-center justify-content-center">
                 <span class="ml-3">立即前往</span>
                 <span class="material-icons ml-3">navigate_next</span>
               </router-link>
@@ -49,8 +45,7 @@
             <div class="btn-max-width ">
               <router-link
                 :to="{name:'MusicChartDetail', params:{ chart_title: '電子單曲週榜' },query:{chart_id: 'PZmd10J-MWFJpBUcMk' }}"
-                class="my-4 btn btn-outline-light btn-block py-3 mt-0 font-weight-bold rounded-0 d-flex align-items-center justify-content-center"
-              >
+                class="my-4 btn btn-outline-light btn-block py-3 mt-0 font-weight-bold rounded-0 d-flex align-items-center justify-content-center">
                 <span class="ml-3">立即前往</span>
                 <span class="material-icons ml-3">navigate_next</span>
               </router-link>
@@ -63,24 +58,20 @@
       class="carousel-control-prev"
       href="#carouselControls"
       role="button"
-      data-slide="prev"
-    >
+      data-slide="prev">
       <span
         class="carousel-control-icon"
-        aria-hidden="true"
-      />
+        aria-hidden="true" />
       <span class="sr-only">Previous</span>
     </a>
     <a
       class="carousel-control-next"
       href="#carouselControls"
       role="button"
-      data-slide="next"
-    >
+      data-slide="next">
       <span
         class="carousel-control-icon rotate"
-        aria-hidden="true"
-      />
+        aria-hidden="true" />
       <span class="sr-only">Next</span>
     </a>
   </div>
