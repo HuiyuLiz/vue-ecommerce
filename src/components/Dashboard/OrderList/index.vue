@@ -182,14 +182,14 @@
 
                   <div
                     v-for="(item,i) in tempOrder.products"
-                    :key="item.product_id"
+                    :key="i"
                     class="form-row">
                     <div class="form-group col-md-8">
                       <label
                         v-if="i===0"
-                        for="id">產品ID:</label>
+                        :for="item.product_id">產品ID:</label>
                       <input
-                        id="id"
+                        :id="item.product_id"
                         v-model="item.product_id"
                         type="text"
                         class=" form-control mb-3"

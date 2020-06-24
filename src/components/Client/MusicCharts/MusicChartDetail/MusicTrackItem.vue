@@ -1,6 +1,6 @@
 <template>
-  <div class="media mb-3 border-bottom align-items-center pb-3">
-    <div class="col-2 col-md-3 p-0 d-flex align-items-center mr-3 mr-md-auto">
+  <div class="media border-bottom align-items-center py-3 position-relative">
+    <div class="col-2 col-md-3 p-0 d-flex align-items-center mr-3 mr-md-1">
       <span class="h5 mb-2 font-weight-bold mr-4 font-weight-bold d-none d-md-flex w-25 justify-content-center">{{ index+1 }}.</span>
       <img
         class="img-fluid d-none d-md-block w-50"
@@ -15,7 +15,7 @@
     <div class="col-7 px-0">
       <div class="media-body">
         <div class="d-flex align-items-start">
-          <div class="col-12 d-flex flex-column ml-md-3 ml-2">
+          <div class="col-11 d-flex flex-column ml-md-3 ml-2">
             <span
               class="mb-1 mb-md-2 font-weight-bold"
               :class="{'h5':track.name.length<20}">{{ track.name }}</span>
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div
-      class="col-3 text-center"
+      class="col-3 text-center position-absolute play-icon pr-0"
       @click="playSong(track.id)">
       <i
         class="material-icons material-icons-large"
@@ -63,5 +63,13 @@ export default {
 }
 </script>
 
-<style>
+<style >
+.play-icon{
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 </style>

@@ -143,7 +143,7 @@
       </div>
 
       <div
-        class="row pt-3 border-top pb-3 pb-md-5 min-height d-flex justify-content-center"
+        class="row border-top pb-3 pb-md-5 min-height d-flex justify-content-center"
         :class="{'slide-fade-enter':isChange,'slide-fade-enter-active':!isChange}">
         <div class="col-md-6 pr-md-5 justify-content-between">
           <MusicTrackItem
