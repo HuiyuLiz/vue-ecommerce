@@ -61,6 +61,10 @@ iframe#iframeID {
   display: block;
 }
 
+.cursor-pointer{
+  cursor: pointer;
+} 
+
 .min-height {
   min-height: calc(100vh - 200px);
 }

@@ -5,8 +5,8 @@ import { EventBus } from '@/eventBus/eventBus'
 export default ({
   namespaced: true,
   state: {
-    token: process.env.VUE_APP_TOKEN,
-    tokenType: process.env.VUE_APP_TOKEN_TYPE,
+    token: '',
+    tokenType: '',
     charts: []
   },
   getters: {
@@ -32,7 +32,7 @@ export default ({
     }
   },
   actions: {
-    async GET_KKBOX_TOKEN ({ commit, dispatch }, payload) {
+    GET_KKBOX_TOKEN ({ commit, dispatch }, payload) {
       let OAuth = {
         'grant_type': 'client_credentials',
         'client_id': process.env.VUE_APP_CLIENT_ID,
@@ -44,9 +44,9 @@ export default ({
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       }
-      await Axios.post(process.env.VUE_APP_KKBOX_OAUTH, qs.stringify(OAuth), config).then(res => {
-        let token = res.data.access_token ? res.data.access_token : process.env.VUE_APP_TOKEN
-        let tokenType = res.data.token_type ? res.data.token_type : process.env.VUE_APP_TOKEN_TYPE
+      Axios.post(process.env.VUE_APP_KKBOX_OAUTH, qs.stringify(OAuth), config).then(res => {
+        let token = res.data.access_token ? res.data.access_token : ''
+        let tokenType = res.data.token_type ? res.data.token_type : ''
         commit('get_token', { token, tokenType })
         dispatch('GET_CHART')
       }).catch(error => {

@@ -71,8 +71,8 @@ export default {
     this.getToken()
   },
   methods: {
-    async getToken () {
-      await this.$store.dispatch('kkbox/GET_KKBOX_TOKEN')
+    getToken () {
+      this.$store.dispatch('kkbox/GET_KKBOX_TOKEN')
     },
     goTochart ({ title, id }) {
       this.$router.push({ name: 'MusicChartDetail', params: { chart_title: title }, query: { chart_id: id } }).catch((error) => {

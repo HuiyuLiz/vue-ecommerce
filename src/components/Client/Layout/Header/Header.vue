@@ -80,8 +80,7 @@
           <li class="nav-item font-weight-bold dropdown">
             <a
               id="dropdownMenuButton"
-              class="nav-link  px-3 dropdown-toggle"
-              type="button"
+              class="nav-link  px-3 dropdown-toggle cursor-pointer"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false">實體專輯<span

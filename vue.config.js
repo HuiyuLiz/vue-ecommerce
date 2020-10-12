@@ -3,7 +3,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/token': {
-        target: 'https://account.kkbox.com/oauth2/token',
+        target: process.env.VUE_APP_KKBOX_OAUTH,
         ws: true,
         changeOrigin: true
       }
