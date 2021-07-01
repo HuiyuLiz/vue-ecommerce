@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["MusicCharts"],{aa6b:function(n,t,e){"use strict";e.r(t);var a=function(){var n=this,t=n.$createElement,e=n._self._c||t;return e("div",[e("router-view")],1)},r=[],u={name:"MusicCharts",data:function(){return{}}},s=u,c=e("2877"),i=Object(c["a"])(s,a,r,!1,null,null,null);t["default"]=i.exports}}]);
-//# sourceMappingURL=MusicCharts.f3b5ff23.js.map
