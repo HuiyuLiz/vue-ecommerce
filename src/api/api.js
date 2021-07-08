@@ -1,12 +1,30 @@
 import axios from 'axios'
+import { getToken } from '@/utils/auth.js'
 
 let api = `${process.env.VUE_APP_API}/`
 let path = `${process.env.VUE_APP_CUSTOMER_PATH}`
+let token = getToken()
 
 const apiRequest = axios.create({
   baseURL: api,
   withCredentials: true
 })
+
+// request interceptor
+apiRequest.interceptors.request.use(
+  config => {
+    if (token) {
+      config.headers['Authorization'] = getToken()
+    }
+    return config
+  },
+  error => {
+    // do something with request error
+    console.log(error) // for debug
+    return Promise.reject(error)
+  }
+)
+
 
 const postalRequest = axios.create({
   baseURL: '../assets/postal.json',

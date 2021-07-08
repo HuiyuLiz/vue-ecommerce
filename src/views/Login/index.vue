@@ -59,6 +59,7 @@
 <script>
 import { login } from '@/api/api'
 import { EventBus } from '@/eventBus/eventBus'
+import { setToken } from '@/utils/auth.js'
 export default {
   name: 'Login',
   components: {
@@ -72,16 +73,24 @@ export default {
       message: ''
     }
   },
+  mounted () {
+  },
   methods: {
     login () {
       login(this.user).then(res => {
         if (res.data.success) {
           this.message = ''
-          this.$router.push({ name: 'Admin' }).catch((error) => {
-            if (error instanceof ReferenceError) {
-              EventBus.emitHandler(false, '取得資料錯誤')
-            }
-          })
+          let token = res.data.token
+          let expired = res.data.expired
+          setToken(token, new Date(expired))
+          this.$store.commit('set_token', token)
+
+          this.$router.push({ name: 'Admin' })
+            .catch((error) => {
+              if (error instanceof ReferenceError) {
+                EventBus.emitHandler(false, '取得資料錯誤')
+              }
+            })
         } else {
           this.message = res.data.message + '，帳號或密碼錯誤，請重新輸入。'
         }

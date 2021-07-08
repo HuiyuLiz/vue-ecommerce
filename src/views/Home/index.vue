@@ -101,6 +101,8 @@ export default {
   created () {
     this.getShoppingListAll()
   },
+  mounted() {
+  },
   methods: {
     addToCart (id, qty = 1) {
       this.$store.dispatch('cart/ADD_TO_CART', { id, qty })

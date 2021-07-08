@@ -114,6 +114,21 @@
         </ul>
         <ul class="navbar-nav">
           <li
+            v-if="isAuthenticated"
+            class="nav-item font-weight-bold d-none d-md-block"
+            @click="isToggle=!isToggle">
+            <router-link
+              class="nav-link  px-3"
+              to="/admin">
+              <span
+                class="material-icons material-icons-middle"
+                :class="{'scrolled':scrollPosition>30}">
+                manage_accounts
+              </span>
+            </router-link>
+          </li>
+          <li
+            v-if="!isAuthenticated"
             class="nav-item font-weight-bold d-none d-md-block"
             @click="isToggle=!isToggle">
             <router-link
@@ -237,6 +252,9 @@ export default {
     }
   },
   computed: {
+    isAuthenticated () {
+      return this.$store.getters.isAuthenticated
+    },
     carts () {
       return this.$store.state.cart.carts
     },

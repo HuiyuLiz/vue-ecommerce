@@ -9,7 +9,7 @@
             class="nav-link d-flex align-items-center text-secondary font-weight-bold"
             href="#"
             @click="logout">
-            <i class="material-icons material-icons-middle text-secondary mr-2">person</i>登出
+            <i class="material-icons material-icons-middle text-secondary mr-2">person</i>登出 isAuthenticated:{{isAuthenticated}}
           </a>
         </li>
       </ul>
@@ -21,10 +21,16 @@
 <script>
 import Dashboard from '@/components/Dashboard/Layout'
 import { logout } from '@/api/api'
+import { getToken, removeToken } from '@/utils/auth.js'
 export default {
   name: 'Admin',
   components: {
     Dashboard
+  },
+  computed:{
+    isAuthenticated(){
+      return this.$store.getters.isAuthenticated
+    }
   },
   data () {
     return {
@@ -36,9 +42,13 @@ export default {
       logout().then(res => {
         if (res.data.success) {
           this.$router.push('/login')
+          removeToken()
+          this.$store.commit('set_token','')
         }
       })
     }
-  }
+  },
+  created() {
+  },
 }
 </script>
